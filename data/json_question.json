@@ -1,0 +1,60 @@
+[
+    {
+        "id": 1,
+        "title": "O que é computação em nuvem, conforme definido pela AWS?",
+        "group_by_topic": "Conceitos de Nuvem",
+        "accept_two_alternatives": false,
+        "level_of_complexity": 1,
+        "response": [
+            {
+                "alternative": "Gerenciamento de servidores físicos locais",
+                "because": "Incorreto. A computação em nuvem elimina a necessidade de gerenciar servidores físicos locais.",
+                "rep": false
+            },
+            {
+                "alternative": "Entrega de recursos de TI sob demanda pela internet",
+                "because": "Correto. A AWS define computação em nuvem como entrega de recursos como computação, armazenamento e bancos de dados pela internet sob demanda.",
+                "rep": true
+            },
+            {
+                "alternative": "Armazenamento de dados em dispositivos USB",
+                "because": "Incorreto. Isso não está relacionado à computação em nuvem.",
+                "rep": false
+            },
+            {
+                "alternative": "Manutenção de data centers próprios",
+                "because": "Incorreto. A nuvem usa data centers da AWS, não próprios do cliente.",
+                "rep": false
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Quais são os principais benefícios da computação em nuvem? (Selecione DUAS alternativas)",
+        "group_by_topic": "Conceitos de Nuvem",
+        "accept_two_alternatives": true,
+        "level_of_complexity": 2,
+        "response": [
+            {
+                "alternative": "Custos fixos elevados",
+                "because": "Incorreto. A nuvem reduz custos fixos com o modelo pay-as-you-go.",
+                "rep": false
+            },
+            {
+                "alternative": "Escalabilidade sob demanda",
+                "because": "Correto. A nuvem permite ajustar recursos conforme a necessidade.",
+                "rep": true
+            },
+            {
+                "alternative": "Alta disponibilidade",
+                "because": "Correto. A AWS oferece alta disponibilidade com Regiões e Zonas de Disponibilidade.",
+                "rep": true
+            },
+            {
+                "alternative": "Manutenção de hardware local",
+                "because": "Incorreto. A AWS gerencia o hardware, reduzindo essa necessidade.",
+                "rep": false
+            }
+        ]
+    }
+]

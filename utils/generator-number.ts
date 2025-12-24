@@ -1,5 +1,7 @@
+import { MSG_ERRO_AO_GERAR_PERGUNTA_INTERVALO_INCORRETO } from "./constants";
+
 export function generatorNumber(min: number, max: number, arrayIds: number[] = []): number {
-  
+
   const totalPossibilities = max - min + 1;
 
   const blocked = arrayIds.filter(
@@ -7,7 +9,7 @@ export function generatorNumber(min: number, max: number, arrayIds: number[] = [
   ).length;
 
   if (blocked >= totalPossibilities) {
-    throw new Error('Não existem números disponíveis para gerar dentro do intervalo informado.');
+    throw new Error(MSG_ERRO_AO_GERAR_PERGUNTA_INTERVALO_INCORRETO);
   }
 
   let random: number;

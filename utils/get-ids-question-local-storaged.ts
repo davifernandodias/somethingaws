@@ -1,4 +1,4 @@
-import { decrypt, encrypt, hashKey } from "./crypto";
+import { decrypt, hashKey } from "./crypto";
 
 export function getIdsInLocalStoraged(): number[] {
   const storageKey = hashKey(process.env.NEXT_PUBLIC_STORAGE_KEY!);

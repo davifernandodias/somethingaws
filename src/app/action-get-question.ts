@@ -1,4 +1,8 @@
+
 import { generateNewQuestion } from "../../service/generetor-question-aux";
+import { MSG_QUESTAO_INCORRETA, MSG_QUESTAO_RESPONDIDA_COM_SUCESSO } from "../../utils/constants";
+import { getIdsInLocalStoraged } from "../../utils/get-ids-question-local-storaged";
+
 
 export async function sendQuestion(prevState: any, formData: FormData) {
 
@@ -25,7 +29,12 @@ export async function sendQuestion(prevState: any, formData: FormData) {
 
     // Se não marcou nada, não valida ainda
     if (Object.keys(answers).length === 0) {
-      return prevState;
+        // Se não há mais perguntas disponíveis, reinicia o quiz
+        if(getIdsInLocalStoraged().length <= 0){
+            return await generateNewQuestion();
+        }
+        // Senão, mantém o estado anterior
+        return prevState;
     }
 
     const question = prevState.questions[0];
@@ -40,7 +49,8 @@ export async function sendQuestion(prevState: any, formData: FormData) {
       validated: true,
       isCorrect,
       userAnswers,
-      correctIndexes
+      correctIndexes,
+      message: isCorrect ? MSG_QUESTAO_RESPONDIDA_COM_SUCESSO : MSG_QUESTAO_INCORRETA,
     };
   }
 

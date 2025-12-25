@@ -41,15 +41,31 @@ export const reducer = (state: any, action: any) => {
 
         case 'controls_limite_questions': {
             let value = Number(action.payload);
-                    
+
             if (isNaN(value)) return state;
-                    
+
             // garante intervalo 1–20
             value = Math.min(20, Math.max(1, value));
-                    
+
             return {
               ...state,
               amount_limit_questions: value,
+            };
+        }
+
+
+        case 'controls_disabled_button': {
+            return {
+              ...state,
+              disabledCoolDown: true,
+            };
+        }
+
+
+        case 'controls_enable_button':{
+            return {
+              ...state,
+              disabledCoolDown: false,
             };
         }
         default:

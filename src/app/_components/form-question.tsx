@@ -13,12 +13,15 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { reducer } from '../../../reducer/config-quiz-reducer';
 import { saveLimitQuestionInLocalStoraged } from '../../../utils/save-local-storaged';
 import { defineButtonState } from '../../../utils/define-button-state';
+import { checkStateButton, isCheckOptions } from '../../../utils/enable-or-disabled-button';
 
 
 
 export function FormQuestionQuiz() {
     const [state, formAction, isPending] = useActionState(sendQuestion, null);
+
     const [stateReducer, dispatch] = useReducer(reducer, { openModalConfiguration: false, selectedAnswers: {}, amount_limit_questions: 10 });
+
     const toastControlRef = useRef({ count: 0, lastShownAt: 0});
     const submitCooldownRef  = useRef<{locked: boolean; timeoutId: NodeJS.Timeout | null}>({ locked: false, timeoutId: null })
 
@@ -120,7 +123,9 @@ export function FormQuestionQuiz() {
             )}
 
             <div className='flex justify-center gap-9'>
-                <Button type="submit" disabled={((state && state.error || (state && state.disabledButton)) || isPending || stateReducer.disabledCoolDown)} className='cursor-pointer'> { defineButtonState(state, isPending) } </Button>
+                <Button type="submit" disabled={ (state != undefined ? !isCheckOptions(state, stateReducer) : false ) || checkStateButton(state, stateReducer, isPending)} className='cursor-pointer'>
+                    { defineButtonState(state, isPending) }
+                </Button>
                 <input type="number" name='amount_limit_questions' hidden={true} />
                 {state == null && (
                     <Button type='button' onClick={() => {

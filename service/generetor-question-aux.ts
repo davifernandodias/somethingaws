@@ -11,7 +11,7 @@ export async function generateNewQuestion() {
 
   try {
     // TROCAR PARA O RANGE DE 200 QUESTÕES
-    radomNumber = generatorNumber(1, 1, arrayIds);
+    radomNumber = generatorNumber(1, 2, arrayIds);
   } catch (error: any) {
     return {
       questions: [],

@@ -6,10 +6,9 @@ import { getIdsInLocalStoraged, getLimitQuestionInLocalStoraged } from "../../ut
 
 export async function sendQuestion(prevState: any, formData: FormData) {
 
+
   let limitQuestion = (prevState?.limitQuestionRep + 1) || 1;
   let limitiQuestionLocalStoraged = getLimitQuestionInLocalStoraged() ?? 10;
-
-
 
   if (prevState === null) {
     let response = await generateNewQuestion();
@@ -21,11 +20,12 @@ export async function sendQuestion(prevState: any, formData: FormData) {
   }
 
 
-  if(limitQuestion >= limitiQuestionLocalStoraged){
+  if(limitQuestion > limitiQuestionLocalStoraged){
     return {
       ...prevState,
       disabledButton: true,
-      message: MSG_LIMITE_QUESTOES_RESPONDIDAS
+      message: MSG_LIMITE_QUESTOES_RESPONDIDAS,
+      limitQuestionRep: limitQuestion
     }
   }
 
@@ -55,7 +55,8 @@ export async function sendQuestion(prevState: any, formData: FormData) {
       // Senão, mantém o estado anterior
       return {
         ...prevState,
-        disabledButton: false
+        disabledButton: false,
+        limitQuestionRep: limitQuestion
       };
     }
 
@@ -73,7 +74,8 @@ export async function sendQuestion(prevState: any, formData: FormData) {
       userAnswers,
       correctIndexes,
       message: isCorrect ? MSG_QUESTAO_RESPONDIDA_COM_SUCESSO : MSG_QUESTAO_INCORRETA,
-      disabledButton: false
+      disabledButton: false,
+      limitQuestionRep: limitQuestion
     };
   }
 
@@ -82,5 +84,9 @@ export async function sendQuestion(prevState: any, formData: FormData) {
 
   }
 
-  return await generateNewQuestion();
+
+  return {
+    ...await generateNewQuestion(),
+    limitQuestionRep: limitQuestion
+  };
 }

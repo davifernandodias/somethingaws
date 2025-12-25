@@ -24,7 +24,6 @@ export function saveIdQuestionCache(id: number) {
   localStorage.setItem(storageKey, encryptedValue);
 }
 
-
 export function saveLimitQuestionInLocalStoraged(limit?: number) {
   const storageKey = hashKey(process.env.NEXT_PUBLIC_LIMITE_QUANTIDADE_QUESTOES_CHAVE_NOME!);
 

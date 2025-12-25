@@ -9,7 +9,6 @@ export function isCheckOptions (state: any, stateReducer: any) {
     });
 }
 
-
 export function checkStateButton (state: any, stateReducer: any, isPending: any){
     return (state && state.error || (state && state.disabledButton)) || isPending || stateReducer.disabledCoolDown
 }

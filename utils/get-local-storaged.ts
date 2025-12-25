@@ -16,7 +16,6 @@ export function getIdsInLocalStoraged(): number[] {
   }
 }
 
-
 export function getLimitQuestionInLocalStoraged(): number | null {
   const storageKey = hashKey(process.env.NEXT_PUBLIC_LIMITE_QUANTIDADE_QUESTOES_CHAVE_NOME!);
   const stored = localStorage.getItem(storageKey);

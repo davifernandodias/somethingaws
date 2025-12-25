@@ -1,13 +1,17 @@
 
 import { generateNewQuestion } from "../../service/generetor-question-aux";
-import { MSG_QUESTAO_INCORRETA, MSG_QUESTAO_RESPONDIDA_COM_SUCESSO } from "../../utils/constants";
-import { getIdsInLocalStoraged } from "../../utils/get-ids-question-local-storaged";
+import { MSG_QUESTAO_INCORRETA, MSG_QUESTAO_RESPONDIDA_COM_SUCESSO } from "../../constants";
+import { getIdsInLocalStoraged, getLimitQuestionInLocalStoraged } from "../../utils/get-local-storaged";
 
 
 export async function sendQuestion(prevState: any, formData: FormData) {
 
+
+  let range = getLimitQuestionInLocalStoraged();
+
+
   if (prevState === null) {
-    return await generateNewQuestion();
+    return await generateNewQuestion(Number(range));
   }
 
   if (!prevState.validated) {
@@ -29,12 +33,12 @@ export async function sendQuestion(prevState: any, formData: FormData) {
 
     // Se não marcou nada, não valida ainda
     if (Object.keys(answers).length === 0) {
-        // Se não há mais perguntas disponíveis, reinicia o quiz
-        if(getIdsInLocalStoraged().length <= 0){
-            return await generateNewQuestion();
-        }
-        // Senão, mantém o estado anterior
-        return prevState;
+      // Se não há mais perguntas disponíveis, reinicia o quiz
+      if (getIdsInLocalStoraged().length <= 0) {
+        return await generateNewQuestion(Number(range));
+      }
+      // Senão, mantém o estado anterior
+      return prevState;
     }
 
     const question = prevState.questions[0];
@@ -42,7 +46,7 @@ export async function sendQuestion(prevState: any, formData: FormData) {
 
     const correctIndexes = question.response.map((r: any, i: number) => r.rep ? i : null).filter((v: number | null) => v !== null);
 
-    const isCorrect = correctIndexes.length === userAnswers.length && correctIndexes.every((i : any) => userAnswers.includes(i));
+    const isCorrect = correctIndexes.length === userAnswers.length && correctIndexes.every((i: any) => userAnswers.includes(i));
 
     return {
       ...prevState,
@@ -55,5 +59,10 @@ export async function sendQuestion(prevState: any, formData: FormData) {
   }
 
 
-  return await generateNewQuestion();
+  if (prevState.validated) {
+
+  }
+
+
+  return await generateNewQuestion(Number(range));
 }

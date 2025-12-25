@@ -1,20 +1,20 @@
-import { BUTTON_TEXT_RELOAD, MSG_ERRO_GENERICO, MSG_EXCEDEU_LIMITE_DE_PERGUNTAS_RESPONDIDAS } from "../utils/constants";
+import { BUTTON_TEXT_RELOAD, MSG_ERRO_GENERICO, MSG_EXCEDEU_LIMITE_DE_PERGUNTAS_RESPONDIDAS } from "../constants";
 import { generatorNumber } from "../utils/generator-number";
-import { getIdsInLocalStoraged } from "../utils/get-ids-question-local-storaged";
-import { saveIdQuestionCache } from "../utils/save-id-question-local-storaged";
+import { getIdsInLocalStoraged } from "../utils/get-local-storaged";
+import { saveIdQuestionCache } from "../utils/save-local-storaged";
 import { getQuestionService } from "./get-question-service";
 
-export async function generateNewQuestion() {
+export async function generateNewQuestion(range: number) {
 
   let radomNumber: number | null = null;
   const arrayIds = getIdsInLocalStoraged();
 
   try {
-    radomNumber = generatorNumber(1, 1, arrayIds);
+    radomNumber = generatorNumber(1, range, arrayIds);
   } catch (error: any) {
     return {
       questions: [],
-      message: ( error.message ? error.message : MSG_EXCEDEU_LIMITE_DE_PERGUNTAS_RESPONDIDAS),
+      message: (error.message ? error.message : MSG_EXCEDEU_LIMITE_DE_PERGUNTAS_RESPONDIDAS),
       error: false,
       buttonText: BUTTON_TEXT_RELOAD,
       modalAlert: true

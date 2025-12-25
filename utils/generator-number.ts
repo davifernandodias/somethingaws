@@ -1,4 +1,4 @@
-import { MSG_ERRO_AO_GERAR_PERGUNTA_INTERVALO_INCORRETO } from "./constants";
+import { MSG_ERRO_AO_GERAR_PERGUNTA_INTERVALO_INCORRETO } from "../constants";
 
 export function generatorNumber(min: number, max: number, arrayIds: number[] = []): number {
 

@@ -1,20 +1,24 @@
 "use client"
-
-import { useActionState, useEffect } from 'react';
+import { useActionState, useEffect, useReducer, useRef } from 'react';
 
 import { sendQuestion } from '../action-get-question';
 
 import { toast } from 'sonner';
 
-import { InitialState } from './initial-page';
+import InitialState from './initial-page';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { reducer } from '../../../reducer/config-quiz-reducer';
+import { saveLimitQuestionInLocalStoraged } from '../../../utils/save-local-storaged';
 
 
 
 export function FormQuestionQuiz() {
     const [state, formAction, isPending] = useActionState(sendQuestion, null);
+    const [stateReducer, dispatch] = useReducer(reducer, { openModalConfiguration: false, selectedAnswers: {}, amount_limit_questions: 10 });
+    const toastControlRef = useRef({ count: 0, lastShownAt: 0});
 
 
     useEffect(() => {
@@ -25,10 +29,32 @@ export function FormQuestionQuiz() {
         if (state.validated && !state.isCorrect) toast.info(state.message);
     }, [state]);
 
+
+    function handleControlSelectionAlternatives (question: any, index: number) {
+        const current = stateReducer.selectedAnswers[question.id] || [];
+        const max = question.accept_two_alternatives ? 2 : 1;
+
+        if (!current.includes(index) && current.length >= max) {
+            const now = Date.now();
+            const { count, lastShownAt } = toastControlRef.current;
+
+            const COOLDOWN = 10_000;
+            const MAX_ALERTS = 5;
+
+            if (count >= MAX_ALERTS || now - lastShownAt < COOLDOWN) { return; }
+
+            toast.warning(question.accept_two_alternatives ? 'Você só pode selecionar duas alternativas.' : 'Você só pode selecionar apenas uma alternativa.');
+            toastControlRef.current = { count: count + 1, lastShownAt: now  };
+            return;
+        }
+
+        dispatch({ type: 'controls_quantity_selection_alternatives', payload: { questionId: question.id, index, acceptTwo: question.accept_two_alternatives}});
+    }
+
     return (
         <form action={formAction}>
             {/* Estado inicial do quiz */}
-            {state === null && <InitialState />}
+            {state === null && <div className='h-80 flex items-start'><InitialState /></div>}
 
             {state !== null && (
                 <>
@@ -40,20 +66,15 @@ export function FormQuestionQuiz() {
 
                                 {question.response?.map((resp: any, index: number) => (
                                     <div key={index} className='flex flex-col gap-2 mb-3'>
-                                        <div className='flex gap-1.5 items-center'>
-                                            <Input
-                                                type='checkbox'
-                                                name={`answers[${question.id}]`}
-                                                value={index}
-                                                className='w-4 h-4'
-                                            />
-                                            <Label className='cursor-pointer'>{resp.alternative}</Label>
-                                        </div>
-
+                                    <div className='flex gap-1.5 items-center'>
+                                        <Input type="checkbox" name={`answers[${question.id}]`} value={index} className="w-4 h-4"
+                                            checked={ stateReducer.selectedAnswers[question.id]?.includes(index) || false }
+                                            onChange={() => handleControlSelectionAlternatives(question, index) }
+                                        />
+                                        <Label className='cursor-pointer'>{resp.alternative}</Label>
+                                    </div>
                                         {state.validated && (
-                                            <span className={resp.rep ? 'text-green-800 text-sm' : 'text-red-800 text-sm'}>
-                                                {resp.because}
-                                            </span>
+                                            <span className={resp.rep ? 'text-green-800 text-sm' : 'text-red-800 text-sm'}> {resp.because} </span>
                                         )}
                                     </div>
                                 ))}
@@ -78,22 +99,63 @@ export function FormQuestionQuiz() {
                             </Button>
                         </div>
                     )}
-
-                    {state.validated && state.isCorrect && (
-                        <div className='bg-green-100 text-green-800 p-3 rounded'>✓ Parabéns! Você acertou a pergunta.</div>
-                    )}
                 </>
             )}
 
-            <Button
-                type="submit"
-                disabled={((state && state.error) || isPending)}
-                className='cursor-pointer'
-            >
-                {isPending ? "Carregando..." : "Iniciar Quiz"}
-            </Button>
-            { state == null && (
-                <Button>Configurações</Button>
+            <div className='flex justify-center gap-9'>
+                <Button type="submit" disabled={((state && state.error) || isPending)} className='cursor-pointer'> { isPending ? "Carregando..." : state == null ? 'Começar quiz' : 'Iniciar Quiz' } </Button>
+
+                {state == null && (
+                    <Button type='button' onClick={() => {
+                        saveLimitQuestionInLocalStoraged()
+                        dispatch({ type: 'open_modal_config_quiz', payload: true })
+                    }
+                    } className='bg-gray-800 hover:bg-gray-700 dark:bg-gray-500 dark:hover:bg-gray-700 cursor-pointer dark:text-white'>
+                        Configurações
+                    </Button>
+                )}
+            </div>
+
+
+            { stateReducer.openModalConfiguration && (
+                    <Dialog
+                      open={stateReducer.openModalConfiguration}
+                      onOpenChange={(open) =>
+                        dispatch({ type: 'open_modal_config_quiz', payload: open })
+                      }
+                    >
+                    <DialogContent className="w-full max-w-md rounded-2xl p-6">
+                        <DialogHeader>
+                            <DialogTitle className="text-xl font-semibold">Configurações do Quiz</DialogTitle>
+                            <DialogDescription className="text-sm text-muted-foreground">Ajuste as opções antes de iniciar o quiz.</DialogDescription>
+                        </DialogHeader>
+
+                        <div className="mt-6 space-y-2 flex gap-4"><Label htmlFor="questions">Número de perguntas:</Label>
+                        <Input
+                          name="range_number"
+                          type="number"
+                          min={1}
+                          max={20}
+                          value={stateReducer.amount_limit_questions}
+                          onChange={(e) =>
+                            dispatch({
+                              type: 'controls_limite_questions',
+                              payload: e.target.value,
+                            })
+                          }
+                          className="w-22"
+                          placeholder="Ex: 10"
+                        />                        </div>
+                        <DialogFooter className="mt-8 flex gap-2 sm:justify-end">
+                            <Button variant="outline" onClick={() => dispatch({ type: 'open_modal_config_quiz', payload: false })}> Cancelar </Button>
+                            <Button
+                                onClick={() => {
+                                saveLimitQuestionInLocalStoraged(stateReducer.amount_limit_questions);
+                                dispatch({ type: 'open_modal_config_quiz', payload: false });
+                            }}> Salvar</Button>
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
             )}
         </form>
     );

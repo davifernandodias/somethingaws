@@ -12,6 +12,7 @@ import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { reducer } from '../../../reducer/config-quiz-reducer';
 import { saveLimitQuestionInLocalStoraged } from '../../../utils/save-local-storaged';
+import { defineButtonState } from '../../../utils/define-button-state';
 
 
 
@@ -19,6 +20,7 @@ export function FormQuestionQuiz() {
     const [state, formAction, isPending] = useActionState(sendQuestion, null);
     const [stateReducer, dispatch] = useReducer(reducer, { openModalConfiguration: false, selectedAnswers: {}, amount_limit_questions: 10 });
     const toastControlRef = useRef({ count: 0, lastShownAt: 0});
+    const submitCooldownRef  = useRef<{locked: boolean; timeoutId: NodeJS.Timeout | null}>({ locked: false, timeoutId: null })
 
 
     useEffect(() => {
@@ -27,10 +29,25 @@ export function FormQuestionQuiz() {
         if (state.modalAlert && state.buttonText) toast.info(state.message);
         if (state.validated && state.isCorrect) toast.info(state.message);
         if (state.validated && !state.isCorrect) toast.info(state.message);
+        if (state.disabledButton) toast.warning(state.message);
+
+        if(state.validated && !submitCooldownRef.current.locked){
+            submitCooldownRef.current.locked = true;
+
+            dispatch({ type: 'controls_disabled_button' })
+
+
+            submitCooldownRef.current.timeoutId = setTimeout(() => {
+                submitCooldownRef.current.locked = false;
+
+                dispatch({ type: 'controls_enable_button' })
+            }, 4000);
+        }
     }, [state]);
 
 
     function handleControlSelectionAlternatives (question: any, index: number) {
+        if(state.validated) return;
         const current = stateReducer.selectedAnswers[question.id] || [];
         const max = question.accept_two_alternatives ? 2 : 1;
 
@@ -103,8 +120,8 @@ export function FormQuestionQuiz() {
             )}
 
             <div className='flex justify-center gap-9'>
-                <Button type="submit" disabled={((state && state.error) || isPending)} className='cursor-pointer'> { isPending ? "Carregando..." : state == null ? 'Começar quiz' : 'Iniciar Quiz' } </Button>
-
+                <Button type="submit" disabled={((state && state.error || (state && state.disabledButton)) || isPending || stateReducer.disabledCoolDown)} className='cursor-pointer'> { defineButtonState(state, isPending) } </Button>
+                <input type="number" name='amount_limit_questions' hidden={true} />
                 {state == null && (
                     <Button type='button' onClick={() => {
                         saveLimitQuestionInLocalStoraged()
@@ -131,21 +148,12 @@ export function FormQuestionQuiz() {
                         </DialogHeader>
 
                         <div className="mt-6 space-y-2 flex gap-4"><Label htmlFor="questions">Número de perguntas:</Label>
-                        <Input
-                          name="range_number"
-                          type="number"
-                          min={1}
-                          max={20}
-                          value={stateReducer.amount_limit_questions}
-                          onChange={(e) =>
-                            dispatch({
-                              type: 'controls_limite_questions',
-                              payload: e.target.value,
-                            })
-                          }
-                          className="w-22"
-                          placeholder="Ex: 10"
-                        />                        </div>
+                            <Input name="range_number" type="number" min={1} max={20} value={stateReducer.amount_limit_questions}
+                              onChange={(e) => dispatch({ type: 'controls_limite_questions', payload: e.target.value }) }
+                              className="w-22"
+                              placeholder="Ex: 10"
+                            />
+                        </div>
                         <DialogFooter className="mt-8 flex gap-2 sm:justify-end">
                             <Button variant="outline" onClick={() => dispatch({ type: 'open_modal_config_quiz', payload: false })}> Cancelar </Button>
                             <Button

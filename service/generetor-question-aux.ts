@@ -4,13 +4,14 @@ import { getIdsInLocalStoraged } from "../utils/get-local-storaged";
 import { saveIdQuestionCache } from "../utils/save-local-storaged";
 import { getQuestionService } from "./get-question-service";
 
-export async function generateNewQuestion(range: number) {
+export async function generateNewQuestion() {
 
   let radomNumber: number | null = null;
   const arrayIds = getIdsInLocalStoraged();
 
   try {
-    radomNumber = generatorNumber(1, range, arrayIds);
+    // TROCAR PARA O RANGE DE 200 QUESTÕES
+    radomNumber = generatorNumber(1, 1, arrayIds);
   } catch (error: any) {
     return {
       questions: [],

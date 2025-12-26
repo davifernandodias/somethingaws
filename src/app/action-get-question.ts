@@ -1,13 +1,32 @@
 
 import { generateNewQuestion } from "../../service/generetor-question-aux";
-import { MSG_QUESTAO_INCORRETA, MSG_QUESTAO_RESPONDIDA_COM_SUCESSO } from "../../utils/constants";
-import { getIdsInLocalStoraged } from "../../utils/get-ids-question-local-storaged";
+import { MSG_LIMITE_QUESTOES_RESPONDIDAS, MSG_QUESTAO_INCORRETA, MSG_QUESTAO_RESPONDIDA_COM_SUCESSO } from "../../constants";
+import { getIdsInLocalStoraged, getLimitQuestionInLocalStoraged } from "../../utils/get-local-storaged";
 
 
 export async function sendQuestion(prevState: any, formData: FormData) {
 
+
+  let limitQuestion = (prevState?.limitQuestionRep + 1) || 1;
+  let limitiQuestionLocalStoraged = getLimitQuestionInLocalStoraged() ?? 10;
+
   if (prevState === null) {
-    return await generateNewQuestion();
+    let response = await generateNewQuestion();
+
+    return {
+      ...response,
+      limitQuestionRep: limitQuestion
+    };
+  }
+
+
+  if(limitQuestion > limitiQuestionLocalStoraged){
+    return {
+      ...prevState,
+      disabledButton: true,
+      message: MSG_LIMITE_QUESTOES_RESPONDIDAS,
+      limitQuestionRep: limitQuestion
+    }
   }
 
   if (!prevState.validated) {
@@ -29,12 +48,16 @@ export async function sendQuestion(prevState: any, formData: FormData) {
 
     // Se não marcou nada, não valida ainda
     if (Object.keys(answers).length === 0) {
-        // Se não há mais perguntas disponíveis, reinicia o quiz
-        if(getIdsInLocalStoraged().length <= 0){
-            return await generateNewQuestion();
-        }
-        // Senão, mantém o estado anterior
-        return prevState;
+      // Se não há mais perguntas disponíveis, reinicia o quiz
+      if (getIdsInLocalStoraged().length <= 0) {
+        return await generateNewQuestion();
+      }
+      // Senão, mantém o estado anterior
+      return {
+        ...prevState,
+        disabledButton: false,
+        limitQuestionRep: limitQuestion
+      };
     }
 
     const question = prevState.questions[0];
@@ -42,7 +65,7 @@ export async function sendQuestion(prevState: any, formData: FormData) {
 
     const correctIndexes = question.response.map((r: any, i: number) => r.rep ? i : null).filter((v: number | null) => v !== null);
 
-    const isCorrect = correctIndexes.length === userAnswers.length && correctIndexes.every((i : any) => userAnswers.includes(i));
+    const isCorrect = correctIndexes.length === userAnswers.length && correctIndexes.every((i: any) => userAnswers.includes(i));
 
     return {
       ...prevState,
@@ -51,9 +74,19 @@ export async function sendQuestion(prevState: any, formData: FormData) {
       userAnswers,
       correctIndexes,
       message: isCorrect ? MSG_QUESTAO_RESPONDIDA_COM_SUCESSO : MSG_QUESTAO_INCORRETA,
+      disabledButton: false,
+      limitQuestionRep: limitQuestion
     };
   }
 
 
-  return await generateNewQuestion();
+  if (prevState.validated) {
+
+  }
+
+
+  return {
+    ...await generateNewQuestion(),
+    limitQuestionRep: limitQuestion
+  };
 }

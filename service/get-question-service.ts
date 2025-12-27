@@ -1,7 +1,7 @@
 import json_questions from "../data/json_question.json" assert { type: "json" };
 
 
-export async function getQuestionService(id: number, level?: number, category?: string) {
+export async function getQuestionService(id: number, level?: number|null, category?: string|null) {
 
     let questions = Array<any>();
     if(level && category){

@@ -27,3 +27,25 @@ export function getLimitQuestionInLocalStoraged(): number | null {
 
   return isNaN(limit) ? null : limit;
 }
+
+
+export function getVariablesGroupTopics(): Record<string, number> | null {
+  const storageKey = hashKey(process.env.NEXT_PUBLIC_STORAGE_KEY_VARIABLES!);
+  const stored = localStorage.getItem(storageKey);
+
+  if (!stored) return null;
+
+  try {
+    const decryptedValue = decrypt(stored);
+    const parsed = JSON.parse(decryptedValue);
+
+    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+      return parsed;
+    }
+
+    return null;
+  } catch (error) {
+    console.error('Erro ao recuperar variablesGroupTopics:', error);
+    return null;
+  }
+}

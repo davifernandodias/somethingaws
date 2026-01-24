@@ -56,5 +56,92 @@
                 "rep": false
             }
         ]
+    },
+    {
+        "id": 3,
+        "title": "Seila questão 3",
+        "group_by_topic": "Conformidade & Segurança",
+        "accept_two_alternatives": true,
+        "level_of_complexity": 2,
+        "response": [
+            {
+                "alternative": "Custos fixos elevados",
+                "because": "Incorreto. A nuvem reduz custos fixos com o modelo pay-as-you-go.",
+                "rep": false
+            },
+            {
+                "alternative": "Escalabilidade sob demanda",
+                "because": "Correto. A nuvem permite ajustar recursos conforme a necessidade.",
+                "rep": true
+            },
+            {
+                "alternative": "Alta disponibilidade",
+                "because": "Correto. A AWS oferece alta disponibilidade com Regiões e Zonas de Disponibilidade.",
+                "rep": true
+            },
+            {
+                "alternative": "Manutenção de hardware local",
+                "because": "Incorreto. A AWS gerencia o hardware, reduzindo essa necessidade.",
+                "rep": false
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Seila questão 4",
+        "group_by_topic": "Conformidade & Segurança",
+        "accept_two_alternatives": true,
+        "level_of_complexity": 2,
+        "response": [
+            {
+                "alternative": "Custos fixos elevados",
+                "because": "Incorreto. A nuvem reduz custos fixos com o modelo pay-as-you-go.",
+                "rep": false
+            },
+            {
+                "alternative": "Escalabilidade sob demanda",
+                "because": "Correto. A nuvem permite ajustar recursos conforme a necessidade.",
+                "rep": true
+            },
+            {
+                "alternative": "Alta disponibilidade",
+                "because": "Correto. A AWS oferece alta disponibilidade com Regiões e Zonas de Disponibilidade.",
+                "rep": true
+            },
+            {
+                "alternative": "Manutenção de hardware local",
+                "because": "Incorreto. A AWS gerencia o hardware, reduzindo essa necessidade.",
+                "rep": false
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Seila questão 5",
+        "group_by_topic": "Serviços básicos da AWS",
+        "accept_two_alternatives": true,
+        "level_of_complexity": 2,
+        "response": [
+            {
+                "alternative": "Custos fixos elevados",
+                "because": "Incorreto. A nuvem reduz custos fixos com o modelo pay-as-you-go.",
+                "rep": false
+            },
+            {
+                "alternative": "Escalabilidade sob demanda",
+                "because": "Correto. A nuvem permite ajustar recursos conforme a necessidade.",
+                "rep": true
+            },
+            {
+                "alternative": "Alta disponibilidade",
+                "because": "Correto. A AWS oferece alta disponibilidade com Regiões e Zonas de Disponibilidade.",
+                "rep": true
+            },
+            {
+                "alternative": "Manutenção de hardware local",
+                "because": "Incorreto. A AWS gerencia o hardware, reduzindo essa necessidade.",
+                "rep": false
+            }
+        ]
     }
 ]

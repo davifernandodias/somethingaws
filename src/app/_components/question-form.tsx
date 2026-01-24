@@ -15,20 +15,23 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { reducer } from '../../../reducer/config-quiz-reducer';
-import { saveLimitQuestionInLocalStoraged } from '../../../utils/save-local-storaged';
 import { defineButtonState } from '../../../utils/define-button-state';
 import { checkStateButton, isCheckOptions } from '../../../utils/enable-or-disabled-button';
 import { useControlPointsTopicsQuestions } from '../../../store-data-config';
 
-export function FormQuestionQuiz() {
+const getTimestamp = () => performance.now();
+
+const TOAST_COOLDOWN_MS = 10_000;
+const MAX_TOAST_ALERTS = 5;
+const SUBMIT_COOLDOWN_MS = 4000;
+
+export function QuizForm() {
   const [state, formAction, isPending] = useActionState(sendQuestion, null);
   const [stateReducer, dispatch] = useReducer(reducer, {
     openModalConfiguration: false,
     selectedAnswers: {},
     amount_limit_questions: 10,
   });
-
-  const { getTotalScore } = useControlPointsTopicsQuestions();
 
   const toastControlRef = useRef({ count: 0, lastShownAt: 0 });
   const submitCooldownRef = useRef<{ locked: boolean; timeoutId: NodeJS.Timeout | null }>({
@@ -51,7 +54,7 @@ export function FormQuestionQuiz() {
       submitCooldownRef.current.timeoutId = setTimeout(() => {
         submitCooldownRef.current.locked = false;
         dispatch({ type: 'controls_enable_button' });
-      }, 4000);
+      }, SUBMIT_COOLDOWN_MS);
     }
   }, [state]);
 
@@ -61,12 +64,10 @@ export function FormQuestionQuiz() {
     const max = question.accept_two_alternatives ? 2 : 1;
 
     if (!current.includes(index) && current.length >= max) {
-      const now = Date.now();
+      const now = getTimestamp();
       const { count, lastShownAt } = toastControlRef.current;
-      const COOLDOWN = 10_000;
-      const MAX_ALERTS = 5;
 
-      if (count >= MAX_ALERTS || now - lastShownAt < COOLDOWN) {
+      if (count >= MAX_TOAST_ALERTS || now - lastShownAt < TOAST_COOLDOWN_MS) {
         return;
       }
 
@@ -88,7 +89,7 @@ export function FormQuestionQuiz() {
   return (
     <form action={formAction}>
       {state === null && (
-        <div className="h-80 flex items-start">
+        <div className="flex h-80 items-start">
           <InitialState />
         </div>
       )}
@@ -106,17 +107,17 @@ export function FormQuestionQuiz() {
             !state.error &&
             state.questions.map((question: any) => (
               <div key={question.id} className="mt-5">
-                <h1 className="font-bold text-lg">{question.title}</h1>
-                <h3 className="text-sm text-gray-600 mb-3">{question.group_by_topic}</h3>
+                <h1 className="text-lg font-bold">{question.title}</h1>
+                <h3 className="mb-3 text-sm text-gray-600">{question.group_by_topic}</h3>
 
                 {question.response?.map((resp: any, index: number) => (
-                  <div key={index} className="flex flex-col gap-2 mb-3">
-                    <div className="flex gap-1.5 items-center">
+                  <div key={index} className="mb-3 flex flex-col gap-2">
+                    <div className="flex items-center gap-1.5">
                       <Input
                         type="checkbox"
                         name={`answers[${question.id}]`}
                         value={index}
-                        className="w-4 h-4"
+                        className="h-4 w-4"
                         checked={
                           stateReducer.selectedAnswers[question.id]?.includes(index) || false
                         }
@@ -126,7 +127,7 @@ export function FormQuestionQuiz() {
                     </div>
                     {state.validated && (
                       <span
-                        className={resp.rep ? 'text-green-800 text-sm' : 'text-red-800 text-sm'}
+                        className={resp.rep ? 'text-sm text-green-800' : 'text-sm text-red-800'}
                       >
                         {resp.because}
                       </span>
@@ -137,7 +138,7 @@ export function FormQuestionQuiz() {
             ))}
 
           {state.buttonText && state.modalAlert && (
-            <div className="flex flex-col bg-blue-100 text-blue-800 p-3 rounded gap-2">
+            <div className="flex flex-col gap-2 rounded bg-blue-100 p-3 text-blue-800">
               <p>{state.message}</p>
               <Button
                 type="button"
@@ -159,7 +160,7 @@ export function FormQuestionQuiz() {
         <Button
           type="submit"
           disabled={
-            (state != undefined ? !isCheckOptions(state, stateReducer) : false) ||
+            (state !== undefined ? !isCheckOptions(state, stateReducer) : false) ||
             checkStateButton(state, stateReducer, isPending)
           }
           className="cursor-pointer"
@@ -167,14 +168,13 @@ export function FormQuestionQuiz() {
           {defineButtonState(state, isPending)}
         </Button>
 
-        {state == null && (
+        {state === null && (
           <Button
             type="button"
             onClick={() => {
-              saveLimitQuestionInLocalStoraged();
               dispatch({ type: 'open_modal_config_quiz', payload: true });
             }}
-            className="bg-gray-800 hover:bg-gray-700 dark:bg-gray-500 dark:hover:bg-gray-700 cursor-pointer dark:text-white"
+            className="cursor-pointer bg-gray-800 hover:bg-gray-700 dark:bg-gray-500 dark:text-white dark:hover:bg-gray-700"
           >
             Configurações
           </Button>
@@ -184,18 +184,17 @@ export function FormQuestionQuiz() {
       {stateReducer.openModalConfiguration && (
         <Dialog
           open={stateReducer.openModalConfiguration}
-          onOpenChange={open => dispatch({ type: 'open_modal_config_quiz', payload: open })}
+          onOpenChange={(open) => dispatch({ type: 'open_modal_config_quiz', payload: open })}
         >
           <DialogContent className="w-full max-w-md rounded-2xl p-6">
             <DialogHeader>
-              {' '}
               <DialogTitle className="text-xl font-semibold">Configurações do Quiz</DialogTitle>
-              <DialogDescription className="text-sm text-muted-foreground">
+              <DialogDescription className="text-muted-foreground text-sm">
                 Ajuste as opções antes de iniciar o quiz.
               </DialogDescription>
             </DialogHeader>
 
-            <div className="mt-6 space-y-2 flex gap-4">
+            <div className="mt-6 flex gap-4 space-y-2">
               <Label htmlFor="questions">Número de perguntas:</Label>
               <Input
                 name="range_number"
@@ -203,7 +202,7 @@ export function FormQuestionQuiz() {
                 min={1}
                 max={20}
                 value={stateReducer.amount_limit_questions}
-                onChange={e =>
+                onChange={(e) =>
                   dispatch({ type: 'controls_limite_questions', payload: e.target.value })
                 }
                 className="w-22"
@@ -216,17 +215,14 @@ export function FormQuestionQuiz() {
                 variant="outline"
                 onClick={() => dispatch({ type: 'open_modal_config_quiz', payload: false })}
               >
-                {' '}
-                Cancelar{' '}
+                Cancelar
               </Button>
               <Button
                 onClick={() => {
-                  saveLimitQuestionInLocalStoraged(stateReducer.amount_limit_questions);
                   dispatch({ type: 'open_modal_config_quiz', payload: false });
                 }}
               >
-                {' '}
-                Salvar{' '}
+                Salvar
               </Button>
             </DialogFooter>
           </DialogContent>

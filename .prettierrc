@@ -4,6 +4,7 @@
   "printWidth": 100,
   "tabWidth": 2,
   "trailingComma": "es5",
-  "arrowParens": "avoid",
-  "endOfLine": "lf"
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

@@ -1,5 +1,5 @@
 'use client';
-import { useActionState, useEffect, useReducer, useRef } from 'react';
+import { useActionState, useCallback, useEffect, useReducer, useRef, useMemo } from 'react';
 import { sendQuestion } from '../action-get-question';
 import { toast } from 'sonner';
 import InitialState from './initial-page';
@@ -15,9 +15,8 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { reducer } from '../../../reducer/config-quiz-reducer';
-import { defineButtonState } from '../../../utils/define-button-state';
-import { checkStateButton, isCheckOptions } from '../../../utils/enable-or-disabled-button';
 import { useControlPointsTopicsQuestions } from '../../../store-data-config';
+import { hasSelectedRequiredOptions } from '../../../utils/has-selected-required-options';
 
 const getTimestamp = () => performance.now();
 
@@ -26,11 +25,36 @@ const MAX_TOAST_ALERTS = 5;
 const SUBMIT_COOLDOWN_MS = 4000;
 
 export function QuizForm() {
-  const [state, formAction, isPending] = useActionState(sendQuestion, null);
+  const fundamental = useControlPointsTopicsQuestions((state) => state.fundamental_cloud_concepts);
+  const security = useControlPointsTopicsQuestions((state) => state.security_compliance);
+  const technology = useControlPointsTopicsQuestions((state) => state.cloud_technology);
+  const billing = useControlPointsTopicsQuestions((state) => state.billing_pricing);
+
+  const topicsScore = useMemo(
+    () => ({
+      fundamental_cloud_concepts: fundamental,
+      security_compliance: security,
+      cloud_technology: technology,
+      billing_pricing: billing,
+    }),
+    [fundamental, security, technology, billing]
+  );
+
+  const actionWithTopics = useCallback(
+    (state: QuestionState | null, formData: FormData) => sendQuestion(state, formData, topicsScore),
+    [topicsScore]
+  );
+
+  const [state, formAction, isPending] = useActionState<QuestionState | null, FormData>(
+    actionWithTopics,
+    null
+  );
+
   const [stateReducer, dispatch] = useReducer(reducer, {
     openModalConfiguration: false,
     selectedAnswers: {},
-    amount_limit_questions: 10,
+    amountLimitQuestions: 10,
+    disabledCoolDown: false,
   });
 
   const toastControlRef = useRef({ count: 0, lastShownAt: 0 });
@@ -58,8 +82,8 @@ export function QuizForm() {
     }
   }, [state]);
 
-  function handleControlSelectionAlternatives(question: any, index: number) {
-    if (state.validated) return;
+  function handleControlSelectionAlternatives(question: Question, index: number) {
+    if (state?.validated) return;
     const current = stateReducer.selectedAnswers[question.id] || [];
     const max = question.accept_two_alternatives ? 2 : 1;
 
@@ -93,19 +117,17 @@ export function QuizForm() {
           <InitialState />
         </div>
       )}
-
+      <Input
+        name="amount_limit_questions"
+        type="hidden"
+        value={stateReducer.amountLimitQuestions}
+        readOnly
+      />
       {state !== null && (
         <>
-          <Input
-            name="amount_limit_questions"
-            type="hidden"
-            value={stateReducer.amount_limit_questions}
-            readOnly
-          />
-
           {state.questions?.length > 0 &&
             !state.error &&
-            state.questions.map((question: any) => (
+            state.questions.map((question: Question) => (
               <div key={question.id} className="mt-5">
                 <h1 className="text-lg font-bold">{question.title}</h1>
                 <h3 className="mb-3 text-sm text-gray-600">{question.group_by_topic}</h3>
@@ -160,12 +182,28 @@ export function QuizForm() {
         <Button
           type="submit"
           disabled={
-            (state !== undefined ? !isCheckOptions(state, stateReducer) : false) ||
-            checkStateButton(state, stateReducer, isPending)
+            isPending ||
+            (state !== null && (state.error || !hasSelectedRequiredOptions(state, stateReducer)))
           }
+          onClick={(e) => {
+            if (state !== null && state.disabledButton) {
+              e.preventDefault();
+              window.location.reload();
+            }
+          }}
           className="cursor-pointer"
         >
-          {defineButtonState(state, isPending)}
+          {isPending
+            ? 'Carregando...'
+            : !state
+              ? 'Começar quiz'
+              : state.error
+                ? 'Erro'
+                : state.disabledButton
+                  ? 'Recomeçar'
+                  : !state.validated
+                    ? 'Responder pergunta'
+                    : 'Próxima pergunta'}
         </Button>
 
         {state === null && (
@@ -201,7 +239,7 @@ export function QuizForm() {
                 type="number"
                 min={1}
                 max={20}
-                value={stateReducer.amount_limit_questions}
+                value={stateReducer.amountLimitQuestions}
                 onChange={(e) =>
                   dispatch({ type: 'controls_limite_questions', payload: e.target.value })
                 }

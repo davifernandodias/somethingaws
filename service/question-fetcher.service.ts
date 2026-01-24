@@ -6,7 +6,7 @@ export async function getQuestionService(
   category?: string | null,
   arrayIds: number[] = []
 ) {
-  let questions: any[] = [];
+  let questions: Question[] = [];
 
   if (category) {
     const question = json_questions.find((q) => {

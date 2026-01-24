@@ -17,7 +17,7 @@ export async function sendQuestion(
   topicsScore: TopicsScoreMap
 ): Promise<QuestionState> {
   const requestedQuestionLimit = Number(formData.get('amount_limit_questions'));
-  const currentQuestionCount = (previousState?.currentQuestionCount || 0) + 1;
+  let currentQuestionCount = previousState?.currentQuestionCount || 0;
   const consecutiveErrorCount = previousState?.consecutiveErrorCount || 0;
   const drawnQuestionIds = previousState?.questions[0].id;
   const userScore = previousState?.userScoreReceivedPoints ?? topicsScore;
@@ -27,6 +27,9 @@ export async function sendQuestion(
     const generatedQuestion = await generateNewQuestion({
       excludedQuestionIds: drawnQuestionIds ? [drawnQuestionIds] : [],
     });
+
+    // Added first question count
+    currentQuestionCount += 1;
 
     return createStateResponse({
       ...generatedQuestion,
@@ -57,20 +60,6 @@ export async function sendQuestion(
     const isAnswerCorrect =
       correctAnswerIndexes.length === userSelectedIndexes.length &&
       correctAnswerIndexes.every((index: number) => userSelectedIndexes.includes(index));
-
-    //const topicKey: Topic | undefined = renameTopicGroup(currentQuestion.group_by_topic);
-
-    // if (!topicKey) {
-    //   return createStateResponse(
-    //     {
-    //       questions: [],
-    //       message: ERROR_MSG_QUESTION_GENERATION_FAILED,
-    //       error: true,
-    //       disabledButton: true,
-    //     },
-    //     previousState
-    //   );
-    // }
 
     const updatedErrorCount = isAnswerCorrect
       ? Math.max(0, consecutiveErrorCount - 1)
@@ -133,15 +122,17 @@ export async function sendQuestion(
     );
   }
 
+  currentQuestionCount += 1;
+
   // Check if user exceeded question limit
-  if (currentQuestionCount > requestedQuestionLimit) {
+  if (currentQuestionCount >= requestedQuestionLimit) {
     return createStateResponse(
       {
         disabledButton: true,
         message: ERROR_MSG_EXCEEDED_QUESTION_LIMIT,
         currentQuestionCount,
         consecutiveErrorCount,
-        error: true,
+        error: false,
       },
       previousState
     );
@@ -149,7 +140,9 @@ export async function sendQuestion(
 
   // Switch topic if user made 2+ consecutive errors
   if (consecutiveErrorCount >= 2) {
-    const questionWithNewTopic = await generateNewQuestion();
+    const questionWithNewTopic = await generateNewQuestion({
+      excludedQuestionIds: drawnQuestionIds ? [drawnQuestionIds] : [],
+    });
 
     return createStateResponse({
       ...questionWithNewTopic,

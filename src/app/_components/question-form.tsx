@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/dialog';
 import { reducer } from '../../../reducer/config-quiz-reducer';
 import { useControlPointsTopicsQuestions } from '../../../store-data-config';
+import { hasSelectedRequiredOptions } from '../../../utils/has-selected-required-options';
 
 const getTimestamp = () => performance.now();
 
@@ -180,7 +181,16 @@ export function QuizForm() {
       <div className="flex justify-center gap-9">
         <Button
           type="submit"
-          disabled={isPending || (state !== null && (state.error || state.disabledButton))}
+          disabled={
+            isPending ||
+            (state !== null && (state.error || !hasSelectedRequiredOptions(state, stateReducer)))
+          }
+          onClick={(e) => {
+            if (state !== null && state.disabledButton) {
+              e.preventDefault();
+              window.location.reload();
+            }
+          }}
           className="cursor-pointer"
         >
           {isPending

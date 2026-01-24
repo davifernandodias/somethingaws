@@ -1,7 +1,5 @@
 /**
  * Extracts user's selected answers from form data
- * @param formData - Form data containing user answers
- * @returns Map of question IDs to selected answer indexes
  */
 export function extractUserAnswersFromForm(formData: FormData): Record<number, number[]> {
   const answersMap: Record<number, number[]> = {};

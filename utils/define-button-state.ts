@@ -1,4 +1,7 @@
-export function defineButtonState(state: any, isPending: boolean): string {
+export function defineButtonState(
+  state: QuestionState | null,
+  isPending: boolean
+): string | undefined {
   if (state) {
     if (state.disabledButton) {
       return 'Recomeçar';
@@ -14,5 +17,4 @@ export function defineButtonState(state: any, isPending: boolean): string {
 
     return 'Começar quiz';
   }
-  return '';
 }

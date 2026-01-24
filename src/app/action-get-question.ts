@@ -8,26 +8,34 @@ import {
 
 import { renameTopicGroup } from '../../utils/rename-topic-name';
 import { extractUserAnswersFromForm } from '../../utils/extract-form-answers';
+import { createStateResponse } from '../../utils/question-state.utils';
 
-export async function sendQuestion(previousState: any, formData: FormData) {
-  const requestedQuestionLimit = Number(formData.get('amount_limit_questions')) || 10;
+export async function sendQuestion(
+  previousState: QuestionState | null,
+  formData: FormData
+): Promise<QuestionState> {
+  const requestedQuestionLimit = Number(formData.get('amount_limit_questions'));
   const currentQuestionCount = (previousState?.currentQuestionCount || 0) + 1;
-  //const storedQuestionLimit = getLimitQuestionInLocalStoraged() || 10;
   const consecutiveErrorCount = previousState?.consecutiveErrorCount || 0;
 
   // Initial load - generate first question
   if (previousState === null) {
     const generatedQuestion = await generateNewQuestion();
-    //const topicsProgressMap = getVariablesGroupTopics();
 
-    return {
+    return createStateResponse({
       ...generatedQuestion,
       currentQuestionCount,
-      //topicsProgressMap,
-    };
+      validated: false,
+      isCorrect: null,
+      userAnswers: [],
+      correctIndexes: [],
+      disabledButton: false,
+      message: '',
+      error: false,
+      modalAlert: false,
+      buttonText: null,
+    });
   }
-
-  //const topicsProgressMap = getVariablesGroupTopics();
 
   // Validate user's answer if not yet validated
   if (!previousState.validated) {
@@ -35,60 +43,60 @@ export async function sendQuestion(previousState: any, formData: FormData) {
     const currentQuestion = previousState.questions[0];
     const userSelectedIndexes = userAnswersMap[currentQuestion.id] || [];
 
-    // Extract correct answer indexes from question
     const correctAnswerIndexes = currentQuestion.response
-      .map((response: any, index: number) => (response.rep ? index : null))
+      .map((response: QuestionResponse, index: number) => (response.rep ? index : null))
       .filter((value: number | null) => value !== null);
 
-    // Check if user's answer is correct
     const isAnswerCorrect =
       correctAnswerIndexes.length === userSelectedIndexes.length &&
       correctAnswerIndexes.every((index: number) => userSelectedIndexes.includes(index));
 
-    // Map question topic to internal topic key
     const topicKey: Topic | undefined = renameTopicGroup(currentQuestion.group_by_topic);
 
     if (!topicKey) {
-      return {
-        questions: [],
-        message: ERROR_MSG_QUESTION_GENERATION_FAILED,
-        error: true,
-      };
+      return createStateResponse(
+        {
+          questions: [],
+          message: ERROR_MSG_QUESTION_GENERATION_FAILED,
+          error: true,
+          disabledButton: true,
+        },
+        previousState
+      );
     }
 
-    // Update topic progress based on answer correctness
-    if (topicKey) {
-      //topicsProgressMap
-      //saveVariablesInitialGroupTopics(topicKey, isAnswerCorrect);
-    }
-
-    // Track consecutive errors for topic switching logic
     const updatedErrorCount = isAnswerCorrect
       ? Math.max(0, consecutiveErrorCount - 1)
       : consecutiveErrorCount + 1;
 
-    return {
-      ...previousState,
-      validated: true,
-      isCorrect: isAnswerCorrect,
-      userAnswers: userSelectedIndexes,
-      correctIndexes: correctAnswerIndexes,
-      message: isAnswerCorrect ? SUCCESS_MSG_CORRECT_ANSWER : SUCCESS_MSG_INCORRECT_ANSWER,
-      disabledButton: false,
-      currentQuestionCount,
-      consecutiveErrorCount: updatedErrorCount,
-    };
+    return createStateResponse(
+      {
+        validated: true,
+        isCorrect: isAnswerCorrect,
+        userAnswers: userSelectedIndexes,
+        correctIndexes: correctAnswerIndexes,
+        message: isAnswerCorrect ? SUCCESS_MSG_CORRECT_ANSWER : SUCCESS_MSG_INCORRECT_ANSWER,
+        disabledButton: false,
+        currentQuestionCount,
+        consecutiveErrorCount: updatedErrorCount,
+        error: false,
+      },
+      previousState
+    );
   }
 
   // Check if user exceeded question limit
   if (false) {
-    return {
-      ...previousState,
-      disabledButton: true,
-      message: ERROR_MSG_EXCEEDED_QUESTION_LIMIT,
-      currentQuestionCount,
-      consecutiveErrorCount,
-    };
+    return createStateResponse(
+      {
+        disabledButton: true,
+        message: ERROR_MSG_EXCEEDED_QUESTION_LIMIT,
+        currentQuestionCount,
+        consecutiveErrorCount,
+        error: true,
+      },
+      previousState
+    );
   }
 
   // Switch topic if user made 2+ consecutive errors
@@ -98,19 +106,33 @@ export async function sendQuestion(previousState: any, formData: FormData) {
       true
     );
 
-    return {
+    return createStateResponse({
       ...questionWithNewTopic,
       currentQuestionCount,
-      consecutiveErrorCount: 0, // Reset error count on topic change
-    };
+      consecutiveErrorCount: 0,
+      validated: false,
+      isCorrect: null,
+      userAnswers: [],
+      correctIndexes: [],
+      disabledButton: false,
+      message: '',
+      error: false,
+    });
   }
 
   // Generate next question in same topic
   const nextQuestion = await generateNewQuestion();
 
-  return {
+  return createStateResponse({
     ...nextQuestion,
     currentQuestionCount,
     consecutiveErrorCount,
-  };
+    validated: false,
+    isCorrect: null,
+    userAnswers: [],
+    correctIndexes: [],
+    disabledButton: false,
+    message: '',
+    error: false,
+  });
 }

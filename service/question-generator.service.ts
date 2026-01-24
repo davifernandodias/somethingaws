@@ -3,6 +3,7 @@ import {
   ERROR_MSG_GENERIC,
   ERROR_MSG_EXCEEDED_QUESTION_LIMIT,
 } from '../constants';
+import { AppError } from '../errors/app-error';
 import { generateRandomNumber } from '../utils/generator-number';
 //import { getIdsInLocalStoraged, getVariablesGroupTopics } from '../utils/get-local-storaged';
 //import { saveIdQuestionCache } from '../utils/save-local-storaged';
@@ -20,11 +21,22 @@ export async function generateNewQuestion(
   if (!shouldChangeTopicCategory) {
     try {
       selectedQuestionId = generateRandomNumber(1, 5, [1]); //excludedQuestionIds
-    } catch (error: any) {
+    } catch (error: unknown) {
+      if (error instanceof AppError) {
+        return {
+          questions: [],
+          message: error.message,
+          error: true,
+          buttonText: BUTTON_TEXT_RELOAD,
+          modalAlert: true,
+        };
+      }
+
+      // Fallback for unexpected errors
       return {
         questions: [],
-        message: error.message || ERROR_MSG_EXCEEDED_QUESTION_LIMIT,
-        error: false,
+        message: ERROR_MSG_EXCEEDED_QUESTION_LIMIT,
+        error: true,
         buttonText: BUTTON_TEXT_RELOAD,
         modalAlert: true,
       };

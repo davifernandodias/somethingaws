@@ -26,11 +26,15 @@ const MAX_TOAST_ALERTS = 5;
 const SUBMIT_COOLDOWN_MS = 4000;
 
 export function QuizForm() {
-  const [state, formAction, isPending] = useActionState(sendQuestion, null);
+  const [state, formAction, isPending] = useActionState<QuestionState | null, FormData>(
+    sendQuestion,
+    null
+  );
   const [stateReducer, dispatch] = useReducer(reducer, {
     openModalConfiguration: false,
     selectedAnswers: {},
-    amount_limit_questions: 10,
+    amountLimitQuestions: 10,
+    disabledCoolDown: false,
   });
 
   const toastControlRef = useRef({ count: 0, lastShownAt: 0 });
@@ -58,8 +62,8 @@ export function QuizForm() {
     }
   }, [state]);
 
-  function handleControlSelectionAlternatives(question: any, index: number) {
-    if (state.validated) return;
+  function handleControlSelectionAlternatives(question: Question, index: number) {
+    if (state?.validated) return;
     const current = stateReducer.selectedAnswers[question.id] || [];
     const max = question.accept_two_alternatives ? 2 : 1;
 
@@ -93,24 +97,23 @@ export function QuizForm() {
           <InitialState />
         </div>
       )}
-
+      {/* Input hidden, to control passing the number of questions to the action in formData. */}
+      <Input
+        name="amount_limit_questions"
+        type="hidden"
+        value={stateReducer.amountLimitQuestions}
+        readOnly
+      />
       {state !== null && (
         <>
-          <Input
-            name="amount_limit_questions"
-            type="hidden"
-            value={stateReducer.amount_limit_questions}
-            readOnly
-          />
-
           {state.questions?.length > 0 &&
             !state.error &&
-            state.questions.map((question: any) => (
+            state.questions.map((question: Question) => (
               <div key={question.id} className="mt-5">
                 <h1 className="text-lg font-bold">{question.title}</h1>
                 <h3 className="mb-3 text-sm text-gray-600">{question.group_by_topic}</h3>
 
-                {question.response?.map((resp: any, index: number) => (
+                {question.response?.map((resp: QuestionResponse, index: number) => (
                   <div key={index} className="mb-3 flex flex-col gap-2">
                     <div className="flex items-center gap-1.5">
                       <Input
@@ -157,14 +160,7 @@ export function QuizForm() {
       )}
 
       <div className="flex justify-center gap-9">
-        <Button
-          type="submit"
-          disabled={
-            (state !== undefined ? !isCheckOptions(state, stateReducer) : false) ||
-            checkStateButton(state, stateReducer, isPending)
-          }
-          className="cursor-pointer"
-        >
+        <Button type="submit" disabled={isPending} className="cursor-pointer">
           {defineButtonState(state, isPending)}
         </Button>
 
@@ -201,7 +197,7 @@ export function QuizForm() {
                 type="number"
                 min={1}
                 max={20}
-                value={stateReducer.amount_limit_questions}
+                value={stateReducer.amountLimitQuestions}
                 onChange={(e) =>
                   dispatch({ type: 'controls_limite_questions', payload: e.target.value })
                 }

@@ -1,4 +1,4 @@
-import { decrypt, hashKey } from "./crypto";
+import { decrypt, hashKey } from './crypto';
 
 export function getIdsInLocalStoraged(): number[] {
   const storageKey = hashKey(process.env.NEXT_PUBLIC_STORAGE_KEY!);
@@ -27,7 +27,6 @@ export function getLimitQuestionInLocalStoraged(): number | null {
 
   return isNaN(limit) ? null : limit;
 }
-
 
 export function getVariablesGroupTopics(): Record<string, number> | null {
   const storageKey = hashKey(process.env.NEXT_PUBLIC_STORAGE_KEY_VARIABLES!);

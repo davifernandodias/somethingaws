@@ -1,5 +1,4 @@
 export const reducer = (state: StateReducer, action: ReducerAction) => {
-  debugger;
   switch (action.type) {
     case 'open_modal_config_quiz': {
       return { ...state, openModalConfiguration: action.payload };

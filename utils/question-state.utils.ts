@@ -11,6 +11,12 @@ export const createInitialState = (): QuestionState => ({
   error: false,
   modalAlert: false,
   buttonText: null,
+  userScoreReceivedPoints: {
+    fundamental_cloud_concepts: 0,
+    security_compliance: 0,
+    cloud_technology: 0,
+    billing_pricing: 0,
+  },
 });
 
 /**

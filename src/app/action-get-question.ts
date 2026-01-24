@@ -9,18 +9,24 @@ import {
 import { renameTopicGroup } from '../../utils/rename-topic-name';
 import { extractUserAnswersFromForm } from '../../utils/extract-form-answers';
 import { createStateResponse } from '../../utils/question-state.utils';
+import { calculateTopicScoreAdjustment } from '../../utils/calculate-topic-score-adjustment';
 
 export async function sendQuestion(
   previousState: QuestionState | null,
-  formData: FormData
+  formData: FormData,
+  topicsScore: TopicsScoreMap
 ): Promise<QuestionState> {
   const requestedQuestionLimit = Number(formData.get('amount_limit_questions'));
   const currentQuestionCount = (previousState?.currentQuestionCount || 0) + 1;
   const consecutiveErrorCount = previousState?.consecutiveErrorCount || 0;
+  const drawnQuestionIds = previousState?.questions[0].id;
+  const userScore = previousState?.userScoreReceivedPoints ?? topicsScore;
 
   // Initial load - generate first question
   if (previousState === null) {
-    const generatedQuestion = await generateNewQuestion();
+    const generatedQuestion = await generateNewQuestion({
+      excludedQuestionIds: drawnQuestionIds ? [drawnQuestionIds] : [],
+    });
 
     return createStateResponse({
       ...generatedQuestion,
@@ -34,6 +40,7 @@ export async function sendQuestion(
       error: false,
       modalAlert: false,
       buttonText: null,
+      userScoreReceivedPoints: userScore,
     });
   }
 
@@ -51,9 +58,27 @@ export async function sendQuestion(
       correctAnswerIndexes.length === userSelectedIndexes.length &&
       correctAnswerIndexes.every((index: number) => userSelectedIndexes.includes(index));
 
-    const topicKey: Topic | undefined = renameTopicGroup(currentQuestion.group_by_topic);
+    //const topicKey: Topic | undefined = renameTopicGroup(currentQuestion.group_by_topic);
 
-    if (!topicKey) {
+    // if (!topicKey) {
+    //   return createStateResponse(
+    //     {
+    //       questions: [],
+    //       message: ERROR_MSG_QUESTION_GENERATION_FAILED,
+    //       error: true,
+    //       disabledButton: true,
+    //     },
+    //     previousState
+    //   );
+    // }
+
+    const updatedErrorCount = isAnswerCorrect
+      ? Math.max(0, consecutiveErrorCount - 1)
+      : consecutiveErrorCount + 1;
+
+    const renamedTopic = renameTopicGroup(currentQuestion.group_by_topic);
+
+    if (!renamedTopic) {
       return createStateResponse(
         {
           questions: [],
@@ -65,9 +90,31 @@ export async function sendQuestion(
       );
     }
 
-    const updatedErrorCount = isAnswerCorrect
-      ? Math.max(0, consecutiveErrorCount - 1)
-      : consecutiveErrorCount + 1;
+    const { adjustment, shouldIncrease, shouldDecrease } = calculateTopicScoreAdjustment(
+      isAnswerCorrect,
+      previousState.userScoreReceivedPoints[renamedTopic]
+    );
+
+    if (!shouldDecrease && !shouldIncrease && adjustment < 0) {
+      return createStateResponse(
+        {
+          disabledButton: true,
+          message: ERROR_MSG_EXCEEDED_QUESTION_LIMIT,
+          currentQuestionCount,
+          consecutiveErrorCount,
+          error: true,
+        },
+        previousState
+      );
+    }
+
+    if (shouldIncrease) {
+      userScore[renamedTopic] = Math.min(userScore[renamedTopic] + adjustment, 100);
+    }
+
+    if (shouldDecrease) {
+      userScore[renamedTopic] = Math.max(userScore[renamedTopic] - adjustment, 0);
+    }
 
     return createStateResponse(
       {
@@ -80,13 +127,14 @@ export async function sendQuestion(
         currentQuestionCount,
         consecutiveErrorCount: updatedErrorCount,
         error: false,
+        userScoreReceivedPoints: userScore,
       },
       previousState
     );
   }
 
   // Check if user exceeded question limit
-  if (false) {
+  if (currentQuestionCount > requestedQuestionLimit) {
     return createStateResponse(
       {
         disabledButton: true,
@@ -101,10 +149,7 @@ export async function sendQuestion(
 
   // Switch topic if user made 2+ consecutive errors
   if (consecutiveErrorCount >= 2) {
-    const questionWithNewTopic = await generateNewQuestion(
-      previousState.questions[0].group_by_topic,
-      true
-    );
+    const questionWithNewTopic = await generateNewQuestion();
 
     return createStateResponse({
       ...questionWithNewTopic,
@@ -117,6 +162,7 @@ export async function sendQuestion(
       disabledButton: false,
       message: '',
       error: false,
+      userScoreReceivedPoints: userScore,
     });
   }
 
@@ -134,5 +180,6 @@ export async function sendQuestion(
     disabledButton: false,
     message: '',
     error: false,
+    userScoreReceivedPoints: userScore,
   });
 }

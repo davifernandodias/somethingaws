@@ -5,22 +5,24 @@ import {
 } from '../constants';
 import { AppError } from '../errors/app-error';
 import { generateRandomNumber } from '../utils/generator-number';
-//import { getIdsInLocalStoraged, getVariablesGroupTopics } from '../utils/get-local-storaged';
-//import { saveIdQuestionCache } from '../utils/save-local-storaged';
 import { getQuestionService } from './question-fetcher.service';
 
-export async function generateNewQuestion(
-  categoryName?: string,
-  shouldChangeTopicCategory?: boolean
-) {
+export async function generateNewQuestion({
+  categoryName,
+  shouldChangeTopicCategory,
+  excludedQuestionIds = [],
+}: {
+  categoryName?: string;
+  shouldChangeTopicCategory?: boolean;
+  excludedQuestionIds?: number[];
+} = {}) {
   let selectedQuestionId: number | null = null;
   let areAllTopicsCompleted = false;
   let fallbackCategory: string | undefined = undefined;
-  //const excludedQuestionIds = getIdsInLocalStoraged();
 
-  if (!shouldChangeTopicCategory) {
+  if (shouldChangeTopicCategory === undefined) {
     try {
-      selectedQuestionId = generateRandomNumber(1, 5, [1]); //excludedQuestionIds
+      selectedQuestionId = generateRandomNumber(1, 5, excludedQuestionIds);
     } catch (error: unknown) {
       if (error instanceof AppError) {
         return {
@@ -72,12 +74,12 @@ export async function generateNewQuestion(
   //   fallbackCategory = Object.keys(topicsProgressMap).find((topicKey) => topicKey !== categoryName);
   // }
 
-  // const { questions, success, message } = await getQuestionService(
-  //   shouldChangeTopicCategory ? null : selectedQuestionId,
-  //   null,
-  //   shouldChangeTopicCategory && !areAllTopicsCompleted ? fallbackCategory : null,
-  //   getIdsInLocalStoraged()
-  // );
+  const { questions, success, message } = await getQuestionService(
+    shouldChangeTopicCategory ? null : selectedQuestionId,
+    null,
+    shouldChangeTopicCategory && !areAllTopicsCompleted ? fallbackCategory : null,
+    excludedQuestionIds
+  );
 
   // // Cache the question ID if a topic change occurred
   // if (shouldChangeTopicCategory && selectedQuestionId !== questions[0]?.id) {
@@ -92,10 +94,10 @@ export async function generateNewQuestion(
   //   };
   // }
 
-  // return {
-  //   questions,
-  //   currentQuestionId: selectedQuestionId,
-  //   validated: false,
-  //   error: false,
-  // };
+  return {
+    questions,
+    currentQuestionId: selectedQuestionId,
+    validated: false,
+    error: false,
+  };
 }

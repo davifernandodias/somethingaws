@@ -1,6 +1,9 @@
+/**
+ *
+ * This function was created to assist in standardizing code in the flows for changing the input value and controlling the disabled button.
+ */
 export function isCheckOptions(state: QuestionState, stateReducer: StateReducer) {
-  debugger;
-  if (!state?.questions?.length) return false;
+  if (!state.questions.length) return false;
 
   return state.questions.every((question: Question) => {
     const selected = stateReducer.selectedAnswers[question.id] || [];
@@ -8,17 +11,4 @@ export function isCheckOptions(state: QuestionState, stateReducer: StateReducer)
 
     return selected.length === required;
   });
-}
-
-export function checkStateButton(
-  state: QuestionState,
-  stateReducer: StateReducer,
-  isPending: boolean
-) {
-  return (
-    (state && state.error) ||
-    (state && state.disabledButton) ||
-    isPending ||
-    stateReducer.disabledCoolDown
-  );
 }

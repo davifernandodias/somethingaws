@@ -11,4 +11,5 @@ type QuestionState = {
   error: boolean;
   modalAlert: boolean;
   buttonText: string | null;
+  userScoreReceivedPoints: TopicsScoreMap;
 };

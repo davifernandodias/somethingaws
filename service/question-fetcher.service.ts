@@ -9,7 +9,7 @@ export async function getQuestionService(
   let questions: any[] = [];
 
   if (category) {
-    const question = json_questions.find(q => {
+    const question = json_questions.find((q) => {
       return q.group_by_topic === category && !arrayIds.includes(q.id);
     });
 
@@ -23,7 +23,7 @@ export async function getQuestionService(
 
     questions = [question];
   } else {
-    let question = json_questions.find(q => q.id === id);
+    let question = json_questions.find((q) => q.id === id);
 
     if (!question) {
       return {

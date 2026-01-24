@@ -1,7 +1,4 @@
-export function renameTopicGroup(
-  topicName: string | null | undefined,
-  reverseName?: boolean
-): TopicGroup | undefined {
+export function renameTopicGroup(topicName: string | null | undefined): Topic | undefined {
   switch (topicName) {
     case 'Conceitos de Nuvem':
       return 'fundamental_cloud_concepts';

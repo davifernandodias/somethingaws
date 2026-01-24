@@ -1,12 +1,8 @@
-export interface QuizState {
-  fundamental_cloud_concepts: number;
-  security_compliance: number;
-  cloud_technology: number;
-  billing_pricing: number;
-  increasePoints: (topic: TopicGroup, points: number) => void;
-  decreasePoints: (topic: TopicGroup, points: number) => void;
-  resetTopic: (topic: TopicGroup) => void;
+export interface QuizState extends Record<Topic, number> {
+  increasePoints: (topic: Topic, points: number) => void;
+  decreasePoints: (topic: Topic, points: number) => void;
+  resetTopic: (topic: Topic) => void;
   resetAll: () => void;
   getTotalScore: () => number;
-  getTopicPercentage: (topic: TopicGroup) => number;
+  getTopicPercentage: (topic: Topic) => number;
 }

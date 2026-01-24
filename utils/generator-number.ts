@@ -1,19 +1,24 @@
-import { MSG_ERRO_AO_GERAR_PERGUNTA_INTERVALO_INCORRETO } from '../constants';
+import { ERROR_MSG_NO_NUMBERS_IN_RANGE } from '../constants';
+import { AppError } from '../errors/app-error';
 
-export function generatorNumber(min: number, max: number, arrayIds: number[] = []): number {
-  const totalPossibilities = max - min + 1;
+export function generateRandomNumber(min: number, max: number, excludedIds: number[] = []): number {
+  const availableNumbers: number[] = [];
 
-  const blocked = arrayIds.filter(id => id >= min && id <= max).length;
-
-  if (blocked >= totalPossibilities) {
-    throw new Error(MSG_ERRO_AO_GERAR_PERGUNTA_INTERVALO_INCORRETO);
+  // Build a list of numbers that are still available
+  for (let i = min; i <= max; i++) {
+    if (!excludedIds.includes(i)) {
+      availableNumbers.push(i);
+    }
   }
 
-  let random: number;
+  // If there are no available numbers, this is an expected (operational) error
+  if (availableNumbers.length === 0) {
+    throw new AppError(ERROR_MSG_NO_NUMBERS_IN_RANGE, {
+      code: 'NO_NUMBERS_AVAILABLE',
+    });
+  }
 
-  do {
-    random = Math.floor(Math.random() * (max - min + 1)) + min;
-  } while (arrayIds.includes(random));
-
-  return random;
+  // Pick a random number from the available options
+  const randomIndex = Math.floor(Math.random() * availableNumbers.length);
+  return availableNumbers[randomIndex];
 }

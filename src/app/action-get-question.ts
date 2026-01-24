@@ -1,120 +1,116 @@
-import { generateNewQuestion } from '../../service/generetor-question-aux';
+import { generateNewQuestion } from '../../service/question-generator.service';
 import {
-  MSG_ERRO_GENERICO,
-  MSG_LIMITE_QUESTOES_RESPONDIDAS,
-  MSG_QUESTAO_INCORRETA,
-  MSG_QUESTAO_RESPONDIDA_COM_SUCESSO,
+  ERROR_MSG_QUESTION_GENERATION_FAILED,
+  ERROR_MSG_EXCEEDED_QUESTION_LIMIT,
+  SUCCESS_MSG_INCORRECT_ANSWER,
+  SUCCESS_MSG_CORRECT_ANSWER,
 } from '../../constants';
-import {
-  getLimitQuestionInLocalStoraged,
-  getVariablesGroupTopics,
-} from '../../utils/get-local-storaged';
+
 import { renameTopicGroup } from '../../utils/rename-topic-name';
+import { extractUserAnswersFromForm } from '../../utils/extract-form-answers';
 
-export async function sendQuestion(prevState: any, formData: FormData) {
-  debugger;
-  let quantityOfquestion = formData.get('amount_limit_questions') ?? 10;
+export async function sendQuestion(previousState: any, formData: FormData) {
+  const requestedQuestionLimit = Number(formData.get('amount_limit_questions')) || 10;
+  const currentQuestionCount = (previousState?.currentQuestionCount || 0) + 1;
+  //const storedQuestionLimit = getLimitQuestionInLocalStoraged() || 10;
+  const consecutiveErrorCount = previousState?.consecutiveErrorCount || 0;
 
-  let limitQuestion = prevState?.limitQuestionRep + 1 || 1;
+  // Initial load - generate first question
+  if (previousState === null) {
+    const generatedQuestion = await generateNewQuestion();
+    //const topicsProgressMap = getVariablesGroupTopics();
 
-  let limitiQuestionLocalStoraged = getLimitQuestionInLocalStoraged() ?? 10;
-
-  let variablesGroupTopic = null;
-
-  let limitAmountErrosQuestions = prevState?.limitAmountErrosQuestionsRep ?? 0;
-
-  if (prevState === null && !variablesGroupTopic) {
-    let response = await generateNewQuestion();
-
-    return { ...response, limitQuestionRep: limitQuestion, variablesGroupTopic };
+    return {
+      ...generatedQuestion,
+      currentQuestionCount,
+      //topicsProgressMap,
+    };
   }
 
-  variablesGroupTopic = getVariablesGroupTopics();
+  //const topicsProgressMap = getVariablesGroupTopics();
 
-  if (!prevState.validated) {
-    const answers: Record<number, number[]> = {};
+  // Validate user's answer if not yet validated
+  if (!previousState.validated) {
+    const userAnswersMap = extractUserAnswersFromForm(formData);
+    const currentQuestion = previousState.questions[0];
+    const userSelectedIndexes = userAnswersMap[currentQuestion.id] || [];
 
-    for (const [key, value] of formData.entries()) {
-      const match = key.match(/answers\[(\d+)\]/);
-      if (!match) continue;
+    // Extract correct answer indexes from question
+    const correctAnswerIndexes = currentQuestion.response
+      .map((response: any, index: number) => (response.rep ? index : null))
+      .filter((value: number | null) => value !== null);
 
-      const questionId = Number(match[1]);
+    // Check if user's answer is correct
+    const isAnswerCorrect =
+      correctAnswerIndexes.length === userSelectedIndexes.length &&
+      correctAnswerIndexes.every((index: number) => userSelectedIndexes.includes(index));
 
-      if (!answers[questionId]) {
-        answers[questionId] = [];
-      }
-
-      answers[questionId].push(Number(value));
-    }
-
-    const question = prevState.questions[0];
-
-    const userAnswers = answers[question.id] ?? [];
-
-    const correctIndexes = question.response
-      .map((r: any, i: number) => (r.rep ? i : null))
-      .filter((v: number | null) => v !== null);
-
-    const isCorrect =
-      correctIndexes.length === userAnswers.length &&
-      correctIndexes.every((i: any) => userAnswers.includes(i));
-
-    const topicKey: TopicGroup | undefined = renameTopicGroup(question.group_by_topic);
+    // Map question topic to internal topic key
+    const topicKey: Topic | undefined = renameTopicGroup(currentQuestion.group_by_topic);
 
     if (!topicKey) {
       return {
         questions: [],
-        message: MSG_ERRO_GENERICO,
+        message: ERROR_MSG_QUESTION_GENERATION_FAILED,
         error: true,
       };
     }
 
-    if (topicKey && variablesGroupTopic) {
-      saveVariablesInitialGroupTopics(topicKey, isCorrect);
+    // Update topic progress based on answer correctness
+    if (topicKey) {
+      //topicsProgressMap
+      //saveVariablesInitialGroupTopics(topicKey, isAnswerCorrect);
     }
 
-    if (!isCorrect) {
-      limitAmountErrosQuestions = limitAmountErrosQuestions + 1;
-    } else {
-      limitAmountErrosQuestions =
-        limitAmountErrosQuestions == 0
-          ? (limitAmountErrosQuestions ?? 0)
-          : limitAmountErrosQuestions - 1;
-    }
+    // Track consecutive errors for topic switching logic
+    const updatedErrorCount = isAnswerCorrect
+      ? Math.max(0, consecutiveErrorCount - 1)
+      : consecutiveErrorCount + 1;
 
     return {
-      ...prevState,
+      ...previousState,
       validated: true,
-      isCorrect,
-      userAnswers,
-      correctIndexes,
-      message: isCorrect ? MSG_QUESTAO_RESPONDIDA_COM_SUCESSO : MSG_QUESTAO_INCORRETA,
+      isCorrect: isAnswerCorrect,
+      userAnswers: userSelectedIndexes,
+      correctIndexes: correctAnswerIndexes,
+      message: isAnswerCorrect ? SUCCESS_MSG_CORRECT_ANSWER : SUCCESS_MSG_INCORRECT_ANSWER,
       disabledButton: false,
-      limitQuestionRep: limitQuestion,
-      limitAmountErrosQuestionsRep: limitAmountErrosQuestions,
+      currentQuestionCount,
+      consecutiveErrorCount: updatedErrorCount,
     };
   }
 
-  if (limitQuestion > limitiQuestionLocalStoraged + 1) {
+  // Check if user exceeded question limit
+  if (false) {
     return {
-      ...prevState,
+      ...previousState,
       disabledButton: true,
-      message: MSG_LIMITE_QUESTOES_RESPONDIDAS,
-      limitQuestionRep: limitQuestion,
-      limitAmountErrosQuestionsRep: limitAmountErrosQuestions,
+      message: ERROR_MSG_EXCEEDED_QUESTION_LIMIT,
+      currentQuestionCount,
+      consecutiveErrorCount,
     };
   }
 
-  if (limitAmountErrosQuestions && limitAmountErrosQuestions >= 2) {
+  // Switch topic if user made 2+ consecutive errors
+  if (consecutiveErrorCount >= 2) {
+    const questionWithNewTopic = await generateNewQuestion(
+      previousState.questions[0].group_by_topic,
+      true
+    );
+
     return {
-      ...(await generateNewQuestion(prevState.questions[0].group_by_topic, true)),
-      limitQuestionRep: limitQuestion,
+      ...questionWithNewTopic,
+      currentQuestionCount,
+      consecutiveErrorCount: 0, // Reset error count on topic change
     };
   }
+
+  // Generate next question in same topic
+  const nextQuestion = await generateNewQuestion();
 
   return {
-    ...(await generateNewQuestion()),
-    limitQuestionRep: limitQuestion,
-    limitAmountErrosQuestionsRep: limitAmountErrosQuestions,
+    ...nextQuestion,
+    currentQuestionCount,
+    consecutiveErrorCount,
   };
 }

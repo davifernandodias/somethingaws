@@ -2,7 +2,7 @@ import next from 'eslint-config-next';
 import prettier from 'eslint-plugin-prettier';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
-export default [
+const eslintConfig = [
   ...next,
   eslintConfigPrettier,
   {
@@ -18,9 +18,13 @@ export default [
           printWidth: 100,
           tabWidth: 2,
           trailingComma: 'es5',
+          arrowParens: 'always',
           endOfLine: 'lf',
+          plugins: ['prettier-plugin-tailwindcss'],
         },
       ],
     },
   },
 ];
+
+export default eslintConfig;

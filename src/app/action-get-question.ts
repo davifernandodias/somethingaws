@@ -10,6 +10,7 @@ import { renameTopicGroup } from '../../utils/rename-topic-name';
 import { extractUserAnswersFromForm } from '../../utils/extract-form-answers';
 import { createStateResponse } from '../../utils/question-state.utils';
 import { calculateTopicScoreAdjustment } from '../../utils/calculate-topic-score-adjustment';
+import { switchTopicAfterTwoConsecutiveErrors } from '../../utils/draws-question-topic';
 
 export async function sendQuestion(
   previousState: QuestionState | null,
@@ -17,15 +18,16 @@ export async function sendQuestion(
   topicsScore: TopicsScoreMap
 ): Promise<QuestionState> {
   const requestedQuestionLimit = Number(formData.get('amount_limit_questions'));
-  let currentQuestionCount = previousState?.currentQuestionCount || 0;
   const consecutiveErrorCount = previousState?.consecutiveErrorCount || 0;
   const drawnQuestionIds = previousState?.questions[0].id;
   const userScore = previousState?.userScoreReceivedPoints ?? topicsScore;
+  let currentQuestionCount = previousState?.currentQuestionCount || 0;
 
   // Initial load - generate first question
   if (previousState === null) {
     const generatedQuestion = await generateNewQuestion({
       excludedQuestionIds: drawnQuestionIds ? [drawnQuestionIds] : [],
+      userScore,
     });
 
     // Added first question count
@@ -140,8 +142,26 @@ export async function sendQuestion(
 
   // Switch topic if user made 2+ consecutive errors
   if (consecutiveErrorCount >= 2) {
+    debugger;
+
+    let renamedTopic = renameTopicGroup(previousState.questions[0].group_by_topic);
+
+    if (!renamedTopic) {
+      return createStateResponse(
+        {
+          questions: [],
+          message: ERROR_MSG_QUESTION_GENERATION_FAILED,
+          error: true,
+          disabledButton: true,
+        },
+        previousState
+      );
+    }
     const questionWithNewTopic = await generateNewQuestion({
       excludedQuestionIds: drawnQuestionIds ? [drawnQuestionIds] : [],
+      userScore,
+      shouldChangeTopicCategory: true,
+      categoryName: switchTopicAfterTwoConsecutiveErrors(renamedTopic),
     });
 
     return createStateResponse({
@@ -160,7 +180,10 @@ export async function sendQuestion(
   }
 
   // Generate next question in same topic
-  const nextQuestion = await generateNewQuestion();
+  const nextQuestion = await generateNewQuestion({
+    excludedQuestionIds: drawnQuestionIds ? [drawnQuestionIds] : [],
+    userScore,
+  });
 
   return createStateResponse({
     ...nextQuestion,

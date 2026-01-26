@@ -5,20 +5,22 @@ import {
 } from '../constants';
 import { AppError } from '../errors/app-error';
 import { generateRandomNumber } from '../utils/generator-number';
+import { reveseRenameTopicGroup } from '../utils/rename-topic-name';
 import { getQuestionService } from './question-fetcher.service';
 
 export async function generateNewQuestion({
   categoryName,
   shouldChangeTopicCategory,
   excludedQuestionIds = [],
+  userScore = {},
 }: {
   categoryName?: string;
   shouldChangeTopicCategory?: boolean;
   excludedQuestionIds?: number[];
+  userScore?: { [key: string]: number };
 } = {}) {
+  debugger;
   let selectedQuestionId: number | null = null;
-  let areAllTopicsCompleted = false;
-  let fallbackCategory: string | undefined = undefined;
 
   if (shouldChangeTopicCategory === undefined) {
     try {
@@ -51,52 +53,52 @@ export async function generateNewQuestion({
         error: true,
       };
     }
-
-    //saveIdQuestionCache(selectedQuestionId);
   }
 
-  //const topicsProgressMap = getVariablesGroupTopics();
+  //If changing topic, search new category
+  if (shouldChangeTopicCategory) {
+    const { questions, success, message } = await getQuestionService({
+      category: reveseRenameTopicGroup(categoryName),
+      arrayIds: excludedQuestionIds,
+    });
 
-  //if (!topicsProgressMap) return;
+    if (!questions || !success) {
+      return {
+        questions: [],
+        message,
+        error: true,
+      };
+    }
+    return {
+      questions,
+      validated: false,
+      error: false,
+    };
+  }
 
-  // Check if all topics have reached 100% completion
-  // areAllTopicsCompleted = Object.values(topicsProgressMap).every((progress) => progress === 100);
+  const lowestTopic = Object.entries(userScore).reduce((min, current) => {
+    const [, minValue] = min;
+    const [, currentValue] = current;
 
-  // // Find the category with the lowest completion percentage
-  // const [categoryWithLowestProgress, lowestProgressPercentage] = Object.entries(
-  //   topicsProgressMap
-  // ).reduce((accumulated, currentTopic) => {
-  //   return currentTopic[1] < accumulated[1] ? currentTopic : accumulated;
-  // });
+    return currentValue < minValue ? current : min;
+  })[0];
 
-  // // Select a fallback category different from the current one if needed
-  // if (shouldChangeTopicCategory && categoryName) {
-  //   fallbackCategory = Object.keys(topicsProgressMap).find((topicKey) => topicKey !== categoryName);
-  // }
+  const { questions, success, message } = await getQuestionService({
+    //id: selectedQuestionId,
+    category: reveseRenameTopicGroup(lowestTopic),
+    arrayIds: excludedQuestionIds,
+  });
 
-  const { questions, success, message } = await getQuestionService(
-    shouldChangeTopicCategory ? null : selectedQuestionId,
-    null,
-    shouldChangeTopicCategory && !areAllTopicsCompleted ? fallbackCategory : null,
-    excludedQuestionIds
-  );
-
-  // // Cache the question ID if a topic change occurred
-  // if (shouldChangeTopicCategory && selectedQuestionId !== questions[0]?.id) {
-  //   saveIdQuestionCache(questions[0].id);
-  // }
-
-  // if (!success) {
-  //   return {
-  //     questions: [],
-  //     message: message,
-  //     error: true,
-  //   };
-  // }
+  if (!questions || !success) {
+    return {
+      questions: [],
+      message: ERROR_MSG_GENERIC,
+      error: true,
+    };
+  }
 
   return {
     questions,
-    currentQuestionId: selectedQuestionId,
     validated: false,
     error: false,
   };

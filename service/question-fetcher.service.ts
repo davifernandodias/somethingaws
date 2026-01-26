@@ -1,11 +1,21 @@
 import json_questions from '../data/json_question.json' assert { type: 'json' };
 
-export async function getQuestionService(
-  id?: number | null,
-  level?: number | null,
-  category?: string | null,
-  arrayIds: number[] = []
-) {
+export async function getQuestionService({
+  id = null,
+  level = null,
+  category = null,
+  arrayIds = [],
+}: {
+  id?: number | null;
+  level?: number | null;
+  category?: string | null;
+  arrayIds?: number[];
+}): Promise<{
+  questions: Question[];
+  success: boolean;
+  message: string;
+}> {
+  debugger;
   let questions: Question[] = [];
 
   if (category) {

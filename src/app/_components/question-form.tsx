@@ -17,6 +17,8 @@ import {
 import { reducer } from '../../../reducer/config-quiz-reducer';
 import { useControlPointsTopicsQuestions } from '../../../store-data-config';
 import { hasSelectedRequiredOptions } from '../../../utils/has-selected-required-options';
+import { Progress } from '@/components/ui/progress';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const getTimestamp = () => performance.now();
 
@@ -124,58 +126,126 @@ export function QuizForm() {
         readOnly
       />
       {state !== null && (
-        <>
-          {state.questions?.length > 0 &&
-            !state.error &&
-            state.questions.map((question: Question) => (
-              <div key={question.id} className="mt-5">
-                <h1 className="text-lg font-bold">{question.title}</h1>
-                <h3 className="mb-3 text-sm text-gray-600">{question.group_by_topic}</h3>
-
-                {question.response?.map((resp: any, index: number) => (
-                  <div key={index} className="mb-3 flex flex-col gap-2">
-                    <div className="flex items-center gap-1.5">
-                      <Input
-                        type="checkbox"
-                        name={`answers[${question.id}]`}
-                        value={index}
-                        className="h-4 w-4"
-                        checked={
-                          stateReducer.selectedAnswers[question.id]?.includes(index) || false
-                        }
-                        onChange={() => handleControlSelectionAlternatives(question, index)}
-                      />
-                      <Label className="cursor-pointer">{resp.alternative}</Label>
-                    </div>
-                    {state.validated && (
-                      <span
-                        className={resp.rep ? 'text-sm text-green-800' : 'text-sm text-red-800'}
-                      >
-                        {resp.because}
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ))}
-
-          {state.buttonText && state.modalAlert && (
-            <div className="flex flex-col gap-2 rounded bg-blue-100 p-3 text-blue-800">
-              <p>{state.message}</p>
-              <Button
-                type="button"
-                onClick={() => {
-                  localStorage.clear();
-                  toast.success('Dados limpos!');
-                  window.location.reload();
-                }}
-                className="bg-blue-500 hover:bg-blue-600"
+        <div className="mx-auto w-full max-w-3xl space-y-8 px-4 py-6">
+          {/* Header + Progresso */}
+          {state.currentQuestionCount > 0 && !state.error && (
+            <>
+              <motion.div
+                className="flex items-center justify-between"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
               >
-                {state.buttonText}
-              </Button>
-            </div>
+                <span className="text-muted-foreground text-sm font-medium tracking-wide">
+                  PERGUNTA {state.currentQuestionCount} DE {stateReducer.amountLimitQuestions}
+                </span>
+              </motion.div>
+
+              <motion.div
+                className="origin-left"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+              >
+                <Progress
+                  value={state.currentQuestionCount}
+                  max={stateReducer.amountLimitQuestions}
+                  className="bg-muted/30 h-1.5 rounded-full"
+                />
+              </motion.div>
+            </>
           )}
-        </>
+
+          {/* Pergunta */}
+          {state.questions?.map((question: Question) => (
+            <motion.div
+              key={question.id}
+              className="space-y-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h1 className="text-2xl leading-tight font-semibold text-balance">
+                {question.title}
+              </h1>
+
+              {/* Alternativas */}
+              <div className="space-y-4">
+                {question.response.map((resp: any, index: number) => {
+                  const isSelected = stateReducer.selectedAnswers[question.id]?.includes(index);
+
+                  const feedbackBg =
+                    state.validated && isSelected
+                      ? resp.rep
+                        ? 'bg-green-500/10'
+                        : 'bg-red-500/10'
+                      : 'bg-card/30';
+
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: 0.3 + index * 0.1,
+                        ease: 'easeOut',
+                      }}
+                      className="group"
+                    >
+                      <div
+                        className={`flex cursor-pointer items-start gap-4 rounded-xl p-4 transition-all duration-300 ${feedbackBg} hover:bg-card/60`}
+                      >
+                        <Input
+                          type="checkbox"
+                          className="mt-0.5 h-4 w-4"
+                          checked={isSelected || false}
+                          onChange={() => handleControlSelectionAlternatives(question, index)}
+                          disabled={state.validated}
+                        />
+
+                        <span className="flex-1 text-base leading-relaxed font-semibold">
+                          {resp.alternative}
+                        </span>
+                      </div>
+
+                      {/* Feedback animado */}
+                      <AnimatePresence>
+                        {state.validated && isSelected && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0, y: -10 }}
+                            animate={{ opacity: 1, height: 'auto', y: 0 }}
+                            exit={{ opacity: 0, height: 0, y: -10 }}
+                            transition={{
+                              duration: 0.5,
+                              ease: 'easeInOut',
+                            }}
+                            className="overflow-hidden"
+                          >
+                            <div
+                              className={`mt-3 rounded-lg p-4 ${resp.rep ? 'bg-green-500/10' : 'bg-red-500/10'} `}
+                            >
+                              <motion.span
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.1 }}
+                                className={`text-sm leading-relaxed ${
+                                  resp.rep ? 'text-green-800' : 'text-red-800'
+                                }`}
+                              >
+                                {resp.because}
+                              </motion.span>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       )}
 
       <div className="flex justify-center gap-9">

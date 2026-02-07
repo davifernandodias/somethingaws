@@ -203,12 +203,12 @@ export function QuizForm() {
                       }}
                       className="group"
                     >
-                      <div
+                      <label
                         className={`flex cursor-pointer items-start gap-4 rounded-xl p-4 transition-all duration-300 ${feedbackBg} hover:bg-card/60`}
                       >
                         <Input
                           type="checkbox"
-                          className="mt-0.5 h-4 w-4"
+                          className="mt-0.5 h-4 w-4 shrink-0"
                           checked={isSelected || false}
                           onChange={() => handleControlSelectionAlternatives(question, index)}
                           disabled={state.validated}
@@ -218,7 +218,7 @@ export function QuizForm() {
                         <span className="flex-1 text-sm leading-relaxed font-semibold">
                           {resp.alternative}
                         </span>
-                      </div>
+                      </label>
 
                       {/* Feedback animado */}
                       <AnimatePresence>

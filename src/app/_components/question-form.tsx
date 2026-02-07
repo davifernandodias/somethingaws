@@ -165,6 +165,14 @@ export function QuizForm() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
+              {stateReducer.selectedAnswers[question.id]?.map((selectedIndex: number) => (
+                <Input
+                  key={`answer-${question.id}-${selectedIndex}`}
+                  type="hidden"
+                  name={`question_${question.id}`}
+                  value={selectedIndex}
+                />
+              ))}
               <h1 className="text-2xl leading-tight font-semibold text-balance">
                 {question.title}
               </h1>

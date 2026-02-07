@@ -58,6 +58,7 @@ export async function sendQuestion(
   // Validate user's answer if not yet validated
   if (!previousState.validated) {
     const userAnswersMap = extractUserAnswersFromForm(formData);
+
     const currentQuestion = previousState.questions[0];
     const userSelectedIndexes = userAnswersMap[currentQuestion.id] || [];
 
@@ -65,9 +66,18 @@ export async function sendQuestion(
       .map((response: QuestionResponse, index: number) => (response.rep ? index : null))
       .filter((value: number | null) => value !== null);
 
+    /**
+     * Validates user's answer with bidirectional check:
+     * 1. Same quantity of selections (length check)
+     * 2. All correct answers are selected (completeness)
+     * 3. No incorrect answers are selected (purity)
+     *
+     * Example: If correct=[0,2], then [0,2]=true, [0,2,3]=false, [0]=false
+     */
     const isAnswerCorrect =
       correctAnswerIndexes.length === userSelectedIndexes.length &&
-      correctAnswerIndexes.every((index: number) => userSelectedIndexes.includes(index));
+      correctAnswerIndexes.every((index: number) => userSelectedIndexes.includes(index)) &&
+      userSelectedIndexes.every((index: number) => correctAnswerIndexes.includes(index));
 
     const updatedErrorCount = isAnswerCorrect
       ? Math.max(0, consecutiveErrorCount - 1)

@@ -66,6 +66,7 @@ export function QuizForm() {
   });
 
   useEffect(() => {
+    console.log('state updated:', state);
     if (!state) return;
     if (state.error) toast.error(state.message);
     if (state.modalAlert && state.buttonText) toast.info(state.message);
@@ -211,6 +212,7 @@ export function QuizForm() {
                           checked={isSelected || false}
                           onChange={() => handleControlSelectionAlternatives(question, index)}
                           disabled={state.validated}
+                          tabIndex={index + 1}
                         />
 
                         <span className="flex-1 text-sm leading-relaxed font-semibold">
@@ -271,6 +273,7 @@ export function QuizForm() {
             }
           }}
           className="cursor-pointer"
+          tabIndex={state !== null ? 100 : 1}
         >
           {isPending
             ? 'Carregando...'
@@ -292,6 +295,7 @@ export function QuizForm() {
               dispatch({ type: 'open_modal_config_quiz', payload: true });
             }}
             className="cursor-pointer bg-gray-800 hover:bg-gray-700 dark:bg-gray-500 dark:text-white dark:hover:bg-gray-700"
+            tabIndex={2}
           >
             Configurações
           </Button>
@@ -316,6 +320,7 @@ export function QuizForm() {
               <Input
                 name="range_number"
                 type="number"
+                tabIndex={1}
                 min={1}
                 max={20}
                 value={stateReducer.amountLimitQuestions}
@@ -324,17 +329,20 @@ export function QuizForm() {
                 }
                 className="w-22"
                 placeholder="Ex: 10"
+                autoFocus
               />
             </div>
 
             <DialogFooter className="mt-8 flex gap-2 sm:justify-end">
               <Button
+                tabIndex={3}
                 variant="outline"
                 onClick={() => dispatch({ type: 'open_modal_config_quiz', payload: false })}
               >
                 Cancelar
               </Button>
               <Button
+                tabIndex={2}
                 onClick={() => {
                   dispatch({ type: 'open_modal_config_quiz', payload: false });
                 }}

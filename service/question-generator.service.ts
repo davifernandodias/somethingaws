@@ -6,6 +6,7 @@ import {
 import { AppError } from '../errors/app-error';
 import { generateRandomNumber } from '../utils/generator-number';
 import { reverseRenameTopicGroup } from '../utils/rename-topic-name';
+import { ALL_TOPICS } from '../utils/draws-question-topic';
 import { getQuestionService } from './question-fetcher.service';
 
 export async function generateNewQuestion({
@@ -23,7 +24,7 @@ export async function generateNewQuestion({
 
   if (shouldChangeTopicCategory === undefined) {
     try {
-      selectedQuestionId = generateRandomNumber(1, 5, excludedQuestionIds);
+      selectedQuestionId = generateRandomNumber(1, 200, excludedQuestionIds);
     } catch (error: unknown) {
       if (error instanceof AppError) {
         return {
@@ -54,8 +55,14 @@ export async function generateNewQuestion({
     }
   }
 
-  //If changing topic, search new category
   if (shouldChangeTopicCategory) {
+    if (categoryName == null || categoryName === '') {
+      return {
+        questions: [],
+        message: ERROR_MSG_GENERIC,
+        error: true,
+      };
+    }
     const { questions, success, message } = await getQuestionService({
       category: reverseRenameTopicGroup(categoryName),
       arrayIds: excludedQuestionIds,
@@ -75,16 +82,27 @@ export async function generateNewQuestion({
     };
   }
 
-  const lowestTopic = Object.entries(userScore).reduce((min, current) => {
-    const [, minValue] = min;
-    const [, currentValue] = current;
+  const entries = Object.entries(userScore);
+  let topicToFetch: string;
 
-    return currentValue < minValue ? current : min;
-  })[0];
+  if (entries.length === 0) {
+    topicToFetch = ALL_TOPICS[Math.floor(Math.random() * ALL_TOPICS.length)];
+  } else {
+    const [topicWithLowestScore] = entries.reduce<[string, number]>(
+      (min, current) => {
+        const [, minScore] = min;
+        const [, currentScore] = current;
+        return currentScore < minScore ? (current as [string, number]) : min;
+      },
+      entries[0] as [string, number]
+    );
+    topicToFetch = topicWithLowestScore;
+  }
+
+  const categoryToFetch = reverseRenameTopicGroup(topicToFetch);
 
   const { questions, success, message } = await getQuestionService({
-    //id: selectedQuestionId,
-    category: reverseRenameTopicGroup(lowestTopic),
+    category: categoryToFetch,
     arrayIds: excludedQuestionIds,
   });
 

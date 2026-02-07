@@ -62,6 +62,7 @@ export async function getQuestionService({
     };
   }
 
+  console.log({ messagem: 'Nenhum critério de busca fornecido', id, level, category, arrayIds });
   return {
     questions: [],
     success: false,

@@ -32,7 +32,7 @@ export default function InitialState() {
     <div className="w-full">
       <div className="relative container mx-auto">
         <div className="absolute right-4"></div>
-        <div className="flex flex-col items-center justify-center gap-8">
+        <div className="flex flex-col items-center justify-center gap-8 text-center">
           <div>{INITIAL_PAGE_TITLE}</div>
           <div className="flex flex-col gap-4">
             <h1 className="font-regular max-w-2xl text-center text-5xl tracking-tighter md:text-7xl">

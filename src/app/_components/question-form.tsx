@@ -113,9 +113,9 @@ export function QuizForm() {
   }
 
   return (
-    <form action={formAction}>
+    <form action={formAction} className="flex w-full flex-col">
       {state === null && (
-        <div className="flex h-80 items-start">
+        <div className="mb-12 flex items-start">
           <InitialState />
         </div>
       )}
@@ -131,7 +131,7 @@ export function QuizForm() {
           {state.currentQuestionCount > 0 && !state.error && (
             <>
               <motion.div
-                className="flex items-center justify-between"
+                className="flex items-center justify-between pt-12 sm:pt-0"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
@@ -165,6 +165,14 @@ export function QuizForm() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
+              {stateReducer.selectedAnswers[question.id]?.map((selectedIndex: number) => (
+                <Input
+                  key={`answer-${question.id}-${selectedIndex}`}
+                  type="hidden"
+                  name={`question_${question.id}`}
+                  value={selectedIndex}
+                />
+              ))}
               <h1 className="text-2xl leading-tight font-semibold text-balance">
                 {question.title}
               </h1>
@@ -205,7 +213,7 @@ export function QuizForm() {
                           disabled={state.validated}
                         />
 
-                        <span className="flex-1 text-base leading-relaxed font-semibold">
+                        <span className="flex-1 text-sm leading-relaxed font-semibold">
                           {resp.alternative}
                         </span>
                       </div>

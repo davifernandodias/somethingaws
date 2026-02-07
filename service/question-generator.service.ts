@@ -14,7 +14,7 @@ export async function generateNewQuestion({
   excludedQuestionIds = [],
   userScore = {},
 }: {
-  categoryName?: string;
+  categoryName?: Topic;
   shouldChangeTopicCategory?: boolean;
   excludedQuestionIds?: number[];
   userScore?: { [key: string]: number };

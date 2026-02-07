@@ -1,3 +1,5 @@
+import { AppError } from '../errors/app-error';
+
 export function renameTopicGroup(topicName: string | undefined): Topic {
   switch (topicName) {
     case 'Conceitos de Nuvem':
@@ -9,7 +11,14 @@ export function renameTopicGroup(topicName: string | undefined): Topic {
     case 'Cobrança e Suporte':
       return 'billing_pricing_support';
     default:
-      throw new Error('Unknown topic name');
+      console.error('[TOPIC_CONVERSION_ERROR]', {
+        receivedTopic: topicName,
+        function: 'renameTopicGroup',
+      });
+
+      throw new AppError(`Erro na conversão do nome do tópico: ${topicName}`, {
+        code: 'TOPIC_CONVERSION_ERROR',
+      });
   }
 }
 
@@ -24,6 +33,13 @@ export function reverseRenameTopicGroup(topicName: string | undefined): string {
     case 'billing_pricing_support':
       return 'Cobrança e Suporte';
     default:
-      throw new Error('Unknown topic name');
+      console.error('[TOPIC_CONVERSION_ERROR]', {
+        receivedTopic: topicName,
+        function: 'reverseRenameTopicGroup',
+      });
+
+      throw new AppError(`Erro na conversão do nome do tópico: ${topicName}`, {
+        code: 'TOPIC_CONVERSION_ERROR',
+      });
   }
 }

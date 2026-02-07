@@ -106,16 +106,3 @@ Scripts to help generate or refactor questions can be found in `scripts/`.
 npm run format
 npm run lint
 ```
-
-## Contributing
-
-- Open issues or PRs. Describe changes to question content, parameters, or adaptive logic and include rationale for learning outcomes.
-
-## Notes
-
-- This README is the primary documentation in English. A Portuguese translation is available at `docs/README.md`.
-
----
-If you want, I can:
-- Replace the original `data/json_questions.json` with the refactored file I generated, keeping a backup.
-- Produce a condensed developer cheat-sheet for quick tuning of parameters.

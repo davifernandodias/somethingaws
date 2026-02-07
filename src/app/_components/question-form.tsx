@@ -168,6 +168,7 @@ export function QuizForm() {
               <h1 className="text-2xl leading-tight font-semibold text-balance">
                 {question.title}
               </h1>
+              <h2 className="text-1xl leading-tight text-balance">{question.group_by_topic}</h2>
 
               {/* Alternativas */}
               <div className="space-y-4">

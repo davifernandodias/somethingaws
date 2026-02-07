@@ -66,7 +66,6 @@ export function QuizForm() {
   });
 
   useEffect(() => {
-    console.log('state updated:', state);
     if (!state) return;
     if (state.error) toast.error(state.message);
     if (state.modalAlert && state.buttonText) toast.info(state.message);

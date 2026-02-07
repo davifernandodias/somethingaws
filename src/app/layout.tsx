@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: 'AWS Passei',
     images: [
       {
-        url: 'https://qenlvudyxnc62dsc.public.blob.vercel-storage.com/Capturar.PNGdada.PNG',
+        url: 'https://qenlvudyxnc62dsc.public.blob.vercel-storage.com/banner-quiz',
         width: 1200,
         height: 630,
         alt: 'AWS Passei',

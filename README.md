@@ -1,7 +1,5 @@
 Note: A Portuguese (Brazil) translation of this README is available at docs/README.md.
 
-# Projeto Quiz — English README
-
 This repository contains a Next.js-based quiz application designed to help students practice AWS Cloud topics by focusing on mistakes and adapting question selection accordingly.
 
 ## Table of Contents

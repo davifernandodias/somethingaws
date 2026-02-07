@@ -1,4 +1,4 @@
-type QuestionState = {
+interface QuestionState {
   questions: Question[];
   validated: boolean;
   isCorrect: boolean | null;
@@ -12,4 +12,5 @@ type QuestionState = {
   modalAlert: boolean;
   buttonText: string | null;
   userScoreReceivedPoints: TopicsScoreMap;
-};
+  drawnQuestionIds: number[];
+}

@@ -18,15 +18,18 @@ export async function sendQuestion(
   topicsScore: TopicsScoreMap
 ): Promise<QuestionState> {
   const requestedQuestionLimit = Number(formData.get('amount_limit_questions'));
-  const consecutiveErrorCount = previousState?.consecutiveErrorCount || 0;
-  const drawnQuestionIds = previousState?.questions[0].id;
+
+  const drawnQuestionIds = previousState?.drawnQuestionIds || [];
+  const currentQuestionId = previousState?.questions[0]?.id;
+
   const userScore = previousState?.userScoreReceivedPoints ?? topicsScore;
+  const consecutiveErrorCount = previousState?.consecutiveErrorCount || 0;
   let currentQuestionCount = previousState?.currentQuestionCount || 0;
 
   // Initial load - generate first question
   if (previousState === null) {
     const generatedQuestion = await generateNewQuestion({
-      excludedQuestionIds: drawnQuestionIds ? [drawnQuestionIds] : [],
+      excludedQuestionIds: [],
       userScore,
     });
 
@@ -46,6 +49,9 @@ export async function sendQuestion(
       modalAlert: false,
       buttonText: null,
       userScoreReceivedPoints: userScore,
+      drawnQuestionIds: generatedQuestion.questions[0]?.id
+        ? [generatedQuestion.questions[0].id]
+        : [],
     });
   }
 
@@ -119,10 +125,16 @@ export async function sendQuestion(
         consecutiveErrorCount: updatedErrorCount,
         error: false,
         userScoreReceivedPoints: userScore,
+        drawnQuestionIds: previousState.drawnQuestionIds,
       },
       previousState
     );
   }
+
+  const updatedDrawnIds =
+    currentQuestionId && !drawnQuestionIds.includes(currentQuestionId)
+      ? [...drawnQuestionIds, currentQuestionId]
+      : drawnQuestionIds;
 
   currentQuestionCount += 1;
 
@@ -135,6 +147,22 @@ export async function sendQuestion(
         currentQuestionCount,
         consecutiveErrorCount,
         error: false,
+        drawnQuestionIds: updatedDrawnIds,
+      },
+      previousState
+    );
+  }
+
+  let renamedTopic = renameTopicGroup(previousState.questions[0].group_by_topic);
+
+  if (!renamedTopic) {
+    return createStateResponse(
+      {
+        questions: [],
+        message: ERROR_MSG_QUESTION_GENERATION_FAILED,
+        error: true,
+        disabledButton: true,
+        drawnQuestionIds: updatedDrawnIds,
       },
       previousState
     );
@@ -142,27 +170,18 @@ export async function sendQuestion(
 
   // Switch topic if user made 2+ consecutive errors
   if (consecutiveErrorCount >= 2) {
-    debugger;
-
-    let renamedTopic = renameTopicGroup(previousState.questions[0].group_by_topic);
-
-    if (!renamedTopic) {
-      return createStateResponse(
-        {
-          questions: [],
-          message: ERROR_MSG_QUESTION_GENERATION_FAILED,
-          error: true,
-          disabledButton: true,
-        },
-        previousState
-      );
-    }
     const questionWithNewTopic = await generateNewQuestion({
-      excludedQuestionIds: drawnQuestionIds ? [drawnQuestionIds] : [],
+      excludedQuestionIds: updatedDrawnIds,
       userScore,
       shouldChangeTopicCategory: true,
       categoryName: switchTopicAfterTwoConsecutiveErrors(renamedTopic),
     });
+
+    const newQuestionId = questionWithNewTopic.questions[0]?.id;
+    const finalDrawnIds =
+      newQuestionId && !updatedDrawnIds.includes(newQuestionId)
+        ? [...updatedDrawnIds, newQuestionId]
+        : updatedDrawnIds;
 
     return createStateResponse({
       ...questionWithNewTopic,
@@ -176,14 +195,22 @@ export async function sendQuestion(
       message: '',
       error: false,
       userScoreReceivedPoints: userScore,
+      drawnQuestionIds: finalDrawnIds,
     });
   }
 
   // Generate next question in same topic
   const nextQuestion = await generateNewQuestion({
-    excludedQuestionIds: drawnQuestionIds ? [drawnQuestionIds] : [],
+    excludedQuestionIds: updatedDrawnIds,
     userScore,
+    categoryName: renamedTopic,
   });
+
+  const newQuestionId = nextQuestion.questions[0]?.id;
+  const finalDrawnIds =
+    newQuestionId && !updatedDrawnIds.includes(newQuestionId)
+      ? [...updatedDrawnIds, newQuestionId]
+      : updatedDrawnIds;
 
   return createStateResponse({
     ...nextQuestion,
@@ -197,5 +224,6 @@ export async function sendQuestion(
     message: '',
     error: false,
     userScoreReceivedPoints: userScore,
+    drawnQuestionIds: finalDrawnIds,
   });
 }

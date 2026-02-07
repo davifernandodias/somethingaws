@@ -5,7 +5,7 @@ export const useControlPointsTopicsQuestions = create<QuizState>((set, get) => (
   fundamental_cloud_concepts: 100,
   security_compliance: 100,
   cloud_technology: 100,
-  billing_pricing: 100,
+  billing_pricing_support: 100,
 
   increasePoints: (topic, points) =>
     set((state) => ({
@@ -38,7 +38,7 @@ export const useControlPointsTopicsQuestions = create<QuizState>((set, get) => (
       (state.fundamental_cloud_concepts +
         state.security_compliance +
         state.cloud_technology +
-        state.billing_pricing) /
+        state.billing_pricing_support) /
         4
     );
   },

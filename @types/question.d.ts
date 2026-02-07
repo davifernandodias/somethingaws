@@ -9,6 +9,6 @@ type Question = {
   title: string;
   group_by_topic: string;
   accept_two_alternatives: boolean;
-  level_of_complexity: number;
+  level_of_complexity?: number;
   response: QuestionResponse[];
 };

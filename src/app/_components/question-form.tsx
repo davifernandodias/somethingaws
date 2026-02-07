@@ -28,14 +28,14 @@ export function QuizForm() {
   const fundamental = useControlPointsTopicsQuestions((state) => state.fundamental_cloud_concepts);
   const security = useControlPointsTopicsQuestions((state) => state.security_compliance);
   const technology = useControlPointsTopicsQuestions((state) => state.cloud_technology);
-  const billing = useControlPointsTopicsQuestions((state) => state.billing_pricing);
+  const billing = useControlPointsTopicsQuestions((state) => state.billing_pricing_support);
 
   const topicsScore = useMemo(
     () => ({
       fundamental_cloud_concepts: fundamental,
       security_compliance: security,
       cloud_technology: technology,
-      billing_pricing: billing,
+      billing_pricing_support: billing,
     }),
     [fundamental, security, technology, billing]
   );

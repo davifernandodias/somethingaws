@@ -5,7 +5,7 @@ import {
 } from '../constants';
 import { AppError } from '../errors/app-error';
 import { generateRandomNumber } from '../utils/generator-number';
-import { reveseRenameTopicGroup } from '../utils/rename-topic-name';
+import { reverseRenameTopicGroup } from '../utils/rename-topic-name';
 import { getQuestionService } from './question-fetcher.service';
 
 export async function generateNewQuestion({
@@ -19,7 +19,6 @@ export async function generateNewQuestion({
   excludedQuestionIds?: number[];
   userScore?: { [key: string]: number };
 } = {}) {
-  debugger;
   let selectedQuestionId: number | null = null;
 
   if (shouldChangeTopicCategory === undefined) {
@@ -58,7 +57,7 @@ export async function generateNewQuestion({
   //If changing topic, search new category
   if (shouldChangeTopicCategory) {
     const { questions, success, message } = await getQuestionService({
-      category: reveseRenameTopicGroup(categoryName),
+      category: reverseRenameTopicGroup(categoryName),
       arrayIds: excludedQuestionIds,
     });
 
@@ -85,7 +84,7 @@ export async function generateNewQuestion({
 
   const { questions, success, message } = await getQuestionService({
     //id: selectedQuestionId,
-    category: reveseRenameTopicGroup(lowestTopic),
+    category: reverseRenameTopicGroup(lowestTopic),
     arrayIds: excludedQuestionIds,
   });
 

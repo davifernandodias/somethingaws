@@ -6,12 +6,14 @@ export function renameTopicGroup(topicName: string | undefined): Topic {
       return 'security_compliance';
     case 'Serviços básicos da AWS':
       return 'cloud_technology';
+    case 'Cobrança e Suporte':
+      return 'billing_pricing_support';
     default:
       throw new Error('Unknown topic name');
   }
 }
 
-export function reveseRenameTopicGroup(topicName: string | undefined): string {
+export function reverseRenameTopicGroup(topicName: string | undefined): string {
   switch (topicName) {
     case 'fundamental_cloud_concepts':
       return 'Conceitos de Nuvem';
@@ -19,6 +21,8 @@ export function reveseRenameTopicGroup(topicName: string | undefined): string {
       return 'Conformidade & Segurança';
     case 'cloud_technology':
       return 'Serviços básicos da AWS';
+    case 'billing_pricing_support':
+      return 'Cobrança e Suporte';
     default:
       throw new Error('Unknown topic name');
   }

@@ -93,11 +93,3 @@ Abra http://localhost:3000.
 npm run format
 npm run lint
 ```
-
-## Contribuição
-
-Abra issues ou PRs com justificativa pedagógica para mudanças nos parâmetros, questões ou no motor adaptativo.
-
----
-
-Se quiser, posso também gerar um arquivo `docs/cheatsheet.md` com os parâmetros principais e caminhos diretos para os pontos de ajuste no código.

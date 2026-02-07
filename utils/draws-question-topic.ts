@@ -1,4 +1,4 @@
-export function switchTopicAfterTwoConsecutiveErrors(currentTopic: string) {
+export function switchTopicAfterTwoConsecutiveErrors(currentTopic: Topic) {
   const topics = [
     'fundamental_cloud_concepts',
     'security_compliance',

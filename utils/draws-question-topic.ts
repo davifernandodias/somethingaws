@@ -3,7 +3,7 @@ export function switchTopicAfterTwoConsecutiveErrors(currentTopic: string) {
     'fundamental_cloud_concepts',
     'security_compliance',
     'cloud_technology',
-    'billing_pricing',
+    'billing_pricing_support',
   ];
 
   const availableTopics = topics.filter((topic) => topic !== currentTopic);

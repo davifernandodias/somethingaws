@@ -27,7 +27,7 @@ export const useControlPointsTopicsQuestions = create<QuizState>((set, get) => (
       fundamental_cloud_concepts: 100,
       security_compliance: 100,
       cloud_technology: 100,
-      billing_pricing: 100,
+      billing_pricing_support: 100,
     })),
 
   getTopicPercentage: (topic) => get()[topic],

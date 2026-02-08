@@ -12,5 +12,6 @@ interface QuestionState {
   modalAlert: boolean;
   buttonText: string | null;
   userScoreReceivedPoints: TopicsScoreMap;
+  topicStats: TopicStatsDetail;
   drawnQuestionIds: number[];
 }

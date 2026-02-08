@@ -17,6 +17,12 @@ export const createInitialState = (): QuestionState => ({
     cloud_technology: 0,
     billing_pricing_support: 0,
   },
+  topicStats: {
+    fundamental_cloud_concepts: { correct: 0, errors: 0 },
+    security_compliance: { correct: 0, errors: 0 },
+    cloud_technology: { correct: 0, errors: 0 },
+    billing_pricing_support: { correct: 0, errors: 0 },
+  },
   drawnQuestionIds: [],
 });
 

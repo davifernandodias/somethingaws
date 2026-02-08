@@ -42,7 +42,7 @@ export async function generateNewQuestion({
         message: ERROR_MSG_EXCEEDED_QUESTION_LIMIT,
         error: true,
         buttonText: BUTTON_TEXT_RELOAD,
-        modalAlert: true,
+        modalAlert: false,
       };
     }
 

@@ -5,7 +5,7 @@ export function calculateTopicScoreAdjustment(
   currentTopicScore: number
 ): { adjustment: number; shouldIncrease: boolean; shouldDecrease: boolean } {
   if (isCorrect) {
-    const isAtMaximumScore = currentTopicScore >= 100;
+    const isAtMaximumScore = currentTopicScore >= 300;
 
     if (isAtMaximumScore) {
       return {

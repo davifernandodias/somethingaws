@@ -19,6 +19,7 @@ import { useControlPointsTopicsQuestions } from '../../../store-data-config';
 import { hasSelectedRequiredOptions } from '../../../utils/has-selected-required-options';
 import { Progress } from '@/components/ui/progress';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Chart } from '@/components/char';
 
 const getTimestamp = () => performance.now();
 
@@ -67,11 +68,44 @@ export function QuizForm() {
 
   useEffect(() => {
     if (!state) return;
-    if (state.error) toast.error(state.message);
-    if (state.modalAlert && state.buttonText) toast.info(state.message);
-    if (state.validated && state.isCorrect) toast.info(state.message);
-    if (state.validated && !state.isCorrect) toast.info(state.message);
-    if (state.disabledButton) toast.warning(state.message);
+    let caseType = 'none';
+
+    if (state.error) {
+      caseType = 'error';
+    } else if (state.modalAlert && state.buttonText) {
+      caseType = 'modalAlert';
+    } else if (state.disabledButton) {
+      caseType = 'disabledButton';
+    } else if (state.validated && state.isCorrect) {
+      caseType = 'validatedCorrect';
+    } else if (state.validated && !state.isCorrect) {
+      caseType = 'validatedIncorrect';
+    }
+    switch (caseType) {
+      case 'error':
+        toast.error(state.message);
+        break;
+
+      case 'modalAlert':
+        toast.info(state.message);
+        break;
+
+      case 'disabledButton':
+        toast.warning(state.message);
+        break;
+
+      case 'validatedCorrect':
+        toast.info(state.message);
+        break;
+
+      case 'validatedIncorrect':
+        toast.info(state.message);
+        break;
+
+      case 'none':
+      default:
+        break;
+    }
 
     if (state.validated && !submitCooldownRef.current.locked) {
       submitCooldownRef.current.locked = true;
@@ -125,9 +159,9 @@ export function QuizForm() {
         value={stateReducer.amountLimitQuestions}
         readOnly
       />
-      {state !== null && (
+      {state !== null && !state.disabledButton && (
         <div className="mx-auto w-full max-w-3xl space-y-8 px-4 py-6">
-          {/* Header + Progresso */}
+          {/* Header + Progress */}
           {state.currentQuestionCount > 0 && !state.error && (
             <>
               <motion.div
@@ -156,7 +190,7 @@ export function QuizForm() {
             </>
           )}
 
-          {/* Pergunta */}
+          {/* Question */}
           {state.questions?.map((question: Question) => (
             <motion.div
               key={question.id}
@@ -178,7 +212,7 @@ export function QuizForm() {
               </h1>
               <h2 className="text-1xl leading-tight text-balance">{question.group_by_topic}</h2>
 
-              {/* Alternativas */}
+              {/* Alternatives */}
               <div className="space-y-4">
                 {question.response.map((resp: any, index: number) => {
                   const isSelected = stateReducer.selectedAnswers[question.id]?.includes(index);
@@ -219,7 +253,7 @@ export function QuizForm() {
                         </span>
                       </label>
 
-                      {/* Feedback animado */}
+                      {/* Animated feedback */}
                       <AnimatePresence>
                         {state.validated && isSelected && (
                           <motion.div
@@ -258,6 +292,7 @@ export function QuizForm() {
         </div>
       )}
 
+      {state && state.disabledButton && state.topicStats && <Chart topicStats={state.topicStats} />}
       <div className="flex justify-center gap-9">
         <Button
           type="submit"

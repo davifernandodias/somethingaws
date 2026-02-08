@@ -4,6 +4,32 @@ export const reducer = (state: StateReducer, action: ReducerAction) => {
       return { ...state, openModalConfiguration: action.payload };
     }
 
+    case 'controls_limite_questions_temp': {
+      let value = Number(action.payload);
+
+      if (isNaN(value)) return state;
+
+      value = Math.min(20, Math.max(1, value));
+
+      return { ...state, tempAmountLimitQuestions: value };
+    }
+
+    case 'save_config_quiz': {
+      return {
+        ...state,
+        amountLimitQuestions: state.tempAmountLimitQuestions,
+        openModalConfiguration: false,
+      };
+    }
+
+    case 'cancel_config_quiz': {
+      return {
+        ...state,
+        tempAmountLimitQuestions: state.amountLimitQuestions,
+        openModalConfiguration: false,
+      };
+    }
+
     case 'controls_quantity_selection_alternatives': {
       const { questionId, index, acceptTwo } = action.payload;
       const currentAnswers = state.selectedAnswers[questionId] || [];

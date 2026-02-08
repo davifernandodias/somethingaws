@@ -7,23 +7,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Necessidade de manter equipe dedicada para gerenciar hardware físico.",
-        "because": "Incorreto: A nuvem justamente elimina essa necessidade, não a cria. A resposta correta é 'Trocar CapEx por OpEx variáveis', que representa o benefício financeiro fundamental da nuvem versus on-premises.",
+        "alternative": "Garantir controle físico sobre servidores e hardware da infraestrutura.",
+        "because": "Incorreto: Na nuvem você não tem controle físico do hardware. A resposta correta é 'Trocar CapEx por OpEx variáveis', pois o benefício principal é a mudança no modelo financeiro.",
         "rep": false
       },
       {
-        "alternative": "Trocar despesas de capital (CapEx) por despesas operacionais (OpEx) variáveis.",
-        "because": "Correto: Na nuvem, você não precisa investir antecipadamente em datacenters e servidores. Você paga apenas pelo que usa (OpEx), convertendo custos fixos em variáveis e eliminando a necessidade de prever capacidade futura.",
+        "alternative": "Trocar despesas de capital (CapEx) por operacionais (OpEx) variáveis.",
+        "because": "Correto: Na nuvem, você não precisa investir antecipadamente em datacenters. Você paga apenas pelo que usa, convertendo custos fixos em variáveis.",
         "rep": true
       },
       {
-        "alternative": "Custos sempre mais baixos independente do padrão de uso.",
-        "because": "Incorreto: Os custos dependem do padrão de uso; em alguns casos on-premises pode ser mais econômico. A resposta correta é 'Trocar CapEx por OpEx variáveis', que é o benefício econômico real: flexibilidade financeira e eliminação de investimento inicial.",
+        "alternative": "Manter equipe técnica dedicada para gerenciar hardware físico.",
+        "because": "Incorreto: A nuvem justamente elimina essa necessidade, não a cria. A resposta correta é 'Trocar CapEx por OpEx variáveis'.",
         "rep": false
       },
       {
-        "alternative": "Garantir controle físico total sobre todos os servidores e hardware.",
-        "because": "Incorreto: Na nuvem você não tem controle físico do hardware, isso é responsabilidade do provedor. A resposta correta é 'Trocar CapEx por OpEx variáveis', pois o benefício principal é a mudança no modelo financeiro e eliminação de investimentos iniciais.",
+        "alternative": "Custos sempre menores que on-premises independente do padrão.",
+        "because": "Incorreto: Os custos dependem do padrão de uso. A resposta correta é 'Trocar CapEx por OpEx variáveis', que é o benefício econômico real.",
         "rep": false
       }
     ]
@@ -36,24 +36,24 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Pagar valor fixo mensal independente do uso dos recursos.",
-        "because": "Incorreto: Isso se refere ao modelo de precificação, não à elasticidade. A resposta correta é 'Aumentar ou diminuir recursos conforme demanda', que define a capacidade de ajustar recursos de forma dinâmica.",
+        "alternative": "Manter provisão estática de recursos independente da carga.",
+        "because": "Incorreto: Isso é capacidade estática, oposto de elasticidade. A resposta correta é 'Aumentar ou diminuir recursos conforme demanda'.",
         "rep": false
       },
       {
-        "alternative": "Armazenar dados em múltiplas regiões geográficas automaticamente.",
-        "because": "Incorreto: Isso descreve replicação geográfica ou alta disponibilidade. A resposta correta é 'Aumentar ou diminuir recursos conforme demanda', que é a definição específica de elasticidade.",
-        "rep": false
-      },
-      {
-        "alternative": "Manter sempre o mesmo número de recursos independente da carga.",
-        "because": "Incorreto: Isso é capacidade estática, o oposto de elasticidade. A resposta correta é 'Aumentar ou diminuir recursos conforme demanda', pois elasticidade significa adaptar recursos dinamicamente às necessidades em tempo real.",
-        "rep": false
-      },
-      {
-        "alternative": "Capacidade de aumentar ou diminuir recursos automaticamente conforme a demanda.",
-        "because": "Correto: Elasticidade permite que sua infraestrutura cresça durante picos de demanda e diminua em períodos de baixo uso, automaticamente ou sob demanda, otimizando custos e performance sem intervenção manual.",
+        "alternative": "Capacidade de ajustar recursos automaticamente conforme demanda.",
+        "because": "Correto: Elasticidade permite que sua infraestrutura cresça durante picos e diminua em baixo uso, otimizando custos e performance automaticamente.",
         "rep": true
+      },
+      {
+        "alternative": "Replicar dados automaticamente em múltiplas regiões globais.",
+        "because": "Incorreto: Isso descreve replicação geográfica. A resposta correta é 'Aumentar ou diminuir recursos conforme demanda'.",
+        "rep": false
+      },
+      {
+        "alternative": "Modelo de cobrança com valor fixo mensal sem variação.",
+        "because": "Incorreto: Isso se refere ao modelo de precificação. A resposta correta é 'Aumentar ou diminuir recursos conforme demanda'.",
+        "rep": false
       }
     ]
   },
@@ -65,23 +65,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Reduzir custos eliminando redundância de recursos.",
-        "because": "Incorreto: Alta disponibilidade geralmente requer redundância, o que pode aumentar custos. A resposta correta é 'Minimizar downtime distribuindo em múltiplas AZs', sendo o benefício a resiliência, não redução de custos.",
+        "alternative": "Concentrar componentes críticos em uma zona para melhor performance.",
+        "because": "Incorreto: Concentrar em uma zona cria ponto único de falha. A resposta correta é 'Minimizar downtime distribuindo em múltiplas AZs'.",
         "rep": false
       },
       {
-        "alternative": "Minimizar downtime distribuindo recursos em múltiplas Zonas de Disponibilidade.",
-        "because": "Correto: Alta disponibilidade na AWS é alcançada distribuindo aplicações em múltiplas AZs (Availability Zones) dentro de uma região, garantindo que a falha de uma zona não afete toda a aplicação, reduzindo tempo de inatividade.",
+        "alternative": "Reduzir custos operacionais eliminando redundância de recursos.",
+        "because": "Incorreto: Alta disponibilidade geralmente requer redundância. A resposta correta é 'Minimizar downtime distribuindo em múltiplas AZs'.",
+        "rep": false
+      },
+      {
+        "alternative": "Minimizar downtime distribuindo recursos em múltiplas AZs.",
+        "because": "Correto: Alta disponibilidade é alcançada distribuindo aplicações em múltiplas Zonas de Disponibilidade, garantindo que falha de uma zona não afete toda aplicação.",
         "rep": true
       },
       {
-        "alternative": "Concentrar todos os recursos em uma única zona para melhor performance.",
-        "because": "Incorreto: Concentrar em uma zona cria ponto único de falha. A resposta correta é 'Minimizar downtime distribuindo em múltiplas AZs', pois alta disponibilidade requer redundância geográfica.",
-        "rep": false
-      },
-      {
-        "alternative": "Eliminar completamente a necessidade de backups de dados.",
-        "because": "Incorreto: Alta disponibilidade não substitui backups, que protegem contra corrupção de dados e erros humanos. A resposta correta é 'Minimizar downtime distribuindo em múltiplas AZs', pois alta disponibilidade trata de continuidade operacional.",
+        "alternative": "Substituir completamente estratégias de backup e recuperação.",
+        "because": "Incorreto: Alta disponibilidade não substitui backups. A resposta correta é 'Minimizar downtime distribuindo em múltiplas AZs'.",
         "rep": false
       }
     ]
@@ -94,24 +94,24 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Regiões são apenas para backup; AZs são para operação principal.",
-        "because": "Incorreto: Ambas são usadas para operações; AZs dentro de Regiões fornecem alta disponibilidade. A resposta correta é 'Região com múltiplas AZs; AZ é datacenter isolado', definindo corretamente a relação hierárquica.",
-        "rep": false
-      },
-      {
-        "alternative": "AZ é maior que Região e contém múltiplas regiões dentro dela.",
-        "because": "Incorreto: A hierarquia está invertida. A resposta correta é 'Região contém múltiplas AZs; AZ é datacenter isolado', pois Regiões são o nível mais alto da hierarquia geográfica.",
-        "rep": false
-      },
-      {
-        "alternative": "Região e AZ são termos sinônimos que significam a mesma coisa.",
-        "because": "Incorreto: São conceitos diferentes em níveis geográficos distintos. A resposta correta é 'Região é localização geográfica com múltiplas AZs; AZ é datacenter isolado', pois Região é o container e AZ é o componente dentro dela.",
-        "rep": false
-      },
-      {
-        "alternative": "Região é localização geográfica com múltiplas AZs; AZ é datacenter isolado dentro de uma Região.",
-        "because": "Correto: Uma Região AWS (ex: us-east-1) é uma área geográfica que contém múltiplas Zonas de Disponibilidade (tipicamente 3 ou mais). Cada AZ consiste em um ou mais datacenters fisicamente separados com energia, rede e conectividade redundantes.",
+        "alternative": "Região contém múltiplas AZs; AZ é datacenter isolado fisicamente.",
+        "because": "Correto: Uma Região AWS é área geográfica contendo múltiplas AZs. Cada AZ consiste em datacenters fisicamente separados com energia e rede redundantes.",
         "rep": true
+      },
+      {
+        "alternative": "AZ é maior que Região e contém múltiplas regiões dentro.",
+        "because": "Incorreto: A hierarquia está invertida. A resposta correta é 'Região contém múltiplas AZs; AZ é datacenter isolado fisicamente'.",
+        "rep": false
+      },
+      {
+        "alternative": "Regiões são para backup; AZs destinam-se à operação principal.",
+        "because": "Incorreto: Ambas são usadas para operações. A resposta correta é 'Região contém múltiplas AZs; AZ é datacenter isolado fisicamente'.",
+        "rep": false
+      },
+      {
+        "alternative": "Região e AZ são termos sinônimos referindo-se ao mesmo conceito.",
+        "because": "Incorreto: São conceitos diferentes em níveis geográficos distintos. A resposta correta é 'Região contém múltiplas AZs'.",
+        "rep": false
       }
     ]
   },
@@ -123,23 +123,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Fornece aplicações completas prontas para uso sem necessidade de gerenciamento.",
-        "because": "Incorreto: Isso descreve SaaS (Software as a Service). A resposta correta é 'Fornece infraestrutura virtualizada sob demanda', pois IaaS requer que você gerencie SO e aplicações.",
-        "rep": false
-      },
-      {
         "alternative": "Fornece plataforma gerenciada para desenvolvimento sem acesso à infraestrutura.",
-        "because": "Incorreto: Isso descreve PaaS (Platform as a Service). A resposta correta é 'Fornece infraestrutura virtualizada', pois IaaS dá mais controle e acesso à camada de infraestrutura.",
+        "because": "Incorreto: Isso descreve PaaS. A resposta correta é 'Fornece infraestrutura virtualizada', pois IaaS dá mais controle sobre infraestrutura.",
         "rep": false
       },
       {
-        "alternative": "Fornece infraestrutura de TI virtualizada (servidores, armazenamento, rede) sob demanda.",
-        "because": "Correto: IaaS fornece recursos fundamentais de computação onde você gerencia o sistema operacional, aplicações e dados, enquanto o provedor gerencia virtualização, servidores, armazenamento e rede. Amazon EC2 é exemplo de IaaS.",
+        "alternative": "Provedor gerencia completamente sistema operacional, aplicações e dados.",
+        "because": "Incorreto: No IaaS, cliente gerencia SO, aplicações e dados. A resposta correta é 'Fornece infraestrutura virtualizada sob demanda'.",
+        "rep": false
+      },
+      {
+        "alternative": "Fornece infraestrutura virtualizada (servidores, storage, rede) sob demanda.",
+        "because": "Correto: IaaS fornece recursos fundamentais de computação onde você gerencia SO, aplicações e dados, enquanto provedor gerencia virtualização e hardware.",
         "rep": true
       },
       {
-        "alternative": "O provedor gerencia completamente SO, aplicações e dados do cliente.",
-        "because": "Incorreto: No IaaS, o cliente gerencia SO, aplicações e dados. A resposta correta é 'Fornece infraestrutura virtualizada', onde você tem responsabilidade sobre as camadas superiores.",
+        "alternative": "Disponibiliza aplicações completas prontas sem gerenciamento técnico.",
+        "because": "Incorreto: Isso descreve SaaS. A resposta correta é 'Fornece infraestrutura virtualizada', pois IaaS requer que você gerencie SO e aplicações.",
         "rep": false
       }
     ]
@@ -152,23 +152,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Garantir que recursos nunca falhem ou tenham downtime.",
-        "because": "Incorreto: Isso descreve alta disponibilidade ou confiabilidade. A resposta correta é 'Reduzir tempo de provisionamento', pois agilidade trata de velocidade de acesso a recursos, não de disponibilidade.",
+        "alternative": "Executar aplicações sempre da região geograficamente mais próxima.",
+        "because": "Incorreto: Isso descreve alcance global ou latência. A resposta correta é 'Reduzir tempo de provisionamento para minutos'.",
         "rep": false
       },
       {
-        "alternative": "Pagar apenas pelos recursos que você realmente utiliza.",
-        "because": "Incorreto: Isso descreve o modelo pay-as-you-go ou benefício econômico. A resposta correta é 'Reduzir tempo de provisionamento', pois agilidade é sobre rapidez no acesso a tecnologia.",
+        "alternative": "Garantir disponibilidade contínua sem nenhum período de downtime.",
+        "because": "Incorreto: Isso descreve alta disponibilidade. A resposta correta é 'Reduzir tempo de provisionamento de semanas para minutos'.",
         "rep": false
       },
       {
         "alternative": "Reduzir tempo de provisionamento de recursos de semanas para minutos.",
-        "because": "Correto: Agilidade na nuvem significa acesso rápido a recursos de TI sob demanda. O que antes levava semanas (comprar, instalar hardware) agora leva minutos (lançar instância EC2), acelerando experimentação e inovação.",
+        "because": "Correto: Agilidade significa acesso rápido a recursos de TI sob demanda. O que levava semanas agora leva minutos, acelerando experimentação e inovação.",
         "rep": true
       },
       {
-        "alternative": "Executar aplicações sempre na região mais próxima do usuário final.",
-        "because": "Incorreto: Isso descreve alcance global ou latência reduzida. A resposta correta é 'Reduzir tempo de provisionamento para minutos', pois agilidade refere-se à velocidade de obter recursos.",
+        "alternative": "Modelo de cobrança onde você paga apenas pelo que realmente utiliza.",
+        "because": "Incorreto: Isso descreve pay-as-you-go. A resposta correta é 'Reduzir tempo de provisionamento', pois agilidade é sobre velocidade de acesso.",
         "rep": false
       }
     ]
@@ -181,23 +181,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Obrigatoriedade de usar todas as regiões AWS para cada aplicação.",
-        "because": "Incorreto: Você escolhe quais regiões usar baseado em necessidades. A resposta correta é 'Capacidade de implantar em múltiplas regiões', pois é uma opção, não obrigação.",
+        "alternative": "AWS replica automaticamente todos dados em todas regiões disponíveis.",
+        "because": "Incorreto: Replicação entre regiões deve ser configurada explicitamente. A resposta correta é 'Capacidade de implantar em múltiplas regiões'.",
         "rep": false
       },
       {
-        "alternative": "Capacidade de implantar aplicações em múltiplas regiões geográficas ao redor do mundo.",
-        "because": "Correto: AWS possui infraestrutura global com regiões em todos os continentes, permitindo implantar aplicações próximas aos usuários finais, reduzindo latência e atendendo requisitos de residência de dados em minutos.",
+        "alternative": "Capacidade de implantar aplicações em múltiplas regiões geográficas.",
+        "because": "Correto: AWS possui infraestrutura global com regiões em todos continentes, permitindo implantar próximo aos usuários finais, reduzindo latência e atendendo requisitos de residência.",
         "rep": true
       },
       {
-        "alternative": "AWS replica automaticamente todos os dados em todas as regiões.",
-        "because": "Incorreto: Replicação entre regiões deve ser configurada explicitamente. A resposta correta é 'Capacidade de implantar em múltiplas regiões', que é o conceito de alcance global.",
+        "alternative": "Requisito obrigatório de usar todas regiões para cada aplicação implantada.",
+        "because": "Incorreto: Você escolhe quais regiões usar baseado em necessidades. A resposta correta é 'Capacidade de implantar em múltiplas regiões'.",
         "rep": false
       },
       {
-        "alternative": "Todos os serviços AWS estão disponíveis em todas as regiões igualmente.",
-        "because": "Incorreto: Alguns serviços têm disponibilidade regional limitada. A resposta correta é 'Implantar aplicações em múltiplas regiões', pois alcance global refere-se à presença geográfica da AWS.",
+        "alternative": "Garantia de que todos serviços estão disponíveis em todas regiões.",
+        "because": "Incorreto: Alguns serviços têm disponibilidade regional limitada. A resposta correta é 'Implantar aplicações em múltiplas regiões globalmente'.",
         "rep": false
       }
     ]
@@ -210,23 +210,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Cliente é responsável pela segurança física dos datacenters AWS.",
-        "because": "Incorreto: Segurança física é responsabilidade da AWS. A resposta correta é 'AWS pela segurança DA nuvem; cliente NA nuvem', onde segurança física está incluída na responsabilidade da AWS.",
+        "alternative": "Cliente responsável pela segurança física dos datacenters AWS.",
+        "because": "Incorreto: Segurança física é responsabilidade da AWS. A resposta correta é 'AWS pela segurança DA nuvem; cliente NA nuvem'.",
         "rep": false
       },
       {
-        "alternative": "AWS é responsável pela segurança 'da' nuvem; cliente pela segurança 'na' nuvem.",
-        "because": "Correto: AWS gerencia segurança da infraestrutura física, rede e virtualização (segurança DA nuvem). Cliente gerencia dados, aplicações, configurações, IAM e criptografia (segurança NA nuvem). A responsabilidade varia conforme o serviço (IaaS vs PaaS vs SaaS).",
+        "alternative": "AWS pela segurança 'da' nuvem; cliente pela segurança 'na' nuvem.",
+        "because": "Correto: AWS gerencia segurança da infraestrutura física, rede e virtualização. Cliente gerencia dados, aplicações, configurações, IAM e criptografia do conteúdo.",
         "rep": true
       },
       {
-        "alternative": "AWS é responsável por toda a segurança, incluindo dados do cliente.",
-        "because": "Incorreto: Cliente sempre é responsável pelos próprios dados. A resposta correta é 'AWS pela segurança DA nuvem; cliente NA nuvem', pois há divisão clara de responsabilidades.",
+        "alternative": "Modelo onde ambas partes podem ignorar determinados aspectos de segurança.",
+        "because": "Incorreto: Modelo define responsabilidades claras. A resposta correta é 'AWS pela segurança DA nuvem; cliente NA nuvem'.",
         "rep": false
       },
       {
-        "alternative": "Modelo onde ambas as partes podem ignorar aspectos de segurança.",
-        "because": "Incorreto: Modelo define responsabilidades claras que ambos devem cumprir. A resposta correta é 'AWS pela segurança DA nuvem; cliente NA nuvem', estabelecendo obrigações específicas para cada parte.",
+        "alternative": "AWS responsável por toda segurança incluindo dados e aplicações do cliente.",
+        "because": "Incorreto: Cliente sempre é responsável pelos próprios dados. A resposta correta é 'AWS pela segurança DA nuvem; cliente NA nuvem'.",
         "rep": false
       }
     ]
@@ -239,23 +239,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Para aplicações legadas que não podem ser modificadas.",
-        "because": "Incorreto: Aplicações legadas geralmente requerem VMs tradicionais. A resposta correta é 'Executar código orientado a eventos', pois serverless requer arquitetura específica event-driven.",
-        "rep": false
-      },
-      {
-        "alternative": "Quando você precisa de controle total sobre sistema operacional e configurações de rede.",
-        "because": "Incorreto: Serverless abstrai infraestrutura e SO. A resposta correta é 'Executar código orientado a eventos sem gerenciar servidores', pois serverless elimina acesso direto à infraestrutura.",
-        "rep": false
-      },
-      {
         "alternative": "Para executar código orientado a eventos sem gerenciar servidores.",
-        "because": "Correto: Serverless (como AWS Lambda) é ideal para código que responde a eventos (uploads S3, requisições API, mensagens), execuções curtas e intermitentes, onde você não quer gerenciar infraestrutura e paga apenas pelo tempo de execução.",
+        "because": "Correto: Serverless (como Lambda) é ideal para código que responde a eventos, execuções curtas e intermitentes, onde você não quer gerenciar infraestrutura e paga apenas por execução.",
         "rep": true
       },
       {
-        "alternative": "Para aplicações que precisam executar continuamente 24/7 com requisitos específicos de hardware.",
-        "because": "Incorreto: Para workloads contínuos, EC2 pode ser mais econômico. A resposta correta é 'Executar código orientado a eventos', pois serverless é otimizado para cargas intermitentes e event-driven.",
+        "alternative": "Para aplicações legadas monolíticas que não podem ser refatoradas.",
+        "because": "Incorreto: Aplicações legadas geralmente requerem VMs tradicionais. A resposta correta é 'Executar código orientado a eventos sem gerenciar servidores'.",
+        "rep": false
+      },
+      {
+        "alternative": "Quando aplicação precisa executar 24/7 com requisitos de hardware específico.",
+        "because": "Incorreto: Para workloads contínuos, EC2 pode ser mais econômico. A resposta correta é 'Executar código orientado a eventos sem gerenciar servidores'.",
+        "rep": false
+      },
+      {
+        "alternative": "Quando precisa de controle total sobre sistema operacional e configurações de rede.",
+        "because": "Incorreto: Serverless abstrai infraestrutura e SO. A resposta correta é 'Executar código orientado a eventos sem gerenciar servidores'.",
         "rep": false
       }
     ]
@@ -268,24 +268,24 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Locais físicos acessíveis apenas para clientes Enterprise.",
-        "because": "Incorreto: Edge locations são usadas automaticamente por CloudFront para todos. A resposta correta é 'Locais que armazenam cache próximo aos usuários', disponíveis para qualquer cliente usando CDN.",
+        "alternative": "Termo sinônimo para Regiões AWS onde clientes lançam instâncias EC2.",
+        "because": "Incorreto: Edge locations são separadas de Regiões e não hospedam EC2. A resposta correta é 'Locais que armazenam cache próximo aos usuários'.",
         "rep": false
       },
       {
-        "alternative": "Sinônimo de Regiões AWS onde você pode lançar instâncias EC2.",
-        "because": "Incorreto: Edge locations são separadas de Regiões e não hospedam EC2. A resposta correta é 'Locais que armazenam cache próximo aos usuários', pois edge locations são específicas para CDN e cache.",
+        "alternative": "Datacenters especializados destinados ao armazenamento de backups de longo prazo.",
+        "because": "Incorreto: Backups são armazenados em Regiões (S3, Glacier). A resposta correta é 'Locais que armazenam cache de conteúdo próximo aos usuários'.",
         "rep": false
       },
       {
-        "alternative": "Datacenters onde você pode armazenar backups de longo prazo.",
-        "because": "Incorreto: Backups são armazenados em Regiões (S3, Glacier). A resposta correta é 'Locais que armazenam cache de conteúdo', pois edge locations são para distribuição rápida, não armazenamento durável.",
-        "rep": false
-      },
-      {
-        "alternative": "Locais que armazenam cópias em cache de conteúdo mais próximo aos usuários finais.",
-        "because": "Correto: Edge locations fazem parte da rede de entrega de conteúdo (CDN) do Amazon CloudFront. São datacenters que armazenam cache de conteúdo popular próximo aos usuários, reduzindo latência. Há mais edge locations que Regiões AWS.",
+        "alternative": "Locais que armazenam cache de conteúdo mais próximo aos usuários finais.",
+        "because": "Correto: Edge locations fazem parte da CDN do CloudFront. São datacenters que armazenam cache de conteúdo popular próximo aos usuários, reduzindo latência.",
         "rep": true
+      },
+      {
+        "alternative": "Locais físicos acessíveis exclusivamente para clientes plano Enterprise Support.",
+        "because": "Incorreto: Edge locations são usadas automaticamente por CloudFront para todos. A resposta correta é 'Locais que armazenam cache próximo aos usuários'.",
+        "rep": false
       }
     ]
   },
@@ -297,23 +297,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Princípio de acesso total por padrão.",
-        "because": "Incorreto: Acesso total por padrão viola princípios de segurança. A resposta correta é 'Princípio do menor privilégio', que limita acesso ao mínimo necessário para reduzir riscos.",
+        "alternative": "Princípio de compartilhamento colaborativo de credenciais entre equipes técnicas.",
+        "because": "Incorreto: Compartilhar credenciais é má prática de segurança. A resposta correta é 'Princípio do menor privilégio (Least Privilege)'.",
         "rep": false
       },
       {
         "alternative": "Princípio do menor privilégio (Least Privilege).",
-        "because": "Correto: O princípio do menor privilégio significa conceder aos usuários e serviços apenas as permissões mínimas necessárias para executar suas tarefas. Isso reduz o risco de ações acidentais ou maliciosas e limita o impacto de credenciais comprometidas.",
+        "because": "Correto: O princípio do menor privilégio significa conceder aos usuários apenas permissões mínimas necessárias, reduzindo risco de ações acidentais ou maliciosas.",
         "rep": true
       },
       {
-        "alternative": "Princípio de compartilhamento de credenciais entre equipes.",
-        "because": "Incorreto: Compartilhar credenciais é má prática de segurança. A resposta correta é 'Princípio do menor privilégio', que enfatiza permissões mínimas individuais, não compartilhamento.",
+        "alternative": "Princípio de conceder acesso administrativo completo por padrão para facilitar.",
+        "because": "Incorreto: Acesso total por padrão viola princípios de segurança. A resposta correta é 'Princípio do menor privilégio (Least Privilege)'.",
         "rep": false
       },
       {
-        "alternative": "Princípio de ignorar auditoria para facilitar operações.",
-        "because": "Incorreto: Auditoria é essencial para segurança. A resposta correta é 'Princípio do menor privilégio', que trata de limitar permissões, não de eliminar controles de auditoria.",
+        "alternative": "Princípio de minimizar processos de auditoria e logging para agilizar o desenvolvimento.",
+        "because": "Incorreto: Auditoria é essencial para segurança. A resposta correta é 'Princípio do menor privilégio', que trata de limitar permissões.",
         "rep": false
       }
     ]
@@ -326,24 +326,24 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Sistema de monitoramento de performance de aplicações.",
-        "because": "Incorreto: Monitoramento é função do CloudWatch. A resposta correta é 'Gerenciar usuários e controlar acesso', pois IAM foca em autenticação e autorização.",
+        "alternative": "Ferramenta especializada para criação de relatórios detalhados de custos e billing.",
+        "because": "Incorreto: Relatórios de custo são do Cost Explorer. A resposta correta é 'Serviço para gerenciar usuários e controlar acesso aos recursos AWS'.",
         "rep": false
       },
       {
-        "alternative": "Serviço para armazenar backups criptografados de dados.",
-        "because": "Incorreto: Backup é função de S3/Glacier com criptografia. A resposta correta é 'Gerenciar usuários e controlar acesso', pois IAM trata de identidade e permissões, não armazenamento.",
-        "rep": false
-      },
-      {
-        "alternative": "Ferramenta de criação de relatórios de custos e billing.",
-        "because": "Incorreto: Relatórios de custo são do Cost Explorer. A resposta correta é 'Gerenciar usuários e controlar acesso', pois IAM gerencia identidades e permissões.",
+        "alternative": "Sistema de monitoramento em tempo real de performance e disponibilidade de aplicações.",
+        "because": "Incorreto: Monitoramento é função do CloudWatch. A resposta correta é 'Serviço para gerenciar usuários e controlar acesso aos recursos AWS'.",
         "rep": false
       },
       {
         "alternative": "Serviço para gerenciar usuários e controlar acesso aos recursos AWS de forma segura.",
-        "because": "Correto: IAM permite criar e gerenciar usuários, grupos, roles e policies para controlar quem pode acessar quais recursos AWS. É fundamental para implementar princípio do menor privilégio e autenticação/autorização. IAM é um serviço global e gratuito.",
+        "because": "Correto: IAM permite criar e gerenciar usuários, grupos, roles e policies para controlar quem acessa quais recursos. É fundamental para segurança e é gratuito.",
         "rep": true
+      },
+      {
+        "alternative": "Serviço dedicado ao armazenamento de backups criptografados e arquivos de dados sensíveis.",
+        "because": "Incorreto: Backup é função de S3/Glacier com criptografia. A resposta correta é 'Serviço para gerenciar usuários e controlar acesso aos recursos AWS'.",
+        "rep": false
       }
     ]
   },
@@ -355,23 +355,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Permite que múltiplos usuários compartilhem a mesma conta com segurança.",
-        "because": "Incorreto: Compartilhar contas é má prática mesmo com MFA. A resposta correta é 'Adiciona camada extra de proteção', pois MFA protege contas individuais, não autoriza compartilhamento.",
-        "rep": false
-      },
-      {
-        "alternative": "Adiciona camada extra de proteção exigindo senha e token/código adicional.",
-        "because": "Correto: MFA protege contra acesso não autorizado mesmo se a senha for comprometida, exigindo segundo fator (token físico, app autenticador ou SMS). É especialmente importante para usuário root e usuários com privilégios administrativos.",
+        "alternative": "Adiciona camada extra de proteção exigindo senha e código de segundo fator adicional.",
+        "because": "Correto: MFA protege contra acesso não autorizado mesmo se senha for comprometida, exigindo segundo fator. É especialmente importante para root e usuários administrativos.",
         "rep": true
       },
       {
-        "alternative": "Elimina necessidade de políticas de IAM e permissões.",
-        "because": "Incorreto: MFA trata de autenticação; políticas IAM tratam de autorização. A resposta correta é 'Adiciona camada extra de proteção', pois MFA é controle de autenticação adicional.",
+        "alternative": "Elimina completamente necessidade de implementar políticas IAM e permissões granulares.",
+        "because": "Incorreto: MFA trata de autenticação; políticas IAM tratam de autorização. A resposta correta é 'Adiciona camada extra de proteção exigindo senha e segundo fator'.",
         "rep": false
       },
       {
-        "alternative": "Substitui completamente a necessidade de usar senhas fortes.",
-        "because": "Incorreto: MFA complementa senhas fortes, não as substitui. A resposta correta é 'Adiciona camada extra de proteção', pois MFA funciona em conjunto com senha, formando autenticação de dois fatores.",
+        "alternative": "Permite de forma segura que múltiplos usuários compartilhem credenciais da mesma conta.",
+        "because": "Incorreto: Compartilhar contas é má prática mesmo com MFA. A resposta correta é 'Adiciona camada extra de proteção exigindo senha e segundo fator'.",
+        "rep": false
+      },
+      {
+        "alternative": "Substitui completamente a necessidade de criar e utilizar senhas fortes e complexas.",
+        "because": "Incorreto: MFA complementa senhas fortes, não as substitui. A resposta correta é 'Adiciona camada extra de proteção exigindo senha e segundo fator'.",
         "rep": false
       }
     ]
@@ -384,23 +384,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Amazon VPC.",
-        "because": "Incorreto: VPC fornece isolamento de rede, mas não proteção de aplicação web. A resposta correta é 'AWS WAF', que opera na camada 7 (aplicação) especificamente para proteger contra ataques web.",
+        "alternative": "Amazon S3 com políticas de bucket configuradas.",
+        "because": "Incorreto: S3 é serviço de armazenamento de objetos. A resposta correta é 'AWS WAF (Web Application Firewall)'.",
+        "rep": false
+      },
+      {
+        "alternative": "AWS IAM com policies restritivas.",
+        "because": "Incorreto: IAM gerencia identidades e acessos, não filtra tráfego web. A resposta correta é 'AWS WAF (Web Application Firewall)'.",
         "rep": false
       },
       {
         "alternative": "AWS WAF (Web Application Firewall).",
-        "because": "Correto: AWS WAF protege aplicações web filtrando tráfego HTTP/HTTPS malicioso. Permite criar regras para bloquear padrões de ataque comuns como SQL injection, cross-site scripting (XSS) e pode integrar com CloudFront, ALB e API Gateway.",
+        "because": "Correto: AWS WAF protege aplicações web filtrando tráfego HTTP/HTTPS malicioso. Permite criar regras contra SQL injection, XSS e integra com CloudFront e ALB.",
         "rep": true
       },
       {
-        "alternative": "Amazon S3.",
-        "because": "Incorreto: S3 é serviço de armazenamento de objetos. A resposta correta é 'AWS WAF', pois WAF é especificamente projetado para proteger aplicações web contra ataques na camada de aplicação.",
-        "rep": false
-      },
-      {
-        "alternative": "AWS IAM.",
-        "because": "Incorreto: IAM gerencia identidades e acessos, não filtra tráfego web. A resposta correta é 'AWS WAF', que inspeciona requisições HTTP para detectar e bloquear ataques web.",
+        "alternative": "Amazon VPC com Security Groups.",
+        "because": "Incorreto: VPC fornece isolamento de rede, mas não proteção de aplicação web. A resposta correta é 'AWS WAF (Web Application Firewall)'.",
         "rep": false
       }
     ]
@@ -413,24 +413,24 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "AWS Lambda.",
-        "because": "Incorreto: Lambda executa código serverless, não audita configurações. A resposta correta é 'AWS Config', serviço específico para governança e conformidade de configurações.",
-        "rep": false
-      },
-      {
-        "alternative": "Amazon Inspector.",
-        "because": "Incorreto: Inspector avalia vulnerabilidades de segurança em aplicações, não configurações. A resposta correta é 'AWS Config', que fornece inventário de configurações e avaliação de conformidade.",
-        "rep": false
-      },
-      {
-        "alternative": "Amazon CloudWatch.",
-        "because": "Incorreto: CloudWatch monitora performance e métricas, não conformidade de configurações. A resposta correta é 'AWS Config', que rastreia e avalia configurações contra regras de conformidade.",
+        "alternative": "Amazon CloudWatch para métricas.",
+        "because": "Incorreto: CloudWatch monitora performance e métricas, não conformidade de configurações. A resposta correta é 'AWS Config'.",
         "rep": false
       },
       {
         "alternative": "AWS Config.",
-        "because": "Correto: AWS Config avalia, audita e monitora configurações de recursos AWS continuamente. Permite verificar conformidade com padrões internos, rastrear mudanças de configuração ao longo do tempo e receber alertas quando recursos ficam fora de conformidade.",
+        "because": "Correto: AWS Config avalia, audita e monitora configurações de recursos AWS continuamente. Permite verificar conformidade com padrões internos e rastrear mudanças ao longo do tempo.",
         "rep": true
+      },
+      {
+        "alternative": "AWS Lambda com automações.",
+        "because": "Incorreto: Lambda executa código serverless, não audita configurações. A resposta correta é 'AWS Config'.",
+        "rep": false
+      },
+      {
+        "alternative": "Amazon Inspector para vulnerabilidades.",
+        "because": "Incorreto: Inspector avalia vulnerabilidades de segurança em aplicações, não configurações. A resposta correta é 'AWS Config'.",
+        "rep": false
       }
     ]
   },
@@ -442,23 +442,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Criptografar dados armazenados em discos, databases ou outros sistemas de armazenamento.",
-        "because": "Correto: Criptografia em repouso protege dados quando armazenados (não sendo transmitidos), como em volumes EBS, buckets S3, bancos RDS. Impede acesso não autorizado mesmo se alguém obtiver acesso físico aos discos.",
+        "alternative": "Criptografar dados armazenados em discos, databases ou sistemas de armazenamento persistente.",
+        "because": "Correto: Criptografia em repouso protege dados quando armazenados (não transmitidos), como em volumes EBS, buckets S3, bancos RDS. Impede acesso não autorizado aos discos.",
         "rep": true
       },
       {
-        "alternative": "Criptografar apenas metadados, não o conteúdo real.",
-        "because": "Incorreto: Criptografia em repouso protege o conteúdo completo. A resposta correta é 'Criptografar dados armazenados', incluindo todo o conteúdo, não apenas metadados.",
+        "alternative": "Criptografar dados durante processo de transmissão e transferência pela rede entre sistemas.",
+        "because": "Incorreto: Isso é criptografia em trânsito (in transit). A resposta correta é 'Criptografar dados armazenados em discos, databases ou sistemas de armazenamento'.",
         "rep": false
       },
       {
-        "alternative": "Criptografar dados durante transmissão pela rede.",
-        "because": "Incorreto: Isso é criptografia em trânsito (in transit). A resposta correta é 'Criptografar dados armazenados', pois 'em repouso' refere-se a dados não em movimento.",
+        "alternative": "Substituir e eliminar necessidade de controles de acesso baseados em permissões IAM.",
+        "because": "Incorreto: Criptografia complementa controles de acesso, não os substitui. A resposta correta é 'Criptografar dados armazenados em discos ou databases'.",
         "rep": false
       },
       {
-        "alternative": "Substituir controles de acesso e permissões IAM.",
-        "because": "Incorreto: Criptografia complementa controles de acesso, não os substitui. A resposta correta é 'Criptografar dados armazenados', sendo uma camada adicional de segurança.",
+        "alternative": "Criptografar exclusivamente metadados de arquivos mantendo conteúdo real em texto plano.",
+        "because": "Incorreto: Criptografia em repouso protege o conteúdo completo. A resposta correta é 'Criptografar dados armazenados em discos, databases ou sistemas de armazenamento'.",
         "rep": false
       }
     ]
@@ -471,23 +471,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "AWS Systems Manager.",
-        "because": "Incorreto: Systems Manager gerencia e automatiza tarefas operacionais. A resposta correta é 'AWS Artifact', serviço específico para documentos de conformidade.",
+        "alternative": "AWS CloudTrail para logs.",
+        "because": "Incorreto: CloudTrail registra chamadas de API, não fornece relatórios de conformidade. A resposta correta é 'AWS Artifact'.",
         "rep": false
       },
       {
-        "alternative": "AWS CloudTrail.",
-        "because": "Incorreto: CloudTrail registra chamadas de API, não fornece relatórios de conformidade. A resposta correta é 'AWS Artifact', repositório central de documentos de conformidade e certificações.",
+        "alternative": "Amazon Inspector para avaliações.",
+        "because": "Incorreto: Inspector avalia vulnerabilidades de aplicações. A resposta correta é 'AWS Artifact'.",
         "rep": false
       },
       {
         "alternative": "AWS Artifact.",
-        "because": "Correto: AWS Artifact é portal de autoatendimento para acessar relatórios de conformidade e certificações da AWS (SOC 1/2/3, PCI DSS, ISO 27001, etc.) e acordos como BAA. Disponível sob demanda sem custo adicional.",
+        "because": "Correto: AWS Artifact é portal de autoatendimento para acessar relatórios de conformidade e certificações da AWS (SOC, PCI DSS, ISO) e acordos como BAA sob demanda sem custo.",
         "rep": true
       },
       {
-        "alternative": "Amazon Inspector.",
-        "because": "Incorreto: Inspector avalia vulnerabilidades de aplicações. A resposta correta é 'AWS Artifact', que fornece acesso a relatórios de auditoria e certificações da AWS.",
+        "alternative": "AWS Systems Manager para governança.",
+        "because": "Incorreto: Systems Manager gerencia e automatiza tarefas operacionais. A resposta correta é 'AWS Artifact'.",
         "rep": false
       }
     ]
@@ -500,23 +500,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Distribuir conteúdo globalmente via CDN.",
-        "because": "Incorreto: CDN é função do CloudFront. A resposta correta é 'Registrar ações de API', pois CloudTrail cria trilha de auditoria de atividades na conta.",
-        "rep": false
-      },
-      {
-        "alternative": "Executar backups automáticos de instâncias EC2.",
-        "because": "Incorreto: Backups são feitos com snapshots EBS ou AWS Backup. A resposta correta é 'Registrar ações de API', pois CloudTrail é para auditoria e governança, não backup.",
-        "rep": false
-      },
-      {
-        "alternative": "Registrar e monitorar todas as ações de API realizadas na conta AWS.",
-        "because": "Correto: CloudTrail fornece histórico de eventos da conta AWS, registrando quem fez o quê, quando e de onde. Essencial para auditoria de segurança, análise de conformidade, troubleshooting operacional e análise forense de incidentes.",
+        "alternative": "Registrar e monitorar todas ações de API realizadas na conta AWS para auditoria e conformidade.",
+        "because": "Correto: CloudTrail fornece histórico de eventos da conta AWS, registrando quem fez o quê, quando e de onde. Essencial para auditoria de segurança e análise forense.",
         "rep": true
       },
       {
-        "alternative": "Bloquear automaticamente usuários suspeitos.",
-        "because": "Incorreto: CloudTrail registra eventos, não bloqueia acesso. A resposta correta é 'Registrar ações de API', sendo ferramenta de logging e auditoria, não de prevenção.",
+        "alternative": "Distribuir conteúdo de aplicações globalmente através de rede de CDN.",
+        "because": "Incorreto: CDN é função do CloudFront. A resposta correta é 'Registrar e monitorar todas ações de API realizadas na conta AWS'.",
+        "rep": false
+      },
+      {
+        "alternative": "Bloquear automaticamente usuários com comportamento suspeito ou malicioso identificado.",
+        "because": "Incorreto: CloudTrail registra eventos, não bloqueia acesso. A resposta correta é 'Registrar e monitorar todas ações de API realizadas na conta AWS'.",
+        "rep": false
+      },
+      {
+        "alternative": "Executar backups automáticos programados de instâncias EC2 e volumes EBS.",
+        "because": "Incorreto: Backups são feitos com snapshots EBS ou AWS Backup. A resposta correta é 'Registrar e monitorar todas ações de API realizadas na conta AWS'.",
         "rep": false
       }
     ]
@@ -529,23 +529,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Usar a conta root para tarefas diárias de administração.",
-        "because": "Incorreto: Deve-se evitar usar conta root rotineiramente. A resposta correta é 'Habilitar MFA na conta root', pois conta root deve ser usada raramente e protegida com MFA.",
+        "alternative": "Criar usuários IAM com privilégios apropriados para tarefas administrativas rotineiras.",
+        "because": "Correto: Em vez de usar conta root, crie usuários IAM com permissões necessárias para tarefas diárias, mantendo a conta root para uso extremamente limitado.",
+        "rep": true
+      },
+      {
+        "alternative": "Utilizar a conta root exclusivamente para todas as tarefas diárias de administração do ambiente.",
+        "because": "Incorreto: Deve-se evitar usar conta root rotineiramente. A resposta correta é 'Habilitar MFA na conta root' e 'Criar usuários IAM com privilégios apropriados'.",
         "rep": false
       },
       {
-        "alternative": "Habilitar MFA (autenticação multifator) na conta root.",
-        "because": "Correto: MFA na conta root adiciona camada crítica de segurança. Como a conta root tem acesso irrestrito a todos os recursos, protegê-la com MFA é uma das melhores práticas mais importantes da AWS.",
+        "alternative": "Habilitar MFA (autenticação multifator) na conta root para adicionar camada extra de segurança.",
+        "because": "Correto: MFA na conta root adiciona camada crítica de segurança. Como root tem acesso irrestrito, protegê-la com MFA é uma das melhores práticas mais importantes.",
         "rep": true
       },
       {
-        "alternative": "Criar usuários IAM com privilégios apropriados para tarefas administrativas.",
-        "because": "Correto: Em vez de usar conta root, crie usuários IAM com permissões necessárias para tarefas administrativas diárias, mantendo a conta root para uso extremamente limitado (mudança de plano de suporte, fechamento de conta).",
-        "rep": true
-      },
-      {
-        "alternative": "Compartilhar credenciais da conta root com toda a equipe.",
-        "because": "Incorreto: Nunca compartilhe credenciais root. A resposta correta é 'Habilitar MFA na conta root' e criar usuários IAM individuais para a equipe.",
+        "alternative": "Compartilhar credenciais da conta root com todos os membros da equipe técnica.",
+        "because": "Incorreto: Nunca compartilhe credenciais root. A resposta correta é 'Habilitar MFA na conta root' e 'Criar usuários IAM individuais para equipe'.",
         "rep": false
       }
     ]
@@ -558,23 +558,23 @@
     "level_of_complexity": 2,
     "response": [
       {
+        "alternative": "Sistema de detecção de intrusão para análise de tráfego em instâncias EC2.",
+        "because": "Incorreto: Detecção de intrusão em instâncias seria GuardDuty ou Inspector. A resposta correta é 'Serviço de proteção gerenciada contra ataques DDoS'.",
+        "rep": false
+      },
+      {
         "alternative": "Serviço de proteção gerenciada contra ataques DDoS (Distributed Denial of Service).",
-        "because": "Correto: AWS Shield protege aplicações contra ataques DDoS. Shield Standard é gratuito e automático para todos os clientes. Shield Advanced oferece proteção adicional, detecção avançada e equipe de resposta a DDoS 24/7.",
+        "because": "Correto: AWS Shield protege aplicações contra ataques DDoS. Shield Standard é gratuito e automático. Shield Advanced oferece proteção adicional e resposta 24/7.",
         "rep": true
       },
       {
-        "alternative": "Sistema de detecção de intrusão em instâncias EC2.",
-        "because": "Incorreto: Detecção de intrusão em instâncias seria GuardDuty ou Inspector. A resposta correta é 'Proteção contra DDoS', pois Shield opera na camada de rede/transporte.",
+        "alternative": "Firewall de aplicação web especializado em bloquear ataques de SQL injection e XSS.",
+        "because": "Incorreto: Isso é função do AWS WAF. A resposta correta é 'Serviço de proteção gerenciada contra ataques DDoS (Distributed Denial of Service)'.",
         "rep": false
       },
       {
-        "alternative": "Serviço de backup e recuperação de desastres.",
-        "because": "Incorreto: Backup é função de S3/Glacier e AWS Backup. A resposta correta é 'Proteção contra DDoS', pois Shield protege disponibilidade contra ataques volumétricos.",
-        "rep": false
-      },
-      {
-        "alternative": "Firewall de aplicação web para bloquear SQL injection.",
-        "because": "Incorreto: Isso é função do AWS WAF. A resposta correta é 'Proteção contra ataques DDoS', pois Shield foca especificamente em mitigar ataques de negação de serviço distribuídos.",
+        "alternative": "Serviço de backup automatizado e recuperação de desastres para continuidade de negócios.",
+        "because": "Incorreto: Backup é função de S3/Glacier e AWS Backup. A resposta correta é 'Serviço de proteção gerenciada contra ataques DDoS'.",
         "rep": false
       }
     ]
@@ -587,23 +587,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "AWS Lambda.",
-        "because": "Incorreto: Lambda é serverless, você não gerencia VMs. A resposta correta é 'Amazon EC2', que fornece máquinas virtuais onde você tem controle sobre SO e configurações.",
+        "alternative": "Amazon S3 para armazenamento.",
+        "because": "Incorreto: S3 é para armazenamento de objetos, não execução de VMs. A resposta correta é 'Amazon EC2 (Elastic Compute Cloud)'.",
         "rep": false
       },
       {
-        "alternative": "Amazon RDS.",
-        "because": "Incorreto: RDS é serviço gerenciado de banco de dados. A resposta correta é 'Amazon EC2', serviço específico para provisionamento de máquinas virtuais.",
+        "alternative": "AWS Lambda para funções.",
+        "because": "Incorreto: Lambda é serverless, você não gerencia VMs. A resposta correta é 'Amazon EC2 (Elastic Compute Cloud)'.",
         "rep": false
       },
       {
         "alternative": "Amazon EC2 (Elastic Compute Cloud).",
-        "because": "Correto: EC2 fornece capacidade de computação redimensionável através de servidores virtuais (instâncias) na nuvem. Você escolhe tipo de instância, sistema operacional, armazenamento e configurações de rede, tendo controle total sobre a VM.",
+        "because": "Correto: EC2 fornece capacidade de computação redimensionável através de servidores virtuais. Você escolhe tipo de instância, SO, armazenamento e rede, tendo controle total sobre VM.",
         "rep": true
       },
       {
-        "alternative": "Amazon S3.",
-        "because": "Incorreto: S3 é para armazenamento de objetos, não execução de VMs. A resposta correta é 'Amazon EC2', pois EC2 é o serviço de computação virtualizada da AWS.",
+        "alternative": "Amazon RDS para databases.",
+        "because": "Incorreto: RDS é serviço gerenciado de banco de dados. A resposta correta é 'Amazon EC2 (Elastic Compute Cloud)'.",
         "rep": false
       }
     ]
@@ -616,24 +616,24 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Amazon RDS.",
-        "because": "Incorreto: RDS é para bancos de dados relacionais, não arquivos estáticos. A resposta correta é 'Amazon S3', serviço de object storage ideal para conteúdo estático.",
-        "rep": false
-      },
-      {
-        "alternative": "AWS Lambda.",
-        "because": "Incorreto: Lambda executa código, não armazena arquivos estáticos. A resposta correta é 'Amazon S3', que fornece armazenamento durável e escalável para objetos.",
-        "rep": false
-      },
-      {
-        "alternative": "Amazon EC2.",
-        "because": "Incorreto: EC2 pode servir arquivos, mas S3 é mais econômico e apropriado para estáticos. A resposta correta é 'Amazon S3', otimizado para armazenamento e entrega de objetos/arquivos.",
+        "alternative": "Amazon EC2 com servidor web.",
+        "because": "Incorreto: EC2 pode servir arquivos, mas S3 é mais econômico e apropriado. A resposta correta é 'Amazon S3'.",
         "rep": false
       },
       {
         "alternative": "Amazon S3.",
-        "because": "Correto: S3 é ideal para hospedar arquivos estáticos (HTML, CSS, JavaScript, imagens) com alta durabilidade (99.999999999%), disponibilidade e custo-benefício. S3 pode hospedar websites estáticos completos e integra com CloudFront para distribuição global.",
+        "because": "Correto: S3 é ideal para hospedar arquivos estáticos (HTML, CSS, JavaScript, imagens) com alta durabilidade, disponibilidade e custo-benefício. Pode hospedar websites estáticos completos.",
         "rep": true
+      },
+      {
+        "alternative": "AWS Lambda para processamento.",
+        "because": "Incorreto: Lambda executa código, não armazena arquivos estáticos. A resposta correta é 'Amazon S3'.",
+        "rep": false
+      },
+      {
+        "alternative": "Amazon RDS para dados.",
+        "because": "Incorreto: RDS é para bancos de dados relacionais, não arquivos estáticos. A resposta correta é 'Amazon S3'.",
+        "rep": false
       }
     ]
   },
@@ -645,23 +645,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Amazon DynamoDB.",
-        "because": "Incorreto: DynamoDB é banco NoSQL, não relacional. A resposta correta é 'Amazon RDS', que oferece engines de banco de dados relacionais gerenciados.",
-        "rep": false
-      },
-      {
-        "alternative": "Amazon Redshift.",
-        "because": "Incorreto: Redshift é data warehouse para analytics, não DB transacional. A resposta correta é 'Amazon RDS', para cargas transacionais OLTP relacionais.",
+        "alternative": "Amazon S3 para objetos.",
+        "because": "Incorreto: S3 é armazenamento de objetos, não banco de dados. A resposta correta é 'Amazon RDS (Relational Database Service)'.",
         "rep": false
       },
       {
         "alternative": "Amazon RDS (Relational Database Service).",
-        "because": "Correto: RDS facilita configurar, operar e escalar bancos de dados relacionais na nuvem (MySQL, PostgreSQL, Oracle, SQL Server, MariaDB, Aurora). AWS gerencia backups, patching, replicação e recuperação automaticamente.",
+        "because": "Correto: RDS facilita configurar, operar e escalar bancos relacionais (MySQL, PostgreSQL, Oracle, SQL Server, MariaDB, Aurora). AWS gerencia backups, patching e replicação automaticamente.",
         "rep": true
       },
       {
-        "alternative": "Amazon S3.",
-        "because": "Incorreto: S3 é armazenamento de objetos, não banco de dados. A resposta correta é 'Amazon RDS', serviço específico para bancos relacionais.",
+        "alternative": "Amazon Redshift para analytics.",
+        "because": "Incorreto: Redshift é data warehouse para analytics, não DB transacional. A resposta correta é 'Amazon RDS (Relational Database Service)'.",
+        "rep": false
+      },
+      {
+        "alternative": "Amazon DynamoDB para NoSQL.",
+        "because": "Incorreto: DynamoDB é banco NoSQL, não relacional. A resposta correta é 'Amazon RDS (Relational Database Service)'.",
         "rep": false
       }
     ]
@@ -674,23 +674,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Criar redes virtuais privadas isoladas.",
-        "because": "Incorreto: Isso é função do VPC. A resposta correta é 'Executar código sem gerenciar servidores', que é o propósito fundamental do Lambda.",
+        "alternative": "Gerenciar políticas de permissões e acesso.",
+        "because": "Incorreto: Isso é função do IAM. A resposta correta é 'Executar código sem provisionar ou gerenciar servidores'.",
+        "rep": false
+      },
+      {
+        "alternative": "Executar código sob demanda sem provisionar ou gerenciar servidores.",
+        "because": "Correto: Lambda é serviço serverless que executa código em resposta a eventos (uploads S3, mudanças DynamoDB, requisições HTTP). Você paga apenas pelo tempo de computação consumido.",
+        "rep": true
+      },
+      {
+        "alternative": "Criar redes virtuais isoladas e privadas.",
+        "because": "Incorreto: Isso é função do VPC. A resposta correta é 'Executar código sob demanda sem provisionar ou gerenciar servidores'.",
         "rep": false
       },
       {
         "alternative": "Armazenar grandes volumes de dados estruturados.",
-        "because": "Incorreto: Armazenamento é função de S3 ou databases. A resposta correta é 'Executar código sem gerenciar servidores', pois Lambda é serviço de computação serverless.",
-        "rep": false
-      },
-      {
-        "alternative": "Executar código sem provisionar ou gerenciar servidores.",
-        "because": "Correto: Lambda é serviço de computação serverless que executa código em resposta a eventos (uploads S3, mudanças DynamoDB, requisições HTTP via API Gateway). Você paga apenas pelo tempo de computação consumido, sem gerenciar infraestrutura.",
-        "rep": true
-      },
-      {
-        "alternative": "Gerenciar permissões e políticas de acesso.",
-        "because": "Incorreto: Isso é função do IAM. A resposta correta é 'Executar código sem gerenciar servidores', pois Lambda executa funções orientadas a eventos.",
+        "because": "Incorreto: Armazenamento é função de S3 ou databases. A resposta correta é 'Executar código sob demanda sem provisionar ou gerenciar servidores'.",
         "rep": false
       }
     ]
@@ -703,23 +703,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Amazon S3.",
-        "because": "Incorreto: S3 armazena objetos mas não é CDN otimizado para distribuição global. A resposta correta é 'Amazon CloudFront', que usa edge locations para cache próximo aos usuários.",
-        "rep": false
-      },
-      {
-        "alternative": "AWS Direct Connect.",
-        "because": "Incorreto: Direct Connect é conexão dedicada entre on-premises e AWS. A resposta correta é 'Amazon CloudFront', rede de distribuição de conteúdo global.",
+        "alternative": "Amazon VPC para redes.",
+        "because": "Incorreto: VPC cria redes virtuais, não distribui conteúdo. A resposta correta é 'Amazon CloudFront'.",
         "rep": false
       },
       {
         "alternative": "Amazon CloudFront.",
-        "because": "Correto: CloudFront é serviço de CDN (Content Delivery Network) que distribui conteúdo através de rede global de edge locations, reduzindo latência ao entregar conteúdo do local mais próximo ao usuário. Integra com S3, EC2, ELB e pode acelerar sites dinâmicos e estáticos.",
+        "because": "Correto: CloudFront é serviço de CDN que distribui conteúdo através de rede global de edge locations, reduzindo latência ao entregar do local mais próximo ao usuário.",
         "rep": true
       },
       {
-        "alternative": "Amazon VPC.",
-        "because": "Incorreto: VPC cria redes virtuais, não distribui conteúdo. A resposta correta é 'Amazon CloudFront', serviço específico de CDN para entrega de conteúdo com baixa latência.",
+        "alternative": "Amazon S3 para storage.",
+        "because": "Incorreto: S3 armazena objetos mas não é CDN otimizado. A resposta correta é 'Amazon CloudFront'.",
+        "rep": false
+      },
+      {
+        "alternative": "AWS Direct Connect para conexão.",
+        "because": "Incorreto: Direct Connect é conexão dedicada entre on-premises e AWS. A resposta correta é 'Amazon CloudFront'.",
         "rep": false
       }
     ]
@@ -732,23 +732,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Ferramenta de monitoramento de logs e métricas.",
-        "because": "Incorreto: Isso é CloudWatch. A resposta correta é 'Rede virtual isolada', pois VPC fornece isolamento de rede para recursos AWS.",
+        "alternative": "Sistema de arquivos compartilhado e escalável.",
+        "because": "Incorreto: Isso é EFS. A resposta correta é 'Rede virtual logicamente isolada onde você pode lançar recursos AWS'.",
         "rep": false
       },
       {
-        "alternative": "Sistema de armazenamento de arquivos compartilhado.",
-        "because": "Incorreto: Isso é EFS. A resposta correta é 'Rede virtual isolada', que define a função fundamental do VPC como serviço de rede.",
-        "rep": false
-      },
-      {
-        "alternative": "Rede virtual logicamente isolada onde você pode lançar recursos AWS.",
-        "because": "Correto: VPC (Virtual Private Cloud) permite criar rede virtual com controle completo sobre ambiente de rede, incluindo seleção de range de IPs, criação de subnets, configuração de tabelas de roteamento e gateways de rede.",
+        "alternative": "Rede virtual logicamente isolada onde você pode lançar recursos AWS com controle completo.",
+        "because": "Correto: VPC permite criar rede virtual com controle completo sobre ambiente, incluindo seleção de IPs, criação de subnets, configuração de tabelas de roteamento e gateways.",
         "rep": true
       },
       {
-        "alternative": "Serviço de banco de dados NoSQL de alta performance.",
-        "because": "Incorreto: Isso é DynamoDB. A resposta correta é 'Rede virtual isolada', pois VPC é serviço de networking para criar ambientes de rede privados.",
+        "alternative": "Ferramenta de monitoramento de métricas e logs.",
+        "because": "Incorreto: Isso é CloudWatch. A resposta correta é 'Rede virtual logicamente isolada onde você pode lançar recursos AWS'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço de banco de dados NoSQL gerenciado.",
+        "because": "Incorreto: Isso é DynamoDB. A resposta correta é 'Rede virtual logicamente isolada onde você pode lançar recursos AWS'.",
         "rep": false
       }
     ]
@@ -761,23 +761,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Amazon CloudFront.",
-        "because": "Incorreto: CloudFront é CDN para conteúdo, não balanceador. A resposta correta é 'Elastic Load Balancing', projetado especificamente para distribuir tráfego entre instâncias.",
+        "alternative": "Amazon Route 53 para DNS.",
+        "because": "Incorreto: Route 53 é DNS, pode rotear mas não é load balancer. A resposta correta é 'Elastic Load Balancing (ELB)'.",
         "rep": false
       },
       {
-        "alternative": "AWS Auto Scaling.",
-        "because": "Incorreto: Auto Scaling adiciona/remove instâncias, mas ELB distribui tráfego entre elas. A resposta correta é 'Elastic Load Balancing', que balanceia carga entre recursos disponíveis.",
+        "alternative": "AWS Auto Scaling para capacidade.",
+        "because": "Incorreto: Auto Scaling adiciona/remove instâncias, mas ELB distribui tráfego. A resposta correta é 'Elastic Load Balancing (ELB)'.",
         "rep": false
       },
       {
         "alternative": "Elastic Load Balancing (ELB).",
-        "because": "Correto: ELB distribui automaticamente tráfego de entrada entre múltiplos destinos (EC2, containers, IPs) em uma ou mais AZs, aumentando disponibilidade. Tipos incluem Application Load Balancer (camada 7), Network Load Balancer (camada 4) e Gateway Load Balancer.",
+        "because": "Correto: ELB distribui automaticamente tráfego de entrada entre múltiplos destinos (EC2, containers, IPs) em uma ou mais AZs, aumentando disponibilidade da aplicação.",
         "rep": true
       },
       {
-        "alternative": "Amazon Route 53.",
-        "because": "Incorreto: Route 53 é DNS, pode rotear mas não é load balancer. A resposta correta é 'Elastic Load Balancing', que distribui tráfego e monitora saúde dos destinos.",
+        "alternative": "Amazon CloudFront para CDN.",
+        "because": "Incorreto: CloudFront é CDN para conteúdo, não balanceador. A resposta correta é 'Elastic Load Balancing (ELB)'.",
         "rep": false
       }
     ]
@@ -790,23 +790,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Serviço de cache em memória como Redis ou Memcached.",
-        "because": "Incorreto: Isso é ElastiCache. A resposta correta é 'Banco NoSQL totalmente gerenciado', pois DynamoDB é banco persistente, não cache volátil.",
+        "alternative": "Data warehouse para análise de petabytes.",
+        "because": "Incorreto: Isso é Redshift. A resposta correta é 'Banco NoSQL totalmente gerenciado com performance consistente de milissegundos'.",
         "rep": false
       },
       {
-        "alternative": "Data warehouse para análise de petabytes de dados.",
-        "because": "Incorreto: Isso é Redshift. A resposta correta é 'Banco NoSQL totalmente gerenciado', pois DynamoDB é para workloads operacionais de alta performance, não analytics.",
-        "rep": false
-      },
-      {
-        "alternative": "Banco de dados NoSQL totalmente gerenciado com performance de milissegundos.",
-        "because": "Correto: DynamoDB é banco chave-valor e documento totalmente gerenciado, serverless, com escalabilidade automática, replicação multi-region opcional e performance consistente independente da escala. Ideal para mobile, web, gaming, IoT.",
+        "alternative": "Banco NoSQL totalmente gerenciado com performance consistente de milissegundos.",
+        "because": "Correto: DynamoDB é banco chave-valor e documento totalmente gerenciado, serverless, com escalabilidade automática e performance consistente. Ideal para mobile, web, gaming, IoT.",
         "rep": true
       },
       {
-        "alternative": "Banco de dados relacional com suporte completo a SQL e joins.",
-        "because": "Incorreto: Isso é RDS/Aurora. A resposta correta é 'Banco NoSQL totalmente gerenciado', pois DynamoDB é otimizado para acesso por chave, não queries SQL complexas.",
+        "alternative": "Banco relacional com suporte completo a SQL.",
+        "because": "Incorreto: Isso é RDS/Aurora. A resposta correta é 'Banco NoSQL totalmente gerenciado com performance consistente de milissegundos'.",
+        "rep": false
+      },
+      {
+        "alternative": "Cache em memória como Redis ou Memcached.",
+        "because": "Incorreto: Isso é ElastiCache. A resposta correta é 'Banco NoSQL totalmente gerenciado com performance consistente de milissegundos'.",
         "rep": false
       }
     ]
@@ -819,23 +819,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Monitorar performance de aplicações e gerar alertas.",
-        "because": "Incorreto: Monitoramento é função do CloudWatch. A resposta correta é 'Ajustar capacidade automaticamente', pois Auto Scaling toma ações de escala baseado em métricas.",
-        "rep": false
-      },
-      {
         "alternative": "Fazer backup automático de dados em múltiplas regiões.",
-        "because": "Incorreto: Backup é função de AWS Backup ou features de serviço. A resposta correta é 'Ajustar capacidade automaticamente', pois Auto Scaling gerencia escala de compute.",
+        "because": "Incorreto: Backup é função de AWS Backup. A resposta correta é 'Ajustar automaticamente capacidade de recursos para manter performance ao menor custo'.",
         "rep": false
       },
       {
-        "alternative": "Ajustar automaticamente capacidade de recursos para manter performance constante ao menor custo.",
-        "because": "Correto: Auto Scaling monitora aplicações e automaticamente ajusta capacidade (adiciona/remove EC2, ECS tasks, DynamoDB throughput) baseado em condições definidas (métricas, schedule, target tracking), mantendo disponibilidade e otimizando custos.",
+        "alternative": "Ajustar automaticamente capacidade de recursos para manter performance ao menor custo.",
+        "because": "Correto: Auto Scaling monitora aplicações e ajusta capacidade (EC2, ECS tasks, DynamoDB throughput) baseado em condições definidas, mantendo disponibilidade e otimizando custos.",
         "rep": true
       },
       {
-        "alternative": "Distribuir tráfego uniformemente entre servidores existentes.",
-        "because": "Incorreto: Isso é função do Load Balancer. A resposta correta é 'Ajustar capacidade automaticamente', pois Auto Scaling muda número de recursos, não distribui tráfego.",
+        "alternative": "Distribuir tráfego uniformemente entre servidores.",
+        "because": "Incorreto: Isso é função do Load Balancer. A resposta correta é 'Ajustar automaticamente capacidade de recursos para manter performance ao menor custo'.",
+        "rep": false
+      },
+      {
+        "alternative": "Monitorar performance e gerar alertas operacionais.",
+        "because": "Incorreto: Monitoramento é função do CloudWatch. A resposta correta é 'Ajustar automaticamente capacidade de recursos para manter performance ao menor custo'.",
         "rep": false
       }
     ]
@@ -848,23 +848,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Amazon Glacier.",
-        "because": "Incorreto: Glacier é para arquivamento de longo prazo com acesso infrequente. A resposta correta é 'Amazon EFS', para acesso compartilhado frequente a arquivos.",
+        "alternative": "Amazon S3 para objetos.",
+        "because": "Incorreto: S3 é object storage acessado via API, não sistema de arquivos. A resposta correta é 'Amazon EFS (Elastic File System)'.",
         "rep": false
       },
       {
         "alternative": "Amazon EFS (Elastic File System).",
-        "because": "Correto: EFS fornece sistema de arquivos NFS elástico e totalmente gerenciado que pode ser montado simultaneamente por múltiplas instâncias EC2 (Linux), escalando automaticamente conforme adiciona/remove arquivos. Ideal para workloads que precisam de acesso compartilhado a arquivos.",
+        "because": "Correto: EFS fornece sistema de arquivos NFS elástico totalmente gerenciado que pode ser montado por múltiplas instâncias EC2 simultaneamente, escalando automaticamente.",
         "rep": true
       },
       {
         "alternative": "Amazon EBS (Elastic Block Store).",
-        "because": "Incorreto: EBS fornece volumes de bloco anexados a uma única instância. A resposta correta é 'Amazon EFS', que permite acesso simultâneo de múltiplas instâncias.",
+        "because": "Incorreto: EBS fornece volumes de bloco anexados a uma única instância. A resposta correta é 'Amazon EFS (Elastic File System)'.",
         "rep": false
       },
       {
-        "alternative": "Amazon S3.",
-        "because": "Incorreto: S3 é object storage acessado via API, não sistema de arquivos. A resposta correta é 'Amazon EFS', que fornece sistema de arquivos com protocolo NFS.",
+        "alternative": "Amazon Glacier para arquivamento.",
+        "because": "Incorreto: Glacier é para arquivamento de longo prazo. A resposta correta é 'Amazon EFS (Elastic File System)'.",
         "rep": false
       }
     ]
@@ -877,23 +877,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Você paga taxa mensal fixa independente do uso.",
-        "because": "Incorreto: Isso seria precificação flat/fixa. A resposta correta é 'Pagar apenas pelo consumo', onde custo varia proporcionalmente ao uso.",
-        "rep": false
-      },
-      {
-        "alternative": "Você deve pagar antecipadamente por toda capacidade que planeja usar no ano.",
-        "because": "Incorreto: Isso seria modelo de reserva antecipada, não pay-as-you-go. A resposta correta é 'Pagar apenas pelo consumo real', sem necessidade de compromisso prévio.",
-        "rep": false
-      },
-      {
-        "alternative": "Você paga apenas pelos recursos que consome, sem contratos de longo prazo ou taxas iniciais.",
-        "because": "Correto: Pay-as-you-go significa cobrança baseada em uso real (horas de computação, GB armazenados, requisições processadas) sem compromisso antecipado. Você pode aumentar ou diminuir uso conforme necessário, pagando apenas pelo consumo efetivo.",
+        "alternative": "Você paga apenas pelos recursos consumidos sem contratos de longo prazo ou custos iniciais.",
+        "because": "Correto: Pay-as-you-go significa cobrança baseada em uso real (horas de computação, GB armazenados) sem compromisso antecipado. Você aumenta ou diminui uso conforme necessário.",
         "rep": true
       },
       {
-        "alternative": "Você precisa assinar contrato de 3 anos para usar serviços AWS.",
-        "because": "Incorreto: Contratos são opcionais (RIs) para desconto, não obrigatórios. A resposta correta é 'Pagar apenas pelo consumo sem contratos', característica fundamental do pay-as-you-go.",
+        "alternative": "Você deve pagar antecipadamente por toda capacidade planejada para o ano fiscal.",
+        "because": "Incorreto: Isso seria modelo de reserva antecipada. A resposta correta é 'Você paga apenas pelos recursos consumidos sem contratos de longo prazo'.",
+        "rep": false
+      },
+      {
+        "alternative": "Você paga taxa mensal fixa independente do volume de uso dos serviços.",
+        "because": "Incorreto: Isso seria precificação flat/fixa. A resposta correta é 'Você paga apenas pelos recursos consumidos sem contratos de longo prazo'.",
+        "rep": false
+      },
+      {
+        "alternative": "Você precisa assinar contrato de 3 anos para acessar os serviços AWS.",
+        "because": "Incorreto: Contratos são opcionais (RIs) para desconto. A resposta correta é 'Você paga apenas pelos recursos consumidos sem contratos de longo prazo'.",
         "rep": false
       }
     ]
@@ -906,23 +906,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Instâncias que podem ser interrompidas pela AWS a qualquer momento.",
-        "because": "Incorreto: Isso descreve Spot Instances. A resposta correta é 'Compromisso de 1 ou 3 anos com desconto', pois RIs garantem capacidade reservada.",
+        "alternative": "Instâncias gratuitas disponíveis no Free Tier para novos clientes.",
+        "because": "Incorreto: Free Tier é separado de RIs. A resposta correta é 'Compromisso de 1 ou 3 anos que fornece desconto significativo comparado a On-Demand'.",
         "rep": false
       },
       {
-        "alternative": "Cobram o mesmo preço que instâncias On-Demand.",
-        "because": "Incorreto: RIs oferecem desconto substancial. A resposta correta é 'Compromisso com desconto significativo', diferencial principal das RIs.",
+        "alternative": "Cobram exatamente o mesmo preço que instâncias On-Demand padrão.",
+        "because": "Incorreto: RIs oferecem desconto substancial. A resposta correta é 'Compromisso de 1 ou 3 anos que fornece desconto significativo comparado a On-Demand'.",
         "rep": false
       },
       {
         "alternative": "Compromisso de 1 ou 3 anos que fornece desconto significativo comparado a On-Demand.",
-        "because": "Correto: RIs oferecem até 75% de desconto sobre preço On-Demand em troca de compromisso de termo (1 ou 3 anos). Ideal para workloads com uso previsível e contínuo. Opções incluem Standard (maior desconto, menos flexibilidade) e Convertible (troca de tipo de instância).",
+        "because": "Correto: RIs oferecem até 75% de desconto sobre preço On-Demand em troca de compromisso de termo. Ideal para workloads com uso previsível e contínuo.",
         "rep": true
       },
       {
-        "alternative": "Instâncias gratuitas disponíveis no Free Tier.",
-        "because": "Incorreto: Free Tier é separado de RIs. A resposta correta é 'Compromisso de 1 ou 3 anos com desconto', modelo de precificação com compromisso para reduzir custos.",
+        "alternative": "Instâncias que podem ser interrompidas pela AWS quando capacidade é necessária.",
+        "because": "Incorreto: Isso descreve Spot Instances. A resposta correta é 'Compromisso de 1 ou 3 anos que fornece desconto significativo comparado a On-Demand'.",
         "rep": false
       }
     ]
@@ -935,23 +935,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Amazon CloudWatch.",
-        "because": "Incorreto: CloudWatch monitora performance/métricas técnicas, não custos. A resposta correta é 'AWS Cost Explorer', focado em visualização e análise de gastos.",
-        "rep": false
-      },
-      {
-        "alternative": "AWS Config.",
-        "because": "Incorreto: Config audita configurações de recursos, não custos. A resposta correta é 'AWS Cost Explorer', projetado para análise de custos e uso.",
+        "alternative": "AWS Config para conformidade.",
+        "because": "Incorreto: Config audita configurações de recursos, não custos. A resposta correta é 'AWS Cost Explorer'.",
         "rep": false
       },
       {
         "alternative": "AWS Cost Explorer.",
-        "because": "Correto: Cost Explorer fornece interface para visualizar, entender e gerenciar custos e uso da AWS ao longo do tempo. Permite criar relatórios customizados, identificar tendências, prever gastos futuros e descobrir oportunidades de economia.",
+        "because": "Correto: Cost Explorer fornece interface para visualizar, entender e gerenciar custos e uso da AWS. Permite criar relatórios customizados, identificar tendências e prever gastos futuros.",
         "rep": true
       },
       {
-        "alternative": "AWS CloudTrail.",
-        "because": "Incorreto: CloudTrail registra atividades de API, não analisa custos. A resposta correta é 'AWS Cost Explorer', ferramenta específica para análise financeira e billing.",
+        "alternative": "Amazon CloudWatch para métricas.",
+        "because": "Incorreto: CloudWatch monitora performance/métricas técnicas, não custos. A resposta correta é 'AWS Cost Explorer'.",
+        "rep": false
+      },
+      {
+        "alternative": "AWS CloudTrail para auditoria.",
+        "because": "Incorreto: CloudTrail registra atividades de API, não analisa custos. A resposta correta é 'AWS Cost Explorer'.",
         "rep": false
       }
     ]
@@ -964,23 +964,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Processar pagamentos de faturas AWS.",
-        "because": "Incorreto: Processamento de pagamento é feito pelo sistema de billing. A resposta correta é 'Definir orçamentos e alertas', pois Budgets é ferramenta de monitoramento, não pagamento.",
-        "rep": false
-      },
-      {
-        "alternative": "Automaticamente desligar recursos quando orçamento é excedido.",
-        "because": "Incorreto: Budgets alerta mas não desliga recursos automaticamente (requer automação adicional). A resposta correta é 'Definir orçamentos e receber alertas', função principal do Budgets.",
+        "alternative": "Processar pagamentos de faturas AWS automaticamente.",
+        "because": "Incorreto: Processamento de pagamento é feito pelo billing. A resposta correta é 'Definir orçamentos customizados e receber alertas quando custos ou uso excederem limites'.",
         "rep": false
       },
       {
         "alternative": "Definir orçamentos customizados e receber alertas quando custos ou uso excederem limites.",
-        "because": "Correto: AWS Budgets permite criar orçamentos para custos, uso, RIs/Savings Plans e receber notificações (email, SNS) quando valores reais ou previstos excederem thresholds definidos, permitindo controle proativo de gastos.",
+        "because": "Correto: AWS Budgets permite criar orçamentos para custos, uso, RIs/Savings Plans e receber notificações quando valores reais ou previstos excederem thresholds definidos.",
         "rep": true
       },
       {
-        "alternative": "Aplicar descontos automáticos em todos os serviços.",
-        "because": "Incorreto: Budgets não aplica descontos. A resposta correta é 'Definir orçamentos e alertas', para controle e visibilidade de gastos.",
+        "alternative": "Aplicar descontos automáticos em todos os serviços utilizados.",
+        "because": "Incorreto: Budgets não aplica descontos. A resposta correta é 'Definir orçamentos customizados e receber alertas quando custos ou uso excederem limites'.",
+        "rep": false
+      },
+      {
+        "alternative": "Automaticamente desligar recursos quando orçamento for excedido.",
+        "because": "Incorreto: Budgets alerta mas não desliga recursos automaticamente. A resposta correta é 'Definir orçamentos customizados e receber alertas quando custos ou uso excederem limites'.",
         "rep": false
       }
     ]
@@ -993,23 +993,23 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Todos os planos são pagos, sem opção gratuita.",
-        "because": "Incorreto: Basic é gratuito para todos. A resposta correta é 'Basic, Developer, Business e Enterprise', incluindo opção gratuita e pagas.",
+        "alternative": "Apenas um plano gratuito para todos sem diferenciação.",
+        "because": "Incorreto: Há múltiplos planos com recursos diferentes. A resposta correta é 'Basic, Developer, Business e Enterprise'.",
         "rep": false
       },
       {
         "alternative": "Basic, Developer, Business e Enterprise.",
-        "because": "Correto: AWS oferece 4 níveis: Basic (gratuito, documentação e fóruns), Developer (suporte técnico via email, horário comercial), Business (suporte 24/7, telefone, resposta rápida, acesso completo ao Trusted Advisor) e Enterprise (TAM dedicado, resposta em 15min para críticos).",
+        "because": "Correto: AWS oferece 4 níveis: Basic (gratuito), Developer (email), Business (suporte 24/7, telefone, Trusted Advisor completo) e Enterprise (TAM dedicado, resposta em 15min).",
         "rep": true
       },
       {
-        "alternative": "Standard e Premium apenas.",
-        "because": "Incorreto: Esses não são os nomes dos planos AWS. A resposta correta é 'Basic, Developer, Business e Enterprise', os quatro níveis oficiais.",
+        "alternative": "Todos os planos são pagos sem opção gratuita disponível.",
+        "because": "Incorreto: Basic é gratuito para todos. A resposta correta é 'Basic, Developer, Business e Enterprise'.",
         "rep": false
       },
       {
-        "alternative": "Apenas um plano gratuito para todos os clientes.",
-        "because": "Incorreto: Há múltiplos planos com recursos diferentes. A resposta correta é 'Basic, Developer, Business e Enterprise', oferecendo opções conforme necessidades.",
+        "alternative": "Standard e Premium apenas.",
+        "because": "Incorreto: Esses não são os nomes dos planos AWS. A resposta correta é 'Basic, Developer, Business e Enterprise'.",
         "rep": false
       }
     ]
@@ -1022,23 +1022,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Monitora métricas de aplicação em tempo real.",
-        "because": "Incorreto: Monitoramento em tempo real é CloudWatch. A resposta correta é 'Fornece recomendações', pois Trusted Advisor faz verificações periódicas, não monitoramento contínuo.",
-        "rep": false
-      },
-      {
-        "alternative": "Executa backups automáticos de todos os recursos AWS.",
-        "because": "Incorreto: Backup é função de AWS Backup ou features de serviço. A resposta correta é 'Fornece recomendações de melhores práticas', pois Trusted Advisor é ferramenta consultiva.",
+        "alternative": "Gerencia permissões de usuários e roles IAM automaticamente.",
+        "because": "Incorreto: Gerenciamento de permissões é IAM. A resposta correta é 'Fornece recomendações automatizadas de melhores práticas em custo, performance, segurança e resiliência'.",
         "rep": false
       },
       {
         "alternative": "Fornece recomendações automatizadas de melhores práticas em custo, performance, segurança e resiliência.",
-        "because": "Correto: Trusted Advisor verifica seu ambiente AWS e sugere otimizações em 5 pilares: cost optimization, performance, security, fault tolerance e service limits. Alguns checks são gratuitos; acesso completo requer plano Business ou Enterprise.",
+        "because": "Correto: Trusted Advisor verifica seu ambiente e sugere otimizações em 5 pilares: cost optimization, performance, security, fault tolerance e service limits.",
         "rep": true
       },
       {
-        "alternative": "Gerencia permissões de usuários e roles IAM.",
-        "because": "Incorreto: Gerenciamento de permissões é IAM. A resposta correta é 'Fornece recomendações de melhores práticas', incluindo recomendações de segurança IAM.",
+        "alternative": "Monitora métricas de aplicação em tempo real continuamente.",
+        "because": "Incorreto: Monitoramento em tempo real é CloudWatch. A resposta correta é 'Fornece recomendações automatizadas de melhores práticas em custo, performance, segurança e resiliência'.",
+        "rep": false
+      },
+      {
+        "alternative": "Executa backups automáticos de todos os recursos AWS provisionados.",
+        "because": "Incorreto: Backup é função de AWS Backup. A resposta correta é 'Fornece recomendações automatizadas de melhores práticas em custo, performance, segurança e resiliência'.",
         "rep": false
       }
     ]
@@ -1051,23 +1051,23 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Impedem que recursos sejam deletados acidentalmente.",
-        "because": "Incorreto: Proteção contra deleção usa outros mecanismos. A resposta correta é 'Categorizar e rastrear custos', função primária das cost allocation tags.",
+        "alternative": "Automaticamente reduzem custos em 30% quando aplicadas aos recursos.",
+        "because": "Incorreto: Tags organizam custos, não reduzem automaticamente. A resposta correta é 'Permitem categorizar e rastrear custos por projeto, departamento ou ambiente'.",
         "rep": false
       },
       {
-        "alternative": "Permitem categorizar e rastrear custos por projeto, departamento ou ambiente.",
-        "because": "Correto: Tags são pares chave-valor aplicados a recursos que aparecem em relatórios de custo detalhados, permitindo alocar gastos por unidade de negócio, centro de custo, projeto ou qualquer outra dimensão relevante para chargeback/showback.",
+        "alternative": "Permitem categorizar e rastrear custos por projeto, departamento ou ambiente específico.",
+        "because": "Correto: Tags são pares chave-valor aplicados a recursos que aparecem em relatórios de custo, permitindo alocar gastos por unidade de negócio, centro de custo ou projeto.",
         "rep": true
       },
       {
-        "alternative": "Automaticamente reduzem custos em 30% quando aplicadas.",
-        "because": "Incorreto: Tags organizam custos, não reduzem automaticamente. A resposta correta é 'Categorizar e rastrear custos', pois tags fornecem visibilidade para otimização.",
+        "alternative": "Impedem que recursos sejam deletados acidentalmente pela equipe.",
+        "because": "Incorreto: Proteção contra deleção usa outros mecanismos. A resposta correta é 'Permitem categorizar e rastrear custos por projeto, departamento ou ambiente'.",
         "rep": false
       },
       {
-        "alternative": "São obrigatórias para usar qualquer serviço AWS.",
-        "because": "Incorreto: Tags são opcionais (mas recomendadas). A resposta correta é 'Categorizar e rastrear custos', sendo best practice, não requisito.",
+        "alternative": "São obrigatórias para usar qualquer serviço AWS na conta.",
+        "because": "Incorreto: Tags são opcionais (mas recomendadas). A resposta correta é 'Permitem categorizar e rastrear custos por projeto, departamento ou ambiente'.",
         "rep": false
       }
     ]
@@ -1080,24 +1080,24 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Custam o mesmo que instâncias On-Demand.",
-        "because": "Incorreto: Spot oferece descontos substanciais. A resposta correta é 'Desconto até 90% com possível interrupção', principal característica das Spot.",
-        "rep": false
-      },
-      {
-        "alternative": "São ideais para bancos de dados de produção críticos.",
-        "because": "Incorreto: Workloads críticos precisam de disponibilidade garantida. A resposta correta é 'Desconto com possível interrupção', inadequado para aplicações que não toleram interrupção.",
-        "rep": false
-      },
-      {
-        "alternative": "Garantem disponibilidade contínua com desconto de longo prazo.",
-        "because": "Incorreto: Isso descreve Reserved Instances. A resposta correta é 'Desconto até 90% com possível interrupção', trade-off das Spot Instances.",
+        "alternative": "Custam exatamente o mesmo que instâncias On-Demand padrão.",
+        "because": "Incorreto: Spot oferece descontos substanciais. A resposta correta é 'Instâncias EC2 com desconto de até 90% que podem ser interrompidas pela AWS'.",
         "rep": false
       },
       {
         "alternative": "Instâncias EC2 com desconto de até 90% que podem ser interrompidas pela AWS quando capacidade é necessária.",
-        "because": "Correto: Spot Instances aproveitam capacidade ociosa da AWS com grandes descontos. AWS pode interromper com 2 minutos de aviso quando precisa da capacidade. Ideal para workloads tolerantes a falhas: batch processing, análise de dados, testes.",
+        "because": "Correto: Spot Instances aproveitam capacidade ociosa da AWS com grandes descontos. AWS pode interromper com 2 minutos de aviso. Ideal para batch processing, análise de dados e testes.",
         "rep": true
+      },
+      {
+        "alternative": "São ideais para bancos de dados de produção com requisitos críticos de disponibilidade.",
+        "because": "Incorreto: Workloads críticos precisam de disponibilidade garantida. A resposta correta é 'Instâncias EC2 com desconto de até 90% que podem ser interrompidas pela AWS'.",
+        "rep": false
+      },
+      {
+        "alternative": "Garantem disponibilidade contínua com desconto de longo prazo mediante compromisso.",
+        "because": "Incorreto: Isso descreve Reserved Instances. A resposta correta é 'Instâncias EC2 com desconto de até 90% que podem ser interrompidas pela AWS'.",
+        "rep": false
       }
     ]
   },
@@ -1109,24 +1109,24 @@
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Requer pagamento antecipado para ativar os benefícios.",
-        "because": "Incorreto: Free Tier não requer pagamento (apenas validação de cartão). A resposta correta é 'Uso gratuito com limites', sendo genuinamente gratuito dentro dos limites estabelecidos.",
-        "rep": false
-      },
-      {
-        "alternative": "Disponível apenas para organizações educacionais.",
-        "because": "Incorreto: Free Tier está disponível para todos os novos clientes AWS. A resposta correta é 'Uso gratuito por 12 meses e ofertas permanentes', sem restrição de tipo de conta.",
-        "rep": false
-      },
-      {
-        "alternative": "Todos os serviços AWS completamente gratuitos sem limites.",
-        "because": "Incorreto: Free Tier tem limites específicos por serviço. A resposta correta é 'Uso gratuito com limites e períodos definidos', pois há restrições claras.",
+        "alternative": "Disponível apenas para organizações educacionais e instituições sem fins lucrativos.",
+        "because": "Incorreto: Free Tier está disponível para todos os novos clientes. A resposta correta é 'Uso gratuito de serviços por 12 meses, além de ofertas sempre gratuitas e trials'.",
         "rep": false
       },
       {
         "alternative": "Uso gratuito de serviços por 12 meses, além de ofertas sempre gratuitas e trials.",
-        "because": "Correto: Free Tier inclui: (1) 12 meses de uso gratuito após signup (750h EC2 t2.micro/mês, 5GB S3), (2) sempre gratuito para certos serviços (1M Lambda requests/mês, 25GB DynamoDB), (3) trials curtos de novos serviços.",
+        "because": "Correto: Free Tier inclui: 12 meses de uso gratuito após signup (750h EC2, 5GB S3), sempre gratuito para certos serviços (1M Lambda requests/mês) e trials curtos de novos serviços.",
         "rep": true
+      },
+      {
+        "alternative": "Todos os serviços AWS completamente gratuitos sem nenhum tipo de limite de uso.",
+        "because": "Incorreto: Free Tier tem limites específicos por serviço. A resposta correta é 'Uso gratuito de serviços por 12 meses, além de ofertas sempre gratuitas e trials'.",
+        "rep": false
+      },
+      {
+        "alternative": "Requer pagamento antecipado para ativar os benefícios do programa.",
+        "because": "Incorreto: Free Tier não requer pagamento (apenas validação de cartão). A resposta correta é 'Uso gratuito de serviços por 12 meses, além de ofertas sempre gratuitas e trials'.",
+        "rep": false
       }
     ]
   },
@@ -1138,893 +1138,1183 @@
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Aplicável somente a serviços de armazenamento como S3.",
-        "because": "Incorreto: Savings Plans são para compute (EC2, Lambda, Fargate). A resposta correta é 'Compromisso de gasto em compute', não storage.",
+        "alternative": "Aplicável somente a serviços de armazenamento como S3 e Glacier.",
+        "because": "Incorreto: Savings Plans são para compute (EC2, Lambda, Fargate). A resposta correta é 'Compromisso de gasto por hora que oferece desconto e flexibilidade entre tipos de instância e regiões'.",
         "rep": false
       },
       {
-        "alternative": "Não requer nenhum compromisso de uso ou gasto.",
-        "because": "Incorreto: Savings Plans requerem compromisso de gasto. A resposta correta é 'Compromisso de gasto com flexibilidade', pois há termo definido.",
-        "rep": false
-      },
-      {
-        "alternative": "Compromisso de gasto por hora ($/h) que oferece desconto e flexibilidade entre tipos de instância e regiões.",
-        "because": "Correto: Savings Plans oferecem até 72% de desconto em troca de compromisso de gasto (ex: $10/hora) por 1 ou 3 anos. Mais flexível que RIs, permitindo mudança de tipo de instância, região e até serviços (Compute Savings Plans: EC2, Lambda, Fargate).",
+        "alternative": "Compromisso de gasto por hora que oferece desconto e flexibilidade entre tipos de instância e regiões.",
+        "because": "Correto: Savings Plans oferecem até 72% de desconto em troca de compromisso de gasto por 1 ou 3 anos. Mais flexível que RIs, permitindo mudança de tipo, região e até serviços (EC2, Lambda, Fargate).",
         "rep": true
       },
       {
-        "alternative": "Sempre mais caro que modelo pay-as-you-go.",
-        "because": "Incorreto: Savings Plans oferecem descontos significativos. A resposta correta é 'Compromisso de gasto com desconto e flexibilidade', sendo opção econômica com mais flexibilidade que RIs.",
+        "alternative": "Sempre mais caro que modelo pay-as-you-go padrão sem benefícios adicionais.",
+        "because": "Incorreto: Savings Plans oferecem descontos significativos. A resposta correta é 'Compromisso de gasto por hora que oferece desconto e flexibilidade entre tipos de instância e regiões'.",
+        "rep": false
+      },
+      {
+        "alternative": "Não requer nenhum compromisso de uso ou gasto contínuo.",
+        "because": "Incorreto: Savings Plans requerem compromisso de gasto. A resposta correta é 'Compromisso de gasto por hora que oferece desconto e flexibilidade entre tipos de instância e regiões'.",
         "rep": false
       }
     ]
   },
   {
     "id": 41,
-    "title": "O que significa o termo 'escalabilidade vertical' (vertical scaling) na AWS?",
+    "title": "O que significa 'escalabilidade' na computação em nuvem?",
     "group_by_topic": "Conceitos de Nuvem",
     "accept_two_alternatives": false,
-    "level_of_complexity": 2,
+    "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Distribuir carga entre múltiplos servidores menores.",
-        "because": "Incorreto: Isso descreve escalabilidade horizontal. A resposta correta é 'Aumentar recursos de uma única instância', pois vertical scaling significa adicionar mais poder a um servidor existente.",
-        "rep": false
-      },
-      {
-        "alternative": "Aumentar recursos (CPU, RAM) de uma única instância existente.",
-        "because": "Correto: Escalabilidade vertical significa aumentar a capacidade de um servidor individual, mudando para um tipo de instância maior (ex: de t3.medium para t3.xlarge). Tem limites físicos mas é mais simples para aplicações não projetadas para distribuição.",
+        "alternative": "Capacidade de adicionar recursos para lidar com aumento de carga de trabalho.",
+        "because": "Correto: Escalabilidade é a capacidade de aumentar recursos (vertical ou horizontal) para atender crescimento de demanda. Vertical adiciona poder a um servidor; horizontal adiciona mais servidores.",
         "rep": true
       },
       {
-        "alternative": "Mover aplicação para região geográfica diferente.",
-        "because": "Incorreto: Isso é migração de região, não escalabilidade. A resposta correta é 'Aumentar recursos de uma única instância', que define vertical scaling.",
+        "alternative": "Processo de reduzir número de servidores para economizar custos operacionais.",
+        "because": "Incorreto: Isso é apenas parte da elasticidade. A resposta correta é 'Capacidade de adicionar recursos para lidar com aumento de carga'.",
         "rep": false
       },
       {
-        "alternative": "Replicar dados em múltiplas zonas de disponibilidade.",
-        "because": "Incorreto: Isso é alta disponibilidade ou redundância. A resposta correta é 'Aumentar recursos de uma única instância', conceito específico de vertical scaling.",
+        "alternative": "Garantir que aplicação nunca sofra interrupção ou tempo de inatividade.",
+        "because": "Incorreto: Isso descreve alta disponibilidade. A resposta correta é 'Capacidade de adicionar recursos para lidar com aumento de carga de trabalho'.",
+        "rep": false
+      },
+      {
+        "alternative": "Replicar automaticamente dados em múltiplas zonas de disponibilidade diferentes.",
+        "because": "Incorreto: Isso descreve redundância de dados. A resposta correta é 'Capacidade de adicionar recursos para lidar com aumento de carga de trabalho'.",
         "rep": false
       }
     ]
   },
   {
     "id": 42,
-    "title": "Qual é a diferença principal entre escalabilidade horizontal e vertical?",
+    "title": "Qual é a diferença entre escalabilidade vertical e horizontal?",
     "group_by_topic": "Conceitos de Nuvem",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Horizontal adiciona mais instâncias; vertical aumenta recursos de instância existente.",
-        "because": "Correto: Escalabilidade horizontal (scale out) adiciona mais servidores ao pool. Vertical (scale up) aumenta CPU/RAM da instância existente. Horizontal é preferível para alta disponibilidade e não tem limite teórico; vertical é mais simples mas tem limite de hardware.",
+        "alternative": "Vertical adiciona poder ao servidor; horizontal adiciona mais servidores à infraestrutura.",
+        "because": "Correto: Escalabilidade vertical (scale-up) aumenta CPU/RAM de um servidor existente. Horizontal (scale-out) adiciona mais instâncias para distribuir carga entre múltiplos servidores.",
         "rep": true
       },
       {
-        "alternative": "Horizontal é sempre mais cara que vertical.",
-        "because": "Incorreto: Custo depende do caso de uso e padrão de carga. A resposta correta é 'Horizontal adiciona instâncias; vertical aumenta recursos', que define a diferença fundamental.",
+        "alternative": "Vertical distribui carga; horizontal aumenta capacidade de um único servidor existente.",
+        "because": "Incorreto: A definição está invertida. A resposta correta é 'Vertical adiciona poder ao servidor; horizontal adiciona mais servidores à infraestrutura'.",
         "rep": false
       },
       {
-        "alternative": "Vertical só funciona com bancos de dados relacionais.",
-        "because": "Incorreto: Ambas as abordagens aplicam-se a diversos tipos de aplicação. A resposta correta é 'Horizontal adiciona instâncias; vertical aumenta recursos', diferença que transcende tipo de aplicação.",
+        "alternative": "Ambas são termos sinônimos que descrevem exatamente o mesmo conceito técnico.",
+        "because": "Incorreto: São conceitos diferentes de escalabilidade. A resposta correta é 'Vertical adiciona poder ao servidor; horizontal adiciona mais servidores à infraestrutura'.",
         "rep": false
       },
       {
-        "alternative": "Não há diferença real, são termos sinônimos.",
-        "because": "Incorreto: São conceitos completamente diferentes. A resposta correta é 'Horizontal adiciona instâncias; vertical aumenta recursos', que são estratégias distintas de escalabilidade.",
+        "alternative": "Vertical reduz custos; horizontal aumenta performance sem alterar número de recursos.",
+        "because": "Incorreto: Ambas podem afetar custos e performance. A resposta correta é 'Vertical adiciona poder ao servidor; horizontal adiciona mais servidores à infraestrutura'.",
         "rep": false
       }
     ]
   },
   {
     "id": 43,
-    "title": "O que caracteriza um ambiente híbrido (hybrid cloud) na AWS?",
+    "title": "O que caracteriza um modelo de nuvem híbrida?",
     "group_by_topic": "Conceitos de Nuvem",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Usar apenas serviços gerenciados sem acesso a infraestrutura.",
-        "because": "Incorreto: Isso descreve PaaS/SaaS, não arquitetura híbrida. A resposta correta é 'Integrar infraestrutura on-premises com recursos AWS', definição de hybrid cloud.",
+        "alternative": "Uso exclusivo de serviços AWS sem integração com outros provedores de nuvem.",
+        "because": "Incorreto: Isso seria nuvem pública única. A resposta correta é 'Combinação de infraestrutura on-premises com serviços de nuvem pública'.",
         "rep": false
       },
       {
-        "alternative": "Combinar múltiplos provedores de nuvem diferentes.",
-        "because": "Incorreto: Isso é multi-cloud, não híbrido. A resposta correta é 'Integrar on-premises com AWS', pois híbrido conecta nuvem pública com ambiente local.",
-        "rep": false
-      },
-      {
-        "alternative": "Usar somente nuvem pública sem componentes locais.",
-        "because": "Incorreto: Isso é nuvem pública pura, oposto de híbrido. A resposta correta é 'Integrar on-premises com AWS', que é a essência do modelo híbrido.",
-        "rep": false
-      },
-      {
-        "alternative": "Integrar infraestrutura on-premises com recursos AWS na nuvem.",
-        "because": "Correto: Hybrid cloud combina recursos locais (on-premises) com nuvem pública AWS, conectados via VPN ou Direct Connect. Permite migração gradual, atender requisitos de compliance que exigem dados locais, ou usar nuvem para burst capacity.",
+        "alternative": "Combinação de infraestrutura on-premises com serviços de nuvem pública integrados.",
+        "because": "Correto: Nuvem híbrida conecta infraestrutura local (datacenter próprio) com nuvem pública, permitindo compartilhar dados e aplicações entre ambos ambientes de forma integrada.",
         "rep": true
+      },
+      {
+        "alternative": "Armazenamento de dados apenas em servidores físicos locais sem uso de nuvem.",
+        "because": "Incorreto: Isso seria infraestrutura totalmente on-premises. A resposta correta é 'Combinação de infraestrutura on-premises com serviços de nuvem pública'.",
+        "rep": false
+      },
+      {
+        "alternative": "Utilização de múltiplos provedores de nuvem pública sem ambiente on-premises.",
+        "because": "Incorreto: Isso seria multi-cloud. A resposta correta é 'Combinação de infraestrutura on-premises com serviços de nuvem pública integrados'.",
+        "rep": false
       }
     ]
   },
   {
     "id": 44,
-    "title": "O que é 'fault tolerance' (tolerância a falhas) na AWS?",
+    "title": "Qual é o principal benefício de usar múltiplas Availability Zones?",
     "group_by_topic": "Conceitos de Nuvem",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Reduzir custos eliminando recursos redundantes.",
-        "because": "Incorreto: Fault tolerance geralmente requer redundância, aumentando custos. A resposta correta é 'Sistema continua operando mesmo com falhas', definição de tolerância a falhas.",
+        "alternative": "Reduzir custos consolidando todos recursos em um único datacenter isolado.",
+        "because": "Incorreto: Usar múltiplas AZs pode aumentar custos. A resposta correta é 'Aumentar disponibilidade e tolerância a falhas da aplicação'.",
         "rep": false
       },
       {
-        "alternative": "Executar aplicações em uma única zona para simplificar gestão.",
-        "because": "Incorreto: Zona única cria ponto único de falha. A resposta correta é 'Sistema continua operando mesmo com falhas', que requer redundância multi-AZ.",
-        "rep": false
-      },
-      {
-        "alternative": "Capacidade do sistema continuar operando corretamente mesmo quando componentes falham.",
-        "because": "Correto: Fault tolerance significa que o sistema tem redundância suficiente para continuar funcionando sem interrupção mesmo quando componentes individuais falham. Implementado através de multi-AZ deployment, replicação de dados e componentes redundantes.",
+        "alternative": "Aumentar disponibilidade e tolerância a falhas da aplicação distribuindo recursos.",
+        "because": "Correto: Distribuir recursos em múltiplas AZs protege contra falha de datacenter. Se uma AZ falhar, a aplicação continua funcionando nas outras AZs disponíveis.",
         "rep": true
       },
       {
-        "alternative": "Fazer backup dos dados uma vez por semana.",
-        "because": "Incorreto: Backup é recuperação de desastres, não tolerância a falhas em tempo real. A resposta correta é 'Sistema continua operando mesmo com falhas', operação contínua sem interrupção.",
+        "alternative": "Garantir que todos dados sejam automaticamente replicados em todas regiões globais.",
+        "because": "Incorreto: AZs estão dentro de uma região. A resposta correta é 'Aumentar disponibilidade e tolerância a falhas da aplicação distribuindo recursos'.",
+        "rep": false
+      },
+      {
+        "alternative": "Eliminar completamente necessidade de implementar estratégias de backup de dados.",
+        "because": "Incorreto: Múltiplas AZs não substituem backups. A resposta correta é 'Aumentar disponibilidade e tolerância a falhas da aplicação distribuindo recursos'.",
         "rep": false
       }
     ]
   },
   {
     "id": 45,
-    "title": "Qual modelo de serviço em nuvem oferece mais controle sobre infraestrutura?",
+    "title": "O que é um modelo de nuvem pública?",
     "group_by_topic": "Conceitos de Nuvem",
     "accept_two_alternatives": false,
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "PaaS (Platform as a Service).",
-        "because": "Incorreto: PaaS abstrai a infraestrutura, oferecendo menos controle que IaaS. A resposta correta é 'IaaS', que fornece controle sobre virtualização, servidores, armazenamento e rede.",
-        "rep": false
-      },
-      {
-        "alternative": "SaaS (Software as a Service).",
-        "because": "Incorreto: SaaS oferece o menor controle, apenas uso da aplicação. A resposta correta é 'IaaS', que permite gerenciar sistema operacional e camadas inferiores.",
-        "rep": false
-      },
-      {
-        "alternative": "IaaS (Infrastructure as a Service).",
-        "because": "Correto: IaaS oferece máximo controle sobre infraestrutura de TI, permitindo gerenciar sistema operacional, aplicações, middleware e dados. Você controla tudo exceto a camada física de hardware e virtualização.",
+        "alternative": "Infraestrutura disponível para uso geral via internet fornecida por provedor terceiro.",
+        "because": "Correto: Nuvem pública (como AWS, Azure, GCP) é infraestrutura compartilhada de propriedade e operação de provedor terceiro, acessível via internet por múltiplos clientes (multi-tenant).",
         "rep": true
       },
       {
-        "alternative": "Todos os modelos oferecem o mesmo nível de controle.",
-        "because": "Incorreto: Há clara hierarquia de controle: IaaS > PaaS > SaaS. A resposta correta é 'IaaS', que oferece controle máximo.",
+        "alternative": "Datacenter privado exclusivo operado internamente apenas para uma única organização.",
+        "because": "Incorreto: Isso descreve nuvem privada. A resposta correta é 'Infraestrutura disponível para uso geral via internet fornecida por provedor terceiro'.",
+        "rep": false
+      },
+      {
+        "alternative": "Combinação de recursos locais on-premises integrados com serviços de nuvem externa.",
+        "because": "Incorreto: Isso descreve nuvem híbrida. A resposta correta é 'Infraestrutura disponível para uso geral via internet fornecida por provedor terceiro'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviços de nuvem acessíveis exclusivamente dentro de rede privada da empresa.",
+        "because": "Incorreto: Isso seria nuvem privada ou VPC. A resposta correta é 'Infraestrutura disponível para uso geral via internet fornecida por provedor terceiro'.",
         "rep": false
       }
     ]
   },
   {
     "id": 46,
-    "title": "O que significa 'disaster recovery' (recuperação de desastres) na AWS?",
+    "title": "O que significa 'disaster recovery' (recuperação de desastres) na nuvem?",
     "group_by_topic": "Conceitos de Nuvem",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Substituir completamente necessidade de backups.",
-        "because": "Incorreto: DR inclui estratégia de backup como componente. A resposta correta é 'Capacidade de recuperar operações após evento catastrófico', que abrange backup e mais.",
+        "alternative": "Processo de aumentar capacidade de recursos durante picos de demanda de tráfego.",
+        "because": "Incorreto: Isso descreve escalabilidade ou elasticidade. A resposta correta é 'Estratégia para restaurar operações após evento catastrófico ou falha grave'.",
         "rep": false
       },
       {
-        "alternative": "Capacidade de recuperar operações de TI após evento catastrófico usando backups e recursos secundários.",
-        "because": "Correto: Disaster Recovery é conjunto de políticas e procedimentos para recuperar infraestrutura e dados após desastre (falha de datacenter, desastre natural, cyberattaque). AWS oferece várias estratégias: backup/restore, pilot light, warm standby, multi-site.",
+        "alternative": "Estratégia para restaurar operações e dados após evento catastrófico ou falha grave.",
+        "because": "Correto: Disaster recovery envolve planos, processos e ferramentas para recuperar sistemas críticos após desastres (incêndio, terremoto, ataque) minimizando downtime e perda de dados (RTO/RPO).",
         "rep": true
       },
       {
-        "alternative": "Executar aplicações simultaneamente em múltiplas regiões o tempo todo.",
-        "because": "Incorreto: Isso é estratégia multi-site/active-active, apenas um tipo de DR. A resposta correta é 'Capacidade de recuperar operações após desastre', conceito mais amplo.",
+        "alternative": "Técnica de distribuir tráfego uniformemente entre múltiplos servidores em produção.",
+        "because": "Incorreto: Isso descreve load balancing. A resposta correta é 'Estratégia para restaurar operações e dados após evento catastrófico ou falha grave'.",
         "rep": false
       },
       {
-        "alternative": "Monitorar logs de aplicação para detectar erros.",
-        "because": "Incorreto: Isso é monitoramento operacional, não DR. A resposta correta é 'Capacidade de recuperar operações após desastre', focado em continuidade do negócio.",
+        "alternative": "Método de criptografar dados sensíveis armazenados em bancos de dados relacionais.",
+        "because": "Incorreto: Isso descreve criptografia de dados. A resposta correta é 'Estratégia para restaurar operações e dados após evento catastrófico ou falha grave'.",
         "rep": false
       }
     ]
   },
   {
     "id": 47,
-    "title": "Qual é o objetivo do conceito 'loose coupling' (baixo acoplamento) em arquiteturas de nuvem?",
+    "title": "Qual é o modelo de serviço PaaS (Platform as a Service)?",
     "group_by_topic": "Conceitos de Nuvem",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Aumentar dependências diretas entre componentes do sistema.",
-        "because": "Incorreto: Loose coupling visa reduzir dependências, não aumentá-las. A resposta correta é 'Reduzir interdependências para que componentes possam mudar independentemente', definição de baixo acoplamento.",
-        "rep": false
-      },
-      {
-        "alternative": "Exigir que todos os componentes sejam modificados simultaneamente.",
-        "because": "Incorreto: Isso é tight coupling (alto acoplamento). A resposta correta é 'Reduzir interdependências', permitindo mudanças independentes.",
-        "rep": false
-      },
-      {
-        "alternative": "Fazer todos os serviços compartilharem o mesmo banco de dados.",
-        "because": "Incorreto: Compartilhar banco cria acoplamento forte. A resposta correta é 'Reduzir interdependências', geralmente usando bancos separados e comunicação via APIs.",
-        "rep": false
-      },
-      {
-        "alternative": "Reduzir interdependências entre componentes para que possam mudar independentemente.",
-        "because": "Correto: Loose coupling significa que mudanças em um componente têm impacto mínimo em outros. Implementado usando filas (SQS), mensagens (SNS), APIs e eventos. Aumenta resiliência, facilita manutenção e permite escalabilidade independente.",
+        "alternative": "Fornece plataforma gerenciada para desenvolvimento sem gerenciar infraestrutura subjacente.",
+        "because": "Correto: PaaS fornece plataforma completa (runtime, middleware, OS) onde você desenvolve e implanta aplicações sem gerenciar servidores. Exemplo: AWS Elastic Beanstalk, Heroku.",
         "rep": true
+      },
+      {
+        "alternative": "Fornece aplicações completas prontas para uso final sem necessidade de desenvolvimento.",
+        "because": "Incorreto: Isso descreve SaaS. A resposta correta é 'Fornece plataforma gerenciada para desenvolvimento sem gerenciar infraestrutura subjacente'.",
+        "rep": false
+      },
+      {
+        "alternative": "Fornece infraestrutura virtualizada onde você gerencia completamente sistema operacional.",
+        "because": "Incorreto: Isso descreve IaaS. A resposta correta é 'Fornece plataforma gerenciada para desenvolvimento sem gerenciar infraestrutura subjacente'.",
+        "rep": false
+      },
+      {
+        "alternative": "Cliente assume controle total sobre hardware físico e configurações de rede.",
+        "because": "Incorreto: Isso seria infraestrutura on-premises. A resposta correta é 'Fornece plataforma gerenciada para desenvolvimento sem gerenciar infraestrutura subjacente'.",
+        "rep": false
       }
     ]
   },
   {
     "id": 48,
-    "title": "O que é 'latency' (latência) no contexto de computação em nuvem?",
+    "title": "O que é latência de rede na computação em nuvem?",
     "group_by_topic": "Conceitos de Nuvem",
     "accept_two_alternatives": false,
     "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Quantidade total de dados transferidos pela rede.",
-        "because": "Incorreto: Isso é throughput ou volume de dados. A resposta correta é 'Tempo de atraso entre requisição e resposta', que define latência.",
+        "alternative": "Custo total mensal de transferência de dados entre diferentes regiões geográficas.",
+        "because": "Incorreto: Isso se refere a custos de transferência. A resposta correta é 'Tempo que dados levam para viajar entre origem e destino'.",
         "rep": false
       },
       {
-        "alternative": "Custo mensal de usar serviços de rede.",
-        "because": "Incorreto: Isso é custo de networking. A resposta correta é 'Tempo de atraso', medida de performance, não custo.",
-        "rep": false
-      },
-      {
-        "alternative": "Tempo de atraso entre envio de requisição e recebimento da resposta.",
-        "because": "Correto: Latência é o tempo que leva para dados viajarem de origem ao destino. Afetada por distância física, qualidade de rede e processamento. AWS reduz latência usando edge locations, CloudFront e múltiplas regiões próximas aos usuários.",
+        "alternative": "Tempo que dados levam para viajar entre origem e destino na rede.",
+        "because": "Correto: Latência é o atraso (medido em milissegundos) entre envio de requisição e recebimento de resposta. Menor latência = melhor performance. Proximidade geográfica reduz latência.",
         "rep": true
       },
       {
-        "alternative": "Número de usuários simultâneos que sistema pode atender.",
-        "because": "Incorreto: Isso é capacidade ou throughput de usuários. A resposta correta é 'Tempo de atraso', medida temporal, não volumétrica.",
+        "alternative": "Quantidade total de dados que podem ser transmitidos por segundo na rede.",
+        "because": "Incorreto: Isso descreve largura de banda ou throughput. A resposta correta é 'Tempo que dados levam para viajar entre origem e destino na rede'.",
+        "rep": false
+      },
+      {
+        "alternative": "Número máximo de conexões simultâneas que servidor pode aceitar e processar.",
+        "because": "Incorreto: Isso se refere a capacidade de conexões. A resposta correta é 'Tempo que dados levam para viajar entre origem e destino na rede'.",
         "rep": false
       }
     ]
   },
   {
     "id": 49,
-    "title": "Qual é o benefício principal de usar 'microservices' (microsserviços) na AWS?",
+    "title": "O que caracteriza o modelo SaaS (Software as a Service)?",
     "group_by_topic": "Conceitos de Nuvem",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Reduzir complexidade concentrando toda lógica em único serviço monolítico.",
-        "because": "Incorreto: Isso é arquitetura monolítica, oposto de microservices. A resposta correta é 'Dividir aplicação em serviços pequenos e independentes', essência dos microsserviços.",
-        "rep": false
-      },
-      {
-        "alternative": "Dividir aplicação em serviços pequenos, independentes e especializados que se comunicam via APIs.",
-        "because": "Correto: Microservices permitem que cada serviço seja desenvolvido, implantado e escalado independentemente. Facilita agilidade, permite usar tecnologias diferentes por serviço, melhora resiliência (falha isolada) e suporta equipes autônomas.",
+        "alternative": "Aplicações completas acessadas via internet sem necessidade de instalação ou gerenciamento.",
+        "because": "Correto: SaaS fornece software pronto para uso via navegador ou API. Provedor gerencia tudo (infraestrutura, plataforma, aplicação). Exemplos: Gmail, Salesforce, Office 365.",
         "rep": true
       },
       {
-        "alternative": "Garantir que todos os serviços usem mesma linguagem de programação.",
-        "because": "Incorreto: Microservices permitem polyglot (múltiplas linguagens). A resposta correta é 'Dividir em serviços independentes', permitindo escolhas tecnológicas por serviço.",
+        "alternative": "Infraestrutura virtualizada onde cliente instala e gerencia próprio sistema operacional.",
+        "because": "Incorreto: Isso descreve IaaS. A resposta correta é 'Aplicações completas acessadas via internet sem necessidade de instalação ou gerenciamento'.",
         "rep": false
       },
       {
-        "alternative": "Eliminar necessidade de APIs e comunicação entre serviços.",
-        "because": "Incorreto: Microservices dependem fortemente de APIs para comunicação. A resposta correta é 'Dividir em serviços independentes que se comunicam via APIs', onde APIs são essenciais.",
+        "alternative": "Plataforma de desenvolvimento gerenciada onde você cria aplicações customizadas.",
+        "because": "Incorreto: Isso descreve PaaS. A resposta correta é 'Aplicações completas acessadas via internet sem necessidade de instalação ou gerenciamento'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviços de armazenamento de objetos acessíveis via API para backup de dados.",
+        "because": "Incorreto: Isso descreve object storage. A resposta correta é 'Aplicações completas acessadas via internet sem necessidade de instalação ou gerenciamento'.",
         "rep": false
       }
     ]
   },
   {
     "id": 50,
-    "title": "O que representa o 'Well-Architected Framework' da AWS?",
+    "title": "Por que usar várias Regiões AWS pode ser vantajoso?",
     "group_by_topic": "Conceitos de Nuvem",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Conjunto de melhores práticas e princípios de design para arquiteturas na nuvem em 6 pilares.",
-        "because": "Correto: Well-Architected Framework fornece orientação em 6 pilares: Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization e Sustainability. Inclui questões de revisão, melhores práticas e ferramentas para avaliar arquiteturas.",
+        "alternative": "Reduzir latência para usuários e atender requisitos de residência de dados locais.",
+        "because": "Correto: Múltiplas regiões permitem servir usuários de localização mais próxima (menor latência) e cumprir leis de soberania de dados que exigem armazenamento em país específico.",
         "rep": true
       },
       {
-        "alternative": "Ferramenta de precificação para calcular custos AWS.",
-        "because": "Incorreto: Isso é AWS Pricing Calculator. A resposta correta é 'Conjunto de melhores práticas em 6 pilares', framework de arquitetura, não ferramenta de custo.",
+        "alternative": "AWS automaticamente replica todos recursos em todas regiões sem configuração adicional.",
+        "because": "Incorreto: Replicação entre regiões deve ser configurada. A resposta correta é 'Reduzir latência para usuários e atender requisitos de residência de dados'.",
         "rep": false
       },
       {
-        "alternative": "Serviço de monitoramento de performance de aplicações.",
-        "because": "Incorreto: Isso é CloudWatch ou X-Ray. A resposta correta é 'Conjunto de melhores práticas', framework conceitual, não serviço de monitoramento.",
+        "alternative": "Garantir que custos sejam sempre menores usando regiões com preços mais baixos.",
+        "because": "Incorreto: Múltiplas regiões podem aumentar custos. A resposta correta é 'Reduzir latência para usuários e atender requisitos de residência de dados locais'.",
         "rep": false
       },
       {
-        "alternative": "Tipo específico de instância EC2 para workloads críticos.",
-        "because": "Incorreto: Well-Architected não é tipo de instância. A resposta correta é 'Conjunto de melhores práticas', framework de design de arquitetura.",
+        "alternative": "Todos os serviços AWS estão disponíveis igualmente em todas as regiões globais.",
+        "because": "Incorreto: Disponibilidade de serviços varia por região. A resposta correta é 'Reduzir latência para usuários e atender requisitos de residência de dados locais'.",
         "rep": false
       }
     ]
   },
   {
     "id": 51,
-    "title": "O que são Security Groups na AWS?",
+    "title": "Qual princípio de segurança envolve 'defesa em profundidade'?",
     "group_by_topic": "Conformidade & Segurança",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Grupos de usuários IAM com mesmas permissões.",
-        "because": "Incorreto: Isso são IAM Groups. A resposta correta é 'Firewall virtual stateful controlando tráfego de entrada/saída', que define Security Groups.",
-        "rep": false
-      },
-      {
-        "alternative": "Firewall virtual stateful que controla tráfego de entrada e saída de instâncias EC2.",
-        "because": "Correto: Security Groups atuam como firewall na camada de instância, permitindo ou negando tráfego baseado em regras (protocolo, porta, origem/destino). São stateful: tráfego de resposta é automaticamente permitido. Funciona por allow (não há deny explícito).",
+        "alternative": "Implementar múltiplas camadas de controles de segurança em diferentes níveis da arquitetura.",
+        "because": "Correto: Defesa em profundidade usa múltiplas camadas de segurança (firewall, WAF, criptografia, IAM, logs) para que se uma camada falhar, outras ainda protegem os recursos.",
         "rep": true
       },
       {
-        "alternative": "Certificados SSL/TLS para criptografar dados em trânsito.",
-        "because": "Incorreto: Isso é ACM (AWS Certificate Manager) ou certificados. A resposta correta é 'Firewall virtual', Security Groups controlam acesso de rede, não criptografia.",
+        "alternative": "Confiar em uma única solução de segurança robusta para proteger toda infraestrutura.",
+        "because": "Incorreto: Isso viola o princípio de defesa em profundidade. A resposta correta é 'Implementar múltiplas camadas de controles de segurança'.",
         "rep": false
       },
       {
-        "alternative": "Serviço de backup automático de recursos AWS.",
-        "because": "Incorreto: Isso é AWS Backup. A resposta correta é 'Firewall virtual', Security Groups são para controle de tráfego de rede.",
+        "alternative": "Eliminar completamente necessidade de monitoramento e auditoria de logs de segurança.",
+        "because": "Incorreto: Monitoramento é parte da defesa em profundidade. A resposta correta é 'Implementar múltiplas camadas de controles de segurança'.",
+        "rep": false
+      },
+      {
+        "alternative": "Garantir que todos usuários tenham acesso administrativo completo aos recursos.",
+        "because": "Incorreto: Isso viola menor privilégio. A resposta correta é 'Implementar múltiplas camadas de controles de segurança em diferentes níveis'.",
         "rep": false
       }
     ]
   },
   {
     "id": 52,
-    "title": "Qual serviço AWS detecta atividades anômalas e potenciais ameaças de segurança?",
+    "title": "O que são Security Groups na AWS?",
     "group_by_topic": "Conformidade & Segurança",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Amazon S3.",
-        "because": "Incorreto: S3 é armazenamento de objetos. A resposta correta é 'Amazon GuardDuty', serviço específico de detecção de ameaças.",
-        "rep": false
-      },
-      {
-        "alternative": "Amazon GuardDuty.",
-        "because": "Correto: GuardDuty é serviço de detecção de ameaças que monitora continuamente atividade maliciosa e comportamento não autorizado. Analisa CloudTrail logs, VPC Flow Logs e DNS logs usando machine learning para identificar ameaças como reconhecimento, comprometimento de instância e account compromise.",
+        "alternative": "Firewalls virtuais que controlam tráfego de entrada e saída de instâncias EC2.",
+        "because": "Correto: Security Groups são firewalls stateful que operam no nível de instância, controlando tráfego baseado em regras de allow (não há deny explícito). Todo tráfego é negado por padrão.",
         "rep": true
       },
       {
-        "alternative": "AWS Lambda.",
-        "because": "Incorreto: Lambda executa código serverless. A resposta correta é 'Amazon GuardDuty', projetado para threat detection.",
+        "alternative": "Grupos de usuários IAM com permissões idênticas para acessar recursos AWS.",
+        "because": "Incorreto: Isso são IAM Groups. A resposta correta é 'Firewalls virtuais que controlam tráfego de entrada e saída de instâncias'.",
         "rep": false
       },
       {
-        "alternative": "Amazon CloudFront.",
-        "because": "Incorreto: CloudFront é CDN. A resposta correta é 'Amazon GuardDuty', serviço de segurança para detecção de ameaças.",
+        "alternative": "Políticas de criptografia aplicadas automaticamente a todos dados em repouso e trânsito.",
+        "because": "Incorreto: Isso se refere a criptografia. A resposta correta é 'Firewalls virtuais que controlam tráfego de entrada e saída de instâncias EC2'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço gerenciado para detecção de ameaças e vulnerabilidades em aplicações.",
+        "because": "Incorreto: Isso seria GuardDuty ou Inspector. A resposta correta é 'Firewalls virtuais que controlam tráfego de entrada e saída de instâncias EC2'.",
         "rep": false
       }
     ]
   },
   {
     "id": 53,
-    "title": "O que é AWS KMS (Key Management Service)?",
+    "title": "O que é AWS Key Management Service (KMS)?",
     "group_by_topic": "Conformidade & Segurança",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Serviço de balanceamento de carga entre regiões.",
-        "because": "Incorreto: Isso é Global Accelerator ou Route 53. A resposta correta é 'Serviço gerenciado para criar e controlar chaves de criptografia', função do KMS.",
-        "rep": false
-      },
-      {
-        "alternative": "Ferramenta de análise de custos e otimização financeira.",
-        "because": "Incorreto: Isso é Cost Explorer ou Cost Anomaly Detection. A resposta correta é 'Serviço para gerenciar chaves de criptografia', KMS é para segurança.",
-        "rep": false
-      },
-      {
-        "alternative": "Serviço gerenciado para criar e controlar chaves de criptografia usadas em aplicações e serviços AWS.",
-        "because": "Correto: KMS permite criar, gerenciar e controlar chaves criptográficas usadas para proteger dados. Integra com serviços AWS (S3, EBS, RDS) para criptografia transparente. Suporta chaves gerenciadas pela AWS, pelo cliente, e chaves customer managed com controle total.",
+        "alternative": "Serviço gerenciado para criar e controlar chaves de criptografia usadas nos serviços AWS.",
+        "because": "Correto: KMS permite criar, gerenciar e controlar chaves criptográficas para proteger dados. Integra com serviços AWS (S3, EBS, RDS) e usa HSMs validados FIPS 140-2.",
         "rep": true
       },
       {
-        "alternative": "Sistema de monitoramento de logs em tempo real.",
-        "because": "Incorreto: Isso é CloudWatch Logs. A resposta correta é 'Serviço para gerenciar chaves de criptografia', KMS é específico para key management.",
+        "alternative": "Ferramenta de monitoramento de métricas e logs de segurança em tempo real.",
+        "because": "Incorreto: Isso seria CloudWatch ou Security Hub. A resposta correta é 'Serviço gerenciado para criar e controlar chaves de criptografia'.",
+        "rep": false
+      },
+      {
+        "alternative": "Sistema de gerenciamento de identidades e controle de acesso para usuários AWS.",
+        "because": "Incorreto: Isso é AWS IAM. A resposta correta é 'Serviço gerenciado para criar e controlar chaves de criptografia usadas nos serviços AWS'.",
+        "rep": false
+      },
+      {
+        "alternative": "Banco de dados seguro para armazenar senhas e credenciais de aplicações corporativas.",
+        "because": "Incorreto: Isso seria Secrets Manager. A resposta correta é 'Serviço gerenciado para criar e controlar chaves de criptografia usadas nos serviços AWS'.",
         "rep": false
       }
     ]
   },
   {
     "id": 54,
-    "title": "Qual é a diferença entre Network ACL e Security Group?",
-    "group_by_topic": "Conformidade & Segurança",
-    "accept_two_alternatives": false,
-    "level_of_complexity": 2,
-    "response": [
-      {
-        "alternative": "Network ACL é stateful; Security Group é stateless.",
-        "because": "Incorreto: É o oposto - Network ACL é stateless; Security Group é stateful. A resposta correta inverte corretamente a relação.",
-        "rep": false
-      },
-      {
-        "alternative": "Network ACL opera na camada de subnet e é stateless; Security Group opera na camada de instância e é stateful.",
-        "because": "Correto: Network ACL funciona em nível de subnet, avalia regras por ordem numérica, suporta allow e deny, e é stateless (precisa regras explícitas para entrada e saída). Security Group funciona em nível de instância, avalia todas as regras, só permite allow, e é stateful (resposta automática permitida).",
-        "rep": true
-      },
-      {
-        "alternative": "São exatamente iguais, apenas nomes diferentes para mesma funcionalidade.",
-        "because": "Incorreto: Têm diferenças significativas em escopo e comportamento. A resposta correta é 'NACL em subnet, stateless; SG em instância, stateful', distinguindo claramente os dois.",
-        "rep": false
-      },
-      {
-        "alternative": "Network ACL não pode negar tráfego, apenas Security Group pode.",
-        "because": "Incorreto: Network ACL suporta regras deny explícitas; Security Group não. A resposta correta é 'NACL stateless em subnet; SG stateful em instância'.",
-        "rep": false
-      }
-    ]
-  },
-  {
-    "id": 55,
     "title": "Para que serve o AWS Secrets Manager?",
     "group_by_topic": "Conformidade & Segurança",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Armazenar e rotacionar automaticamente credenciais, senhas e chaves de API de forma segura.",
-        "because": "Correto: Secrets Manager permite armazenar, gerenciar e recuperar credenciais de banco de dados, chaves de API e outros secrets de forma centralizada e criptografada. Suporta rotação automática de credenciais sem downtime e integra-se com RDS, Redshift e outros serviços.",
+        "alternative": "Gerenciar, recuperar e rotacionar credenciais de bancos de dados e chaves de API.",
+        "because": "Correto: Secrets Manager armazena e rotaciona automaticamente secrets (senhas de DB, API keys, tokens). Elimina necessidade de hardcoding de credenciais em código.",
         "rep": true
       },
       {
-        "alternative": "Distribuir conteúdo estático globalmente via CDN.",
-        "because": "Incorreto: Isso é CloudFront. A resposta correta é 'Armazenar e rotacionar credenciais', função do Secrets Manager.",
+        "alternative": "Criar e gerenciar chaves criptográficas para proteção de dados em repouso.",
+        "because": "Incorreto: Isso é AWS KMS. A resposta correta é 'Gerenciar, recuperar e rotacionar credenciais de bancos de dados e chaves de API'.",
         "rep": false
       },
       {
-        "alternative": "Executar varreduras de vulnerabilidades em instâncias EC2.",
-        "because": "Incorreto: Isso é Amazon Inspector. A resposta correta é 'Armazenar e rotacionar credenciais', Secrets Manager gerencia secrets, não vulnerabilidades.",
+        "alternative": "Monitorar atividades suspeitas e detectar ameaças em tempo real na conta AWS.",
+        "because": "Incorreto: Isso é GuardDuty. A resposta correta é 'Gerenciar, recuperar e rotacionar credenciais de bancos de dados e chaves de API'.",
         "rep": false
       },
       {
-        "alternative": "Criar e gerenciar certificados SSL/TLS públicos.",
-        "because": "Incorreto: Isso é AWS Certificate Manager (ACM). A resposta correta é 'Armazenar e rotacionar credenciais', Secrets Manager foca em secrets como senhas e API keys.",
+        "alternative": "Auditar configurações de recursos e verificar conformidade com políticas internas.",
+        "because": "Incorreto: Isso é AWS Config. A resposta correta é 'Gerenciar, recuperar e rotacionar credenciais de bancos de dados e chaves de API'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "title": "O que é AWS GuardDuty?",
+    "group_by_topic": "Conformidade & Segurança",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Serviço de detecção de ameaças que monitora atividades maliciosas e comportamento anômalo.",
+        "because": "Correto: GuardDuty usa machine learning para analisar logs (CloudTrail, VPC Flow, DNS) e detectar ameaças como reconhecimento, comprometimento de instância, exfiltração de dados.",
+        "rep": true
+      },
+      {
+        "alternative": "Firewall de aplicação web para bloquear ataques de SQL injection e XSS.",
+        "because": "Incorreto: Isso é AWS WAF. A resposta correta é 'Serviço de detecção de ameaças que monitora atividades maliciosas e comportamento anômalo'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço de gerenciamento centralizado de regras de firewall em múltiplas contas.",
+        "because": "Incorreto: Isso seria Firewall Manager. A resposta correta é 'Serviço de detecção de ameaças que monitora atividades maliciosas e comportamento anômalo'.",
+        "rep": false
+      },
+      {
+        "alternative": "Ferramenta de avaliação de vulnerabilidades em aplicações e instâncias EC2.",
+        "because": "Incorreto: Isso é Amazon Inspector. A resposta correta é 'Serviço de detecção de ameaças que monitora atividades maliciosas e comportamento anômalo'.",
         "rep": false
       }
     ]
   },
   {
     "id": 56,
-    "title": "O que é Amazon Inspector?",
+    "title": "O que significa criptografia 'em trânsito' (in transit)?",
     "group_by_topic": "Conformidade & Segurança",
     "accept_two_alternatives": false,
-    "level_of_complexity": 2,
+    "level_of_complexity": 1,
     "response": [
       {
-        "alternative": "Serviço de DNS gerenciado para roteamento de tráfego.",
-        "because": "Incorreto: Isso é Route 53. A resposta correta é 'Serviço de avaliação de vulnerabilidades', função do Inspector.",
-        "rep": false
-      },
-      {
-        "alternative": "Ferramenta de visualização de custos e uso da AWS.",
-        "because": "Incorreto: Isso é Cost Explorer. A resposta correta é 'Serviço de avaliação de vulnerabilidades', Inspector é para segurança.",
-        "rep": false
-      },
-      {
-        "alternative": "Serviço de avaliação automatizada de vulnerabilidades para workloads AWS.",
-        "because": "Correto: Inspector automaticamente descobre e escaneia workloads (EC2, ECR containers, Lambda) procurando vulnerabilidades de software e exposições de rede não intencionais. Gera relatórios priorizados por severidade e fornece recomendações de remediação.",
+        "alternative": "Criptografar dados enquanto são transmitidos pela rede entre origem e destino.",
+        "because": "Correto: Criptografia em trânsito protege dados durante transmissão usando protocolos como TLS/SSL, IPSec. Previne interceptação e ataques man-in-the-middle durante transferência.",
         "rep": true
       },
       {
-        "alternative": "Sistema de mensageria pub/sub para notificações.",
-        "because": "Incorreto: Isso é SNS (Simple Notification Service). A resposta correta é 'Serviço de avaliação de vulnerabilidades', específico do Inspector.",
+        "alternative": "Criptografar dados armazenados permanentemente em discos e volumes de armazenamento.",
+        "because": "Incorreto: Isso é criptografia em repouso (at rest). A resposta correta é 'Criptografar dados enquanto são transmitidos pela rede entre origem e destino'.",
+        "rep": false
+      },
+      {
+        "alternative": "Processo de aplicar hashing unidirecional a senhas antes de armazenar em banco.",
+        "because": "Incorreto: Isso se refere a hashing de senhas. A resposta correta é 'Criptografar dados enquanto são transmitidos pela rede entre origem e destino'.",
+        "rep": false
+      },
+      {
+        "alternative": "Técnica de ofuscar código-fonte para dificultar engenharia reversa de aplicações.",
+        "because": "Incorreto: Isso se refere a ofuscação de código. A resposta correta é 'Criptografar dados enquanto são transmitidos pela rede entre origem e destino'.",
         "rep": false
       }
     ]
   },
   {
     "id": 57,
-    "title": "Qual serviço permite criptografar dados em trânsito entre cliente e AWS?",
+    "title": "Para que serve o AWS Certificate Manager (ACM)?",
     "group_by_topic": "Conformidade & Segurança",
     "accept_two_alternatives": false,
-    "level_of_complexity": 1,
+    "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "AWS Direct Connect exclusivamente.",
-        "because": "Incorreto: Direct Connect não criptografa por padrão. A resposta correta é 'SSL/TLS (HTTPS)', protocolo padrão para criptografia em trânsito.",
-        "rep": false
-      },
-      {
-        "alternative": "SSL/TLS (HTTPS) para comunicação segura.",
-        "because": "Correto: SSL/TLS criptografa dados durante transmissão entre cliente e serviços AWS. AWS suporta HTTPS endpoints em todos os serviços, e Certificate Manager (ACM) fornece certificados SSL/TLS gratuitos. VPN também usa criptografia para conexões site-to-site.",
+        "alternative": "Provisionar, gerenciar e implantar certificados SSL/TLS para uso com serviços AWS.",
+        "because": "Correto: ACM facilita criação e gerenciamento de certificados SSL/TLS para HTTPS. Renova automaticamente certificados e integra com ELB, CloudFront, API Gateway sem custo adicional.",
         "rep": true
       },
       {
-        "alternative": "Amazon S3 apenas.",
-        "because": "Incorreto: S3 usa SSL/TLS, mas não é o único. A resposta correta é 'SSL/TLS', protocolo usado por todos os serviços AWS.",
+        "alternative": "Gerenciar credenciais de banco de dados e rotacionar secrets automaticamente.",
+        "because": "Incorreto: Isso é Secrets Manager. A resposta correta é 'Provisionar, gerenciar e implantar certificados SSL/TLS para uso com serviços AWS'.",
         "rep": false
       },
       {
-        "alternative": "Apenas conexões físicas dedicadas garantem criptografia.",
-        "because": "Incorreto: Criptografia em trânsito é via SSL/TLS, independente do tipo de conexão. A resposta correta é 'SSL/TLS', não tipo de conexão física.",
+        "alternative": "Criar e controlar chaves criptográficas para proteção de dados sensíveis em repouso.",
+        "because": "Incorreto: Isso é AWS KMS. A resposta correta é 'Provisionar, gerenciar e implantar certificados SSL/TLS para uso com serviços AWS'.",
+        "rep": false
+      },
+      {
+        "alternative": "Auditar conformidade de configurações e rastrear mudanças em recursos AWS.",
+        "because": "Incorreto: Isso é AWS Config. A resposta correta é 'Provisionar, gerenciar e implantar certificados SSL/TLS para uso com serviços AWS'.",
         "rep": false
       }
     ]
   },
   {
     "id": 58,
-    "title": "O que é AWS Organizations?",
+    "title": "O que são IAM Roles?",
     "group_by_topic": "Conformidade & Segurança",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Serviço para gerenciar centralmente múltiplas contas AWS e aplicar políticas em escala.",
-        "because": "Correto: Organizations permite consolidar múltiplas contas AWS em organização hierárquica. Oferece billing consolidado, aplicação centralizada de políticas (SCPs - Service Control Policies), automação de criação de contas e controle de acesso em escala.",
+        "alternative": "Identidades que podem ser assumidas por usuários ou serviços para obter permissões temporárias.",
+        "because": "Correto: Roles são identidades IAM com políticas de permissão que podem ser assumidas por entidades (usuários, aplicações, serviços AWS) para obter credenciais temporárias sem senha.",
         "rep": true
       },
       {
-        "alternative": "Ferramenta de organização de arquivos em buckets S3.",
-        "because": "Incorreto: S3 tem sua própria organização via prefixos/folders. A resposta correta é 'Gerenciar múltiplas contas AWS', escopo de Organizations é contas, não arquivos.",
+        "alternative": "Contas de usuário permanentes com senhas fixas para acesso programático à AWS.",
+        "because": "Incorreto: Isso descreve IAM Users. A resposta correta é 'Identidades que podem ser assumidas por usuários ou serviços para obter permissões temporárias'.",
         "rep": false
       },
       {
-        "alternative": "Sistema de workflow para automação de tarefas repetitivas.",
-        "because": "Incorreto: Isso é Step Functions ou Systems Manager. A resposta correta é 'Gerenciar múltiplas contas', função específica do Organizations.",
+        "alternative": "Políticas JSON que definem permissões específicas anexadas a recursos AWS.",
+        "because": "Incorreto: Isso descreve IAM Policies. A resposta correta é 'Identidades que podem ser assumidas por usuários ou serviços para obter permissões temporárias'.",
         "rep": false
       },
       {
-        "alternative": "Banco de dados para armazenar dados organizacionais.",
-        "because": "Incorreto: Organizations não é banco de dados. A resposta correta é 'Gerenciar múltiplas contas AWS', serviço de governança de contas.",
+        "alternative": "Grupos lógicos de usuários IAM com permissões idênticas para facilitar gerenciamento.",
+        "because": "Incorreto: Isso descreve IAM Groups. A resposta correta é 'Identidades que podem ser assumidas por usuários ou serviços para obter permissões temporárias'.",
         "rep": false
       }
     ]
   },
   {
     "id": 59,
-    "title": "O que são IAM Roles e quando usá-los?",
+    "title": "O que é AWS Inspector?",
     "group_by_topic": "Conformidade & Segurança",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Senhas permanentes armazenadas em código da aplicação.",
-        "because": "Incorreto: Isso é anti-padrão de segurança. A resposta correta é 'Identidade assumível com permissões temporárias', roles evitam credenciais hardcoded.",
-        "rep": false
-      },
-      {
-        "alternative": "Identidade AWS assumível por usuários, aplicações ou serviços para obter permissões temporárias.",
-        "because": "Correto: IAM Roles concedem permissões sem necessidade de credenciais de longo prazo. Usados para: instâncias EC2 acessarem outros serviços, cross-account access, federação de identidade, e serviços AWS assumirem roles para executar ações em seu nome.",
+        "alternative": "Serviço de avaliação automatizada de vulnerabilidades e desvios de melhores práticas.",
+        "because": "Correto: Inspector analisa automaticamente aplicações e instâncias EC2 para identificar vulnerabilidades de segurança, exposições e desvios de compliance, gerando relatórios detalhados.",
         "rep": true
       },
       {
-        "alternative": "Grupos de usuários com mesmas permissões permanentes.",
-        "because": "Incorreto: Isso são IAM Groups. A resposta correta é 'Identidade assumível com permissões temporárias', diferencial dos roles.",
+        "alternative": "Sistema de detecção de ameaças usando machine learning para identificar comportamento anômalo.",
+        "because": "Incorreto: Isso é GuardDuty. A resposta correta é 'Serviço de avaliação automatizada de vulnerabilidades e desvios de melhores práticas'.",
         "rep": false
       },
       {
-        "alternative": "Chaves de acesso compartilhadas entre múltiplas aplicações.",
-        "because": "Incorreto: Compartilhar chaves é má prática. A resposta correta é 'Identidade assumível temporariamente', roles eliminam necessidade de compartilhar credenciais.",
+        "alternative": "Firewall gerenciado que protege aplicações web contra ataques comuns na camada 7.",
+        "because": "Incorreto: Isso é AWS WAF. A resposta correta é 'Serviço de avaliação automatizada de vulnerabilidades e desvios de melhores práticas'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço para auditar configurações de recursos e verificar conformidade com padrões.",
+        "because": "Incorreto: Isso é AWS Config. A resposta correta é 'Serviço de avaliação automatizada de vulnerabilidades e desvios de melhores práticas'.",
         "rep": false
       }
     ]
   },
   {
     "id": 60,
-    "title": "Qual serviço AWS ajuda a garantir compliance com regulamentações como HIPAA e PCI DSS?",
+    "title": "Qual é a função do AWS Organizations?",
     "group_by_topic": "Conformidade & Segurança",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "AWS oferece infraestrutura compliant; cliente deve configurar corretamente e AWS Artifact fornece documentação.",
-        "because": "Correto: AWS fornece infraestrutura que atende diversos frameworks (HIPAA, PCI DSS, SOC, ISO). Cliente é responsável por configurar serviços de forma compliant (modelo de responsabilidade compartilhada). AWS Artifact fornece relatórios de compliance e BAAs (Business Associate Agreements).",
+        "alternative": "Gerenciar centralmente múltiplas contas AWS e aplicar políticas em toda organização.",
+        "because": "Correto: Organizations permite consolidar múltiplas contas AWS, aplicar SCPs (Service Control Policies) para governança centralizada e consolidar billing para descontos por volume.",
         "rep": true
       },
       {
-        "alternative": "Amazon S3 automaticamente garante compliance sem configuração.",
-        "because": "Incorreto: S3 pode ser usado de forma compliant, mas requer configuração adequada. A resposta correta é 'AWS fornece infraestrutura; cliente configura', enfatizando responsabilidade compartilhada.",
+        "alternative": "Criar e gerenciar usuários individuais e suas permissões de acesso aos recursos.",
+        "because": "Incorreto: Isso é AWS IAM. A resposta correta é 'Gerenciar centralmente múltiplas contas AWS e aplicar políticas em toda organização'.",
         "rep": false
       },
       {
-        "alternative": "Compliance é 100% responsabilidade da AWS, cliente não precisa fazer nada.",
-        "because": "Incorreto: Cliente tem responsabilidades na nuvem. A resposta correta é 'AWS fornece infraestrutura; cliente configura corretamente', modelo de responsabilidade compartilhada.",
+        "alternative": "Monitorar custos e criar orçamentos para controlar gastos em serviços AWS.",
+        "because": "Incorreto: Isso é AWS Budgets. A resposta correta é 'Gerenciar centralmente múltiplas contas AWS e aplicar políticas em toda organização'.",
         "rep": false
       },
       {
-        "alternative": "AWS não suporta regulamentações de compliance.",
-        "because": "Incorreto: AWS tem extenso programa de compliance. A resposta correta é 'AWS fornece infraestrutura compliant e documentação via Artifact', suportando múltiplos frameworks.",
+        "alternative": "Auditar logs de atividades e rastrear chamadas de API realizadas na conta.",
+        "because": "Incorreto: Isso é CloudTrail. A resposta correta é 'Gerenciar centralmente múltiplas contas AWS e aplicar políticas em toda organização'.",
         "rep": false
       }
     ]
   },
   {
     "id": 61,
-    "title": "Qual serviço AWS é usado para enviar notificações via email, SMS ou push notifications?",
-    "group_by_topic": "Serviços básicos da AWS",
-    "accept_two_alternatives": false,
-    "level_of_complexity": 1,
-    "response": [
-      {
-        "alternative": "Amazon CloudWatch.",
-        "because": "Incorreto: CloudWatch monitora recursos; SNS envia notificações. A resposta correta é 'Amazon SNS', serviço de mensageria pub/sub.",
-        "rep": false
-      },
-      {
-        "alternative": "Amazon SQS.",
-        "because": "Incorreto: SQS é fila de mensagens para desacoplamento, não notificações push. A resposta correta é 'Amazon SNS', projetado para pub/sub e notificações.",
-        "rep": false
-      },
-      {
-        "alternative": "Amazon SNS (Simple Notification Service).",
-        "because": "Correto: SNS é serviço de mensageria pub/sub gerenciado que envia notificações para subscribers via múltiplos protocolos: email, SMS, push notifications mobile, HTTP/HTTPS endpoints, SQS, Lambda. Permite fan-out de mensagens para múltiplos destinos simultaneamente.",
-        "rep": true
-      },
-      {
-        "alternative": "AWS Lambda.",
-        "because": "Incorreto: Lambda executa código; pode ser acionado por SNS mas não é serviço de notificação. A resposta correta é 'Amazon SNS', específico para pub/sub.",
-        "rep": false
-      }
-    ]
-  },
-  {
-    "id": 62,
-    "title": "Para que serve o Amazon SQS (Simple Queue Service)?",
-    "group_by_topic": "Serviços básicos da AWS",
-    "accept_two_alternatives": false,
-    "level_of_complexity": 2,
-    "response": [
-      {
-        "alternative": "Banco de dados NoSQL para armazenamento de documentos.",
-        "because": "Incorreto: Isso é DynamoDB. A resposta correta é 'Serviço de fila de mensagens', SQS é para messaging, não storage persistente.",
-        "rep": false
-      },
-      {
-        "alternative": "Serviço de fila de mensagens gerenciado para desacoplar componentes de aplicações distribuídas.",
-        "because": "Correto: SQS permite que componentes de aplicação se comuniquem de forma assíncrona através de filas. Garante entrega de mensagens, suporta escala automática e oferece dois tipos: Standard (throughput máximo, best-effort ordering) e FIFO (ordem garantida, exactly-once processing).",
-        "rep": true
-      },
-      {
-        "alternative": "Sistema de cache em memória para acelerar queries.",
-        "because": "Incorreto: Isso é ElastiCache. A resposta correta é 'Serviço de fila de mensagens', SQS é para comunicação assíncrona.",
-        "rep": false
-      },
-      {
-        "alternative": "Ferramenta de monitoramento de logs de aplicação.",
-        "because": "Incorreto: Isso é CloudWatch Logs. A resposta correta é 'Serviço de fila de mensagens', SQS facilita desacoplamento via mensagens.",
-        "rep": false
-      }
-    ]
-  },
-  {
-    "id": 63,
     "title": "O que é Amazon Route 53?",
     "group_by_topic": "Serviços básicos da AWS",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Serviço de armazenamento de objetos com versionamento.",
-        "because": "Incorreto: Isso é S3. A resposta correta é 'Serviço de DNS escalável', função do Route 53.",
-        "rep": false
-      },
-      {
-        "alternative": "Serviço de DNS escalável e altamente disponível para roteamento de tráfego.",
-        "because": "Correto: Route 53 é DNS gerenciado que traduz nomes (exemplo.com) em IPs. Oferece registro de domínios, health checks, roteamento baseado em latência/geolocalização/weighted/failover, e integra-se com outros serviços AWS. Nome vem da porta DNS 53.",
+        "alternative": "Serviço de DNS escalável e altamente disponível para rotear usuários para aplicações.",
+        "because": "Correto: Route 53 é serviço de DNS gerenciado que traduz nomes de domínio em IPs. Oferece roteamento baseado em latência, geolocalização, failover e health checks.",
         "rep": true
       },
       {
-        "alternative": "Firewall de aplicação web contra ataques DDoS.",
-        "because": "Incorreto: Isso é WAF e Shield. A resposta correta é 'Serviço de DNS', Route 53 faz resolução de nomes.",
+        "alternative": "Rede de distribuição de conteúdo global para entregar arquivos com baixa latência.",
+        "because": "Incorreto: Isso é CloudFront. A resposta correta é 'Serviço de DNS escalável e altamente disponível para rotear usuários para aplicações'.",
         "rep": false
       },
       {
-        "alternative": "Rede de entrega de conteúdo para cache global.",
-        "because": "Incorreto: Isso é CloudFront. A resposta correta é 'Serviço de DNS', Route 53 roteia requisições, CloudFront cacheia conteúdo.",
+        "alternative": "Serviço de load balancing que distribui tráfego entre múltiplas instâncias EC2.",
+        "because": "Incorreto: Isso é Elastic Load Balancing. A resposta correta é 'Serviço de DNS escalável e altamente disponível para rotear usuários'.",
+        "rep": false
+      },
+      {
+        "alternative": "Firewall virtual que controla tráfego de entrada e saída de recursos AWS.",
+        "because": "Incorreto: Isso são Security Groups. A resposta correta é 'Serviço de DNS escalável e altamente disponível para rotear usuários para aplicações'.",
         "rep": false
       }
     ]
   },
   {
-    "id": 64,
-    "title": "Qual serviço AWS fornece cache em memória compatível com Redis ou Memcached?",
+    "id": 62,
+    "title": "Para que serve o Amazon ElastiCache?",
     "group_by_topic": "Serviços básicos da AWS",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Amazon RDS.",
-        "because": "Incorreto: RDS é para bancos relacionais persistentes. A resposta correta é 'Amazon ElastiCache', serviço de cache em memória.",
-        "rep": false
-      },
-      {
-        "alternative": "Amazon ElastiCache.",
-        "because": "Correto: ElastiCache é serviço de cache em memória totalmente gerenciado compatível com Redis e Memcached. Reduz latência armazenando dados frequentemente acessados na memória. Redis oferece persistência e estruturas de dados avançadas; Memcached é mais simples e multi-threaded.",
+        "alternative": "Serviço de cache em memória gerenciado compatível com Redis e Memcached.",
+        "because": "Correto: ElastiCache fornece armazenamento de dados em memória de alta performance para reduzir latência e carga em bancos de dados, melhorando performance de aplicações web.",
         "rep": true
       },
       {
-        "alternative": "Amazon DynamoDB.",
-        "because": "Incorreto: DynamoDB é banco NoSQL persistente, não cache. A resposta correta é 'Amazon ElastiCache', otimizado para cache em memória de alta performance.",
+        "alternative": "Banco de dados NoSQL totalmente gerenciado com performance consistente de milissegundos.",
+        "because": "Incorreto: Isso é DynamoDB. A resposta correta é 'Serviço de cache em memória gerenciado compatível com Redis e Memcached'.",
         "rep": false
       },
       {
-        "alternative": "Amazon S3.",
-        "because": "Incorreto: S3 é object storage durável, não cache em memória. A resposta correta é 'Amazon ElastiCache', específico para caching.",
+        "alternative": "Data warehouse otimizado para análise de petabytes de dados estruturados.",
+        "because": "Incorreto: Isso é Redshift. A resposta correta é 'Serviço de cache em memória gerenciado compatível com Redis e Memcached'.",
+        "rep": false
+      },
+      {
+        "alternative": "Banco de dados relacional gerenciado com suporte a múltiplos engines SQL.",
+        "because": "Incorreto: Isso é Amazon RDS. A resposta correta é 'Serviço de cache em memória gerenciado compatível com Redis e Memcached'.",
         "rep": false
       }
     ]
   },
   {
-    "id": 65,
-    "title": "O que é AWS Elastic Beanstalk?",
-    "group_by_topic": "Serviços básicos da AWS",
-    "accept_two_alternatives": false,
-    "level_of_complexity": 2,
-    "response": [
-      {
-        "alternative": "Plataforma gerenciada para deploy e scaling de aplicações web sem gerenciar infraestrutura.",
-        "because": "Correto: Elastic Beanstalk é PaaS que automatiza deployment de aplicações. Você faz upload do código e o Beanstalk provisiona EC2, load balancer, auto scaling, monitoramento. Suporta Java, .NET, PHP, Node.js, Python, Ruby, Go, Docker. Você mantém controle total dos recursos subjacentes.",
-        "rep": true
-      },
-      {
-        "alternative": "Serviço de banco de dados relacional de alta disponibilidade.",
-        "because": "Incorreto: Isso é RDS ou Aurora. A resposta correta é 'Plataforma para deploy de aplicações', Beanstalk é PaaS, não database.",
-        "rep": false
-      },
-      {
-        "alternative": "Sistema de arquivos distribuído para big data.",
-        "because": "Incorreto: Isso seria EMR ou FSx. A resposta correta é 'Plataforma para deploy de aplicações web', função do Beanstalk.",
-        "rep": false
-      },
-      {
-        "alternative": "Ferramenta de análise de logs e métricas em tempo real.",
-        "because": "Incorreto: Isso é CloudWatch. A resposta correta é 'Plataforma para deploy de aplicações', Beanstalk automatiza infraestrutura de aplicação.",
-        "rep": false
-      }
-    ]
-  },
-  {
-    "id": 66,
-    "title": "Qual é a diferença entre Amazon EBS e Instance Store?",
-    "group_by_topic": "Serviços básicos da AWS",
-    "accept_two_alternatives": false,
-    "level_of_complexity": 2,
-    "response": [
-      {
-        "alternative": "EBS é armazenamento persistente em rede; Instance Store é temporário e local.",
-        "because": "Correto: EBS são volumes de bloco persistentes que existem independentemente da instância EC2, podem ser anexados/desanexados, suportam snapshots e persistem após stop/start. Instance Store é armazenamento temporário fisicamente anexado ao host, dados perdidos se instância para ou falha, mas oferece I/O muito alto.",
-        "rep": true
-      },
-      {
-        "alternative": "Não há diferença, são termos sinônimos.",
-        "because": "Incorreto: São tipos completamente diferentes de armazenamento. A resposta correta é 'EBS persistente em rede; Instance Store temporário local', com características distintas.",
-        "rep": false
-      },
-      {
-        "alternative": "Instance Store é mais durável que EBS.",
-        "because": "Incorreto: EBS é persistente e durável; Instance Store é efêmero. A resposta correta é 'EBS persistente; Instance Store temporário', onde EBS oferece durabilidade.",
-        "rep": false
-      },
-      {
-        "alternative": "EBS não pode fazer snapshots; Instance Store pode.",
-        "because": "Incorreto: EBS suporta snapshots; Instance Store não. A resposta correta é 'EBS persistente com snapshots; Instance Store temporário', invertendo corretamente.",
-        "rep": false
-      }
-    ]
-  },
-  {
-    "id": 67,
-    "title": "Para que serve o AWS CloudFormation?",
-    "group_by_topic": "Serviços básicos da AWS",
-    "accept_two_alternatives": false,
-    "level_of_complexity": 2,
-    "response": [
-      {
-        "alternative": "Serviço de CDN para distribuição de conteúdo global.",
-        "because": "Incorreto: Isso é CloudFront. A resposta correta é 'Infrastructure as Code para provisionar recursos', função do CloudFormation.",
-        "rep": false
-      },
-      {
-        "alternative": "Infrastructure as Code: provisionar e gerenciar recursos AWS usando templates declarativos.",
-        "because": "Correto: CloudFormation permite modelar infraestrutura em arquivos de texto (JSON/YAML). Define recursos como stacks, provisiona de forma consistente e repetível, suporta updates e rollbacks, e permite versionamento de infraestrutura. Elimina configuração manual e reduz erros.",
-        "rep": true
-      },
-      {
-        "alternative": "Ferramenta de backup automático de bancos de dados.",
-        "because": "Incorreto: Backup é função nativa de RDS ou AWS Backup. A resposta correta é 'Infrastructure as Code', CloudFormation automatiza provisionamento, não backup.",
-        "rep": false
-      },
-      {
-        "alternative": "Sistema de monitoramento de performance de aplicações.",
-        "because": "Incorreto: Isso é CloudWatch ou X-Ray. A resposta correta é 'Infrastructure as Code', CloudFormation provisiona recursos via templates.",
-        "rep": false
-      }
-    ]
-  },
-  {
-    "id": 68,
+    "id": 63,
     "title": "O que é Amazon Redshift?",
     "group_by_topic": "Serviços básicos da AWS",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Serviço de computação serverless para executar código.",
-        "because": "Incorreto: Isso é Lambda. A resposta correta é 'Data warehouse para analytics', função do Redshift.",
-        "rep": false
-      },
-      {
-        "alternative": "Data warehouse totalmente gerenciado para análise de petabytes de dados.",
-        "because": "Correto: Redshift é data warehouse colunar otimizado para queries analíticas OLAP em grandes volumes de dados. Usa SQL, integra com ferramentas de BI, oferece performance através de processamento paralelo massivo (MPP) e compressão colunar. Ideal para analytics, reporting e data mining.",
+        "alternative": "Data warehouse rápido, totalmente gerenciado para análise de petabytes de dados.",
+        "because": "Correto: Redshift é data warehouse colunar otimizado para analytics e queries complexas em grandes volumes de dados. Usa SQL padrão e integra com ferramentas de BI.",
         "rep": true
       },
       {
-        "alternative": "Banco de dados NoSQL para aplicações de baixa latência.",
-        "because": "Incorreto: Isso é DynamoDB. A resposta correta é 'Data warehouse para analytics', Redshift é OLAP, não OLTP.",
+        "alternative": "Banco de dados NoSQL serverless com escalabilidade automática para aplicações web.",
+        "because": "Incorreto: Isso é DynamoDB. A resposta correta é 'Data warehouse rápido, totalmente gerenciado para análise de petabytes de dados'.",
         "rep": false
       },
       {
-        "alternative": "Serviço de streaming de dados em tempo real.",
-        "because": "Incorreto: Isso é Kinesis. A resposta correta é 'Data warehouse', Redshift é para analytics de dados históricos.",
+        "alternative": "Serviço de cache em memória para melhorar performance de bancos relacionais.",
+        "because": "Incorreto: Isso é ElastiCache. A resposta correta é 'Data warehouse rápido, totalmente gerenciado para análise de petabytes de dados'.",
+        "rep": false
+      },
+      {
+        "alternative": "Banco de dados relacional gerenciado com backups automáticos e alta disponibilidade.",
+        "because": "Incorreto: Isso é Amazon RDS. A resposta correta é 'Data warehouse rápido, totalmente gerenciado para análise de petabytes de dados'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "title": "Para que serve o Amazon SNS (Simple Notification Service)?",
+    "group_by_topic": "Serviços básicos da AWS",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Serviço de mensageria pub/sub para enviar notificações a múltiplos assinantes.",
+        "because": "Correto: SNS permite publicar mensagens para múltiplos destinos simultaneamente (email, SMS, Lambda, SQS, HTTP endpoints) usando modelo publisher-subscriber (pub/sub).",
+        "rep": true
+      },
+      {
+        "alternative": "Fila de mensagens gerenciada para desacoplar componentes de aplicações distribuídas.",
+        "because": "Incorreto: Isso é Amazon SQS. A resposta correta é 'Serviço de mensageria pub/sub para enviar notificações a múltiplos assinantes'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço de e-mail transacional e marketing para envio em larga escala.",
+        "because": "Incorreto: Isso é Amazon SES. A resposta correta é 'Serviço de mensageria pub/sub para enviar notificações a múltiplos assinantes'.",
+        "rep": false
+      },
+      {
+        "alternative": "Sistema de notificações para alertas de custos e limites de orçamento AWS.",
+        "because": "Incorreto: Isso é parte do Budgets. A resposta correta é 'Serviço de mensageria pub/sub para enviar notificações a múltiplos assinantes'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "title": "O que é Amazon SQS (Simple Queue Service)?",
+    "group_by_topic": "Serviços básicos da AWS",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Fila de mensagens gerenciada para desacoplar e escalar microserviços distribuídos.",
+        "because": "Correto: SQS é serviço de fila totalmente gerenciado que permite desacoplar componentes, processar mensagens assincronamente e escalar independentemente produtores e consumidores.",
+        "rep": true
+      },
+      {
+        "alternative": "Serviço pub/sub para enviar notificações simultâneas a múltiplos endpoints diferentes.",
+        "because": "Incorreto: Isso é Amazon SNS. A resposta correta é 'Fila de mensagens gerenciada para desacoplar e escalar microserviços distribuídos'.",
+        "rep": false
+      },
+      {
+        "alternative": "Banco de dados de documentos NoSQL para armazenar dados semi-estruturados.",
+        "because": "Incorreto: Isso é DynamoDB. A resposta correta é 'Fila de mensagens gerenciada para desacoplar e escalar microserviços distribuídos'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço de streaming de dados em tempo real para ingestão de eventos.",
+        "because": "Incorreto: Isso é Kinesis. A resposta correta é 'Fila de mensagens gerenciada para desacoplar e escalar microserviços distribuídos'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "title": "Para que serve o AWS Elastic Beanstalk?",
+    "group_by_topic": "Serviços básicos da AWS",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Implantar e escalar aplicações web sem gerenciar infraestrutura subjacente.",
+        "because": "Correto: Elastic Beanstalk é PaaS que automatiza provisionamento de recursos (EC2, load balancer, Auto Scaling) - você faz upload do código e o serviço gerencia tudo.",
+        "rep": true
+      },
+      {
+        "alternative": "Orquestrar containers Docker em clusters de instâncias EC2 gerenciadas.",
+        "because": "Incorreto: Isso é Amazon ECS. A resposta correta é 'Implantar e escalar aplicações web sem gerenciar infraestrutura subjacente'.",
+        "rep": false
+      },
+      {
+        "alternative": "Executar código serverless em resposta a eventos sem provisionar servidores.",
+        "because": "Incorreto: Isso é AWS Lambda. A resposta correta é 'Implantar e escalar aplicações web sem gerenciar infraestrutura subjacente'.",
+        "rep": false
+      },
+      {
+        "alternative": "Criar e gerenciar pipelines de CI/CD para automação de deploy de aplicações.",
+        "because": "Incorreto: Isso é CodePipeline. A resposta correta é 'Implantar e escalar aplicações web sem gerenciar infraestrutura subjacente'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "title": "O que é Amazon ECS (Elastic Container Service)?",
+    "group_by_topic": "Serviços básicos da AWS",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Serviço de orquestração de containers altamente escalável para executar aplicações Docker.",
+        "because": "Correto: ECS permite executar, parar e gerenciar containers Docker em cluster. Pode usar EC2 (você gerencia) ou Fargate (serverless) como infraestrutura subjacente.",
+        "rep": true
+      },
+      {
+        "alternative": "Plataforma gerenciada para implantar aplicações web sem gerenciar servidores.",
+        "because": "Incorreto: Isso é Elastic Beanstalk. A resposta correta é 'Serviço de orquestração de containers altamente escalável para executar aplicações Docker'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço serverless para executar código em resposta a eventos sem containers.",
+        "because": "Incorreto: Isso é AWS Lambda. A resposta correta é 'Serviço de orquestração de containers altamente escalável para executar aplicações Docker'.",
+        "rep": false
+      },
+      {
+        "alternative": "Registro privado gerenciado para armazenar e gerenciar imagens de containers Docker.",
+        "because": "Incorreto: Isso é Amazon ECR. A resposta correta é 'Serviço de orquestração de containers altamente escalável para executar aplicações Docker'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "title": "Para que serve o Amazon CloudWatch?",
+    "group_by_topic": "Serviços básicos da AWS",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Monitorar recursos AWS, coletar métricas, logs e configurar alarmes operacionais.",
+        "because": "Correto: CloudWatch coleta e rastreia métricas, monitora arquivos de log, configura alarmes automatizados e cria dashboards para visualizar saúde e performance de recursos AWS.",
+        "rep": true
+      },
+      {
+        "alternative": "Registrar e auditar todas chamadas de API realizadas na conta AWS.",
+        "because": "Incorreto: Isso é CloudTrail. A resposta correta é 'Monitorar recursos AWS, coletar métricas, logs e configurar alarmes operacionais'.",
+        "rep": false
+      },
+      {
+        "alternative": "Detectar ameaças e comportamento anômalo usando machine learning avançado.",
+        "because": "Incorreto: Isso é GuardDuty. A resposta correta é 'Monitorar recursos AWS, coletar métricas, logs e configurar alarmes operacionais'.",
+        "rep": false
+      },
+      {
+        "alternative": "Avaliar vulnerabilidades de segurança e conformidade em instâncias EC2.",
+        "because": "Incorreto: Isso é Inspector. A resposta correta é 'Monitorar recursos AWS, coletar métricas, logs e configurar alarmes operacionais'.",
         "rep": false
       }
     ]
   },
   {
     "id": 69,
-    "title": "Qual serviço AWS permite executar containers Docker sem gerenciar servidores?",
-    "group_by_topic": "Serviços básicos da AWS",
-    "accept_two_alternatives": false,
-    "level_of_complexity": 2,
-    "response": [
-      {
-        "alternative": "Amazon EC2 apenas.",
-        "because": "Incorreto: EC2 requer gerenciamento de servidores. A resposta correta é 'AWS Fargate', que é serverless para containers.",
-        "rep": false
-      },
-      {
-        "alternative": "AWS Fargate.",
-        "because": "Correto: Fargate é motor de computação serverless para containers que funciona com ECS (Elastic Container Service) e EKS (Elastic Kubernetes Service). Elimina necessidade de provisionar e gerenciar servidores, você especifica apenas recursos (CPU/RAM) necessários por container.",
-        "rep": true
-      },
-      {
-        "alternative": "Amazon S3.",
-        "because": "Incorreto: S3 é object storage, não executa containers. A resposta correta é 'AWS Fargate', plataforma serverless para containers.",
-        "rep": false
-      },
-      {
-        "alternative": "AWS Lambda exclusivamente.",
-        "because": "Incorreto: Lambda executa funções, não containers completos. A resposta correta é 'AWS Fargate', que executa containers Docker de forma serverless.",
-        "rep": false
-      }
-    ]
-  },
-  {
-    "id": 70,
     "title": "O que é Amazon Aurora?",
     "group_by_topic": "Serviços básicos da AWS",
     "accept_two_alternatives": false,
     "level_of_complexity": 2,
     "response": [
       {
-        "alternative": "Serviço de cache distribuído em memória.",
-        "because": "Incorreto: Isso é ElastiCache. A resposta correta é 'Banco relacional compatível com MySQL/PostgreSQL', função do Aurora.",
-        "rep": false
-      },
-      {
-        "alternative": "Ferramenta de ETL para migração de dados.",
-        "because": "Incorreto: Isso é AWS Glue ou DMS. A resposta correta é 'Banco relacional de alta performance', Aurora é database engine.",
-        "rep": false
-      },
-      {
-        "alternative": "Banco de dados relacional compatível com MySQL e PostgreSQL, até 5x mais rápido.",
-        "because": "Correto: Aurora é banco relacional otimizado para nuvem, compatível com MySQL e PostgreSQL. Oferece até 5x performance de MySQL e 3x de PostgreSQL, com disponibilidade e durabilidade de bancos comerciais a 1/10 do custo. Recursos incluem replicação automática em 3 AZs, backup contínuo para S3.",
+        "alternative": "Banco de dados relacional compatível com MySQL e PostgreSQL de alta performance.",
+        "because": "Correto: Aurora é banco relacional totalmente gerenciado, compatível com MySQL e PostgreSQL, até 5x mais rápido que MySQL padrão. Oferece alta disponibilidade e replicação automática.",
         "rep": true
       },
       {
-        "alternative": "Sistema de arquivos paralelo para HPC.",
-        "because": "Incorreto: Isso é FSx for Lustre. A resposta correta é 'Banco relacional compatível com MySQL/PostgreSQL', Aurora é database service.",
+        "alternative": "Banco de dados NoSQL serverless com escalabilidade automática para qualquer escala.",
+        "because": "Incorreto: Isso é DynamoDB. A resposta correta é 'Banco de dados relacional compatível com MySQL e PostgreSQL de alta performance'.",
+        "rep": false
+      },
+      {
+        "alternative": "Data warehouse colunar otimizado para analytics e queries complexas em petabytes.",
+        "because": "Incorreto: Isso é Redshift. A resposta correta é 'Banco de dados relacional compatível com MySQL e PostgreSQL de alta performance'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço de cache em memória para reduzir latência de leitura em bancos.",
+        "because": "Incorreto: Isso é ElastiCache. A resposta correta é 'Banco de dados relacional compatível com MySQL e PostgreSQL de alta performance'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "title": "Para que serve o Amazon API Gateway?",
+    "group_by_topic": "Serviços básicos da AWS",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Criar, publicar, manter e monitorar APIs RESTful e WebSocket em qualquer escala.",
+        "because": "Correto: API Gateway permite criar APIs que atuam como porta de entrada para aplicações, integrando com Lambda, EC2, outros serviços. Gerencia autorização, throttling, caching.",
+        "rep": true
+      },
+      {
+        "alternative": "Distribuir conteúdo estático globalmente através de rede de edge locations.",
+        "because": "Incorreto: Isso é CloudFront. A resposta correta é 'Criar, publicar, manter e monitorar APIs RESTful e WebSocket em qualquer escala'.",
+        "rep": false
+      },
+      {
+        "alternative": "Executar código serverless em resposta a eventos HTTP sem gerenciar servidores.",
+        "because": "Incorreto: Isso é Lambda (pode integrar com API Gateway). A resposta correta é 'Criar, publicar, manter e monitorar APIs RESTful e WebSocket'.",
+        "rep": false
+      },
+      {
+        "alternative": "Balancear tráfego de entrada entre múltiplas instâncias EC2 em diferentes AZs.",
+        "because": "Incorreto: Isso é ELB. A resposta correta é 'Criar, publicar, manter e monitorar APIs RESTful e WebSocket em qualquer escala'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "title": "O que é o modelo de precificação de instâncias On-Demand?",
+    "group_by_topic": "Cobrança e Suporte",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 1,
+    "response": [
+      {
+        "alternative": "Pagar por capacidade de computação por hora ou segundo sem compromissos de longo prazo.",
+        "because": "Correto: On-Demand cobra por hora/segundo de uso sem contratos ou pagamentos antecipados. Ideal para workloads imprevisíveis, testes e aplicações de curto prazo.",
+        "rep": true
+      },
+      {
+        "alternative": "Compromisso de 1 ou 3 anos que oferece desconto significativo sobre preço padrão.",
+        "because": "Incorreto: Isso são Reserved Instances. A resposta correta é 'Pagar por capacidade de computação por hora ou segundo sem compromissos'.",
+        "rep": false
+      },
+      {
+        "alternative": "Instâncias com desconto de até 90% que podem ser interrompidas pela AWS.",
+        "because": "Incorreto: Isso são Spot Instances. A resposta correta é 'Pagar por capacidade de computação por hora ou segundo sem compromissos de longo prazo'.",
+        "rep": false
+      },
+      {
+        "alternative": "Compromisso de gasto por hora com flexibilidade entre tipos de instância e regiões.",
+        "because": "Incorreto: Isso são Savings Plans. A resposta correta é 'Pagar por capacidade de computação por hora ou segundo sem compromissos de longo prazo'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "title": "O que é AWS Billing Dashboard?",
+    "group_by_topic": "Cobrança e Suporte",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 1,
+    "response": [
+      {
+        "alternative": "Interface que mostra gastos atuais, faturas e previsões de custos mensais.",
+        "because": "Correto: Billing Dashboard fornece visão geral de custos AWS, incluindo saldo atual do mês, comparações mensais, faturas anteriores e estimativas de gastos futuros.",
+        "rep": true
+      },
+      {
+        "alternative": "Ferramenta avançada para criar relatórios customizados e analisar tendências de custos.",
+        "because": "Incorreto: Isso é Cost Explorer. A resposta correta é 'Interface que mostra gastos atuais, faturas e previsões de custos mensais'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço para definir orçamentos e receber alertas quando limites são excedidos.",
+        "because": "Incorreto: Isso é AWS Budgets. A resposta correta é 'Interface que mostra gastos atuais, faturas e previsões de custos mensais'.",
+        "rep": false
+      },
+      {
+        "alternative": "Calculadora online para estimar custos de arquiteturas AWS antes de implantação.",
+        "because": "Incorreto: Isso é Pricing Calculator. A resposta correta é 'Interface que mostra gastos atuais, faturas e previsões de custos mensais'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "title": "Para que serve o AWS Pricing Calculator?",
+    "group_by_topic": "Cobrança e Suporte",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Estimar custos de serviços AWS antes de provisioná-los e criar previsões orçamentárias.",
+        "because": "Correto: Pricing Calculator permite modelar arquiteturas, estimar custos mensais de serviços AWS, comparar opções de precificação e exportar estimativas para planejamento.",
+        "rep": true
+      },
+      {
+        "alternative": "Monitorar custos em tempo real e criar alertas quando gastos excedem limites.",
+        "because": "Incorreto: Isso é AWS Budgets. A resposta correta é 'Estimar custos de serviços AWS antes de provisioná-los e criar previsões orçamentárias'.",
+        "rep": false
+      },
+      {
+        "alternative": "Visualizar gastos históricos e identificar oportunidades de economia em recursos existentes.",
+        "because": "Incorreto: Isso é Cost Explorer. A resposta correta é 'Estimar custos de serviços AWS antes de provisioná-los e criar previsões orçamentárias'.",
+        "rep": false
+      },
+      {
+        "alternative": "Consolidar faturas de múltiplas contas AWS para obter descontos por volume.",
+        "because": "Incorreto: Isso é Consolidated Billing. A resposta correta é 'Estimar custos de serviços AWS antes de provisioná-los e criar previsões orçamentárias'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "title": "O que é Consolidated Billing no AWS Organizations?",
+    "group_by_topic": "Cobrança e Suporte",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Combinar uso de múltiplas contas em fatura única para obter descontos por volume.",
+        "because": "Correto: Consolidated Billing consolida pagamento de todas contas vinculadas em uma fatura, permitindo compartilhar descontos de volume, RIs e Savings Plans entre contas.",
+        "rep": true
+      },
+      {
+        "alternative": "Distribuir custos automaticamente entre departamentos usando tags de alocação.",
+        "because": "Incorreto: Tags ajudam mas não é função principal. A resposta correta é 'Combinar uso de múltiplas contas em fatura única para obter descontos por volume'.",
+        "rep": false
+      },
+      {
+        "alternative": "Criar orçamentos separados para cada conta AWS e receber alertas individualizados.",
+        "because": "Incorreto: Isso seria uso de Budgets. A resposta correta é 'Combinar uso de múltiplas contas em fatura única para obter descontos por volume'.",
+        "rep": false
+      },
+      {
+        "alternative": "Aplicar políticas de controle de serviços em todas contas da organização centralizadamente.",
+        "because": "Incorreto: Isso são SCPs do Organizations. A resposta correta é 'Combinar uso de múltiplas contas em fatura única para obter descontos por volume'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "title": "Quais fatores afetam o custo de transferência de dados na AWS?",
+    "group_by_topic": "Cobrança e Suporte",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Quantidade de dados transferidos, direção do tráfego e regiões envolvidas na transferência.",
+        "because": "Correto: Dados transferidos para fora da AWS são cobrados. Transferência entre regiões tem custo. Dados recebidos (inbound) geralmente são gratuitos. Transferência dentro da mesma AZ é gratuita.",
+        "rep": true
+      },
+      {
+        "alternative": "Apenas o tipo de instância EC2 utilizada determina custos de transferência.",
+        "because": "Incorreto: Tipo de instância não afeta transferência. A resposta correta é 'Quantidade de dados, direção do tráfego e regiões envolvidas'.",
+        "rep": false
+      },
+      {
+        "alternative": "Transferência de dados sempre é gratuita independente de volume ou destino.",
+        "because": "Incorreto: Há custos de transferência em muitos cenários. A resposta correta é 'Quantidade de dados, direção do tráfego e regiões envolvidas'.",
+        "rep": false
+      },
+      {
+        "alternative": "Custos dependem exclusivamente do plano de suporte AWS contratado pela organização.",
+        "because": "Incorreto: Suporte não afeta custos de transferência. A resposta correta é 'Quantidade de dados, direção do tráfego e regiões envolvidas'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "title": "O que é o AWS Partner Network (APN)?",
+    "group_by_topic": "Cobrança e Suporte",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 1,
+    "response": [
+      {
+        "alternative": "Programa global de parceiros que oferece soluções e serviços baseados em AWS.",
+        "because": "Correto: APN conecta clientes a consultores e provedores de tecnologia especializados em AWS. Inclui parceiros de consultoria e tecnologia certificados pela AWS.",
+        "rep": true
+      },
+      {
+        "alternative": "Rede privada virtual para conectar datacenters on-premises com infraestrutura AWS.",
+        "because": "Incorreto: Isso seria VPN ou Direct Connect. A resposta correta é 'Programa global de parceiros que oferece soluções e serviços baseados em AWS'.",
+        "rep": false
+      },
+      {
+        "alternative": "Ferramenta de gerenciamento de múltiplas contas AWS em uma organização centralizada.",
+        "because": "Incorreto: Isso é AWS Organizations. A resposta correta é 'Programa global de parceiros que oferece soluções e serviços baseados em AWS'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço de suporte técnico premium com tempo de resposta garantido em 15 minutos.",
+        "because": "Incorreto: Isso é Enterprise Support. A resposta correta é 'Programa global de parceiros que oferece soluções e serviços baseados em AWS'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "title": "Qual é a diferença entre Standard e Convertible Reserved Instances?",
+    "group_by_topic": "Cobrança e Suporte",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Standard oferece maior desconto; Convertible permite trocar tipo de instância durante termo.",
+        "because": "Correto: Standard RIs oferecem até 75% de desconto mas são fixas. Convertible RIs oferecem até 66% de desconto mas permitem trocar família de instância, SO e tenancy.",
+        "rep": true
+      },
+      {
+        "alternative": "Convertible é mais barata; Standard oferece flexibilidade de mudar atributos da instância.",
+        "because": "Incorreto: A relação está invertida. A resposta correta é 'Standard oferece maior desconto; Convertible permite trocar tipo de instância durante termo'.",
+        "rep": false
+      },
+      {
+        "alternative": "Ambas são idênticas em desconto e flexibilidade, diferindo apenas no nome comercial.",
+        "because": "Incorreto: Há diferenças significativas. A resposta correta é 'Standard oferece maior desconto; Convertible permite trocar tipo de instância durante termo'.",
+        "rep": false
+      },
+      {
+        "alternative": "Standard pode ser revendida no marketplace; Convertible nunca pode ser transferida ou vendida.",
+        "because": "Incorreto: Ambas podem ser vendidas no RI Marketplace. A resposta correta é 'Standard oferece maior desconto; Convertible permite trocar tipo de instância'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "title": "Para que serve o AWS Support Concierge?",
+    "group_by_topic": "Cobrança e Suporte",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Especialistas em billing e contas disponíveis exclusivamente para clientes Enterprise Support.",
+        "because": "Correto: Support Concierge auxilia clientes Enterprise com questões de billing, análise de custos, otimização de gastos e configuração de contas. Disponível apenas no plano Enterprise.",
+        "rep": true
+      },
+      {
+        "alternative": "Ferramenta automatizada que fornece recomendações de otimização de custos e performance.",
+        "because": "Incorreto: Isso é Trusted Advisor. A resposta correta é 'Especialistas em billing e contas disponíveis exclusivamente para clientes Enterprise Support'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço de gerenciamento de incidentes críticos disponível em todos planos de suporte.",
+        "because": "Incorreto: Concierge é exclusivo Enterprise. A resposta correta é 'Especialistas em billing e contas disponíveis exclusivamente para clientes Enterprise Support'.",
+        "rep": false
+      },
+      {
+        "alternative": "Sistema de criação e rastreamento de tickets de suporte técnico via console AWS.",
+        "because": "Incorreto: Isso é Support Center. A resposta correta é 'Especialistas em billing e contas disponíveis exclusivamente para clientes Enterprise Support'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "title": "O que é AWS Marketplace?",
+    "group_by_topic": "Cobrança e Suporte",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 1,
+    "response": [
+      {
+        "alternative": "Catálogo digital com milhares de soluções de software de terceiros para executar na AWS.",
+        "because": "Correto: AWS Marketplace permite descobrir, comprar e implantar software de terceiros (AMIs, SaaS, containers). Billing consolidado na fatura AWS.",
+        "rep": true
+      },
+      {
+        "alternative": "Plataforma de negociação de Reserved Instances entre diferentes contas AWS corporativas.",
+        "because": "Incorreto: Isso é Reserved Instance Marketplace. A resposta correta é 'Catálogo digital com milhares de soluções de software de terceiros'.",
+        "rep": false
+      },
+      {
+        "alternative": "Serviço de consultoria especializada para arquitetar soluções empresariais complexas.",
+        "because": "Incorreto: Isso seria Professional Services. A resposta correta é 'Catálogo digital com milhares de soluções de software de terceiros para executar na AWS'.",
+        "rep": false
+      },
+      {
+        "alternative": "Sistema de leilão para adquirir capacidade de computação EC2 com grandes descontos.",
+        "because": "Incorreto: Isso se refere a Spot Instances. A resposta correta é 'Catálogo digital com milhares de soluções de software de terceiros'.",
+        "rep": false
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "title": "Qual é o benefício do AWS Compute Savings Plans?",
+    "group_by_topic": "Cobrança e Suporte",
+    "accept_two_alternatives": false,
+    "level_of_complexity": 2,
+    "response": [
+      {
+        "alternative": "Desconto em compute (EC2, Lambda, Fargate) com flexibilidade entre tipos e regiões.",
+        "because": "Correto: Compute Savings Plans oferecem até 66% de desconto aplicável a qualquer família de instância EC2, região, SO, tenancy e também Lambda e Fargate.",
+        "rep": true
+      },
+      {
+        "alternative": "Desconto aplicável apenas a instâncias EC2 de família e região específicas escolhidas.",
+        "because": "Incorreto: Isso seria EC2 Instance Savings Plan. A resposta correta é 'Desconto em compute (EC2, Lambda, Fargate) com flexibilidade entre tipos e regiões'.",
+        "rep": false
+      },
+      {
+        "alternative": "Programa exclusivo para clientes Enterprise com desconto fixo de 90% em todos serviços.",
+        "because": "Incorreto: Desconto não é fixo em 90%. A resposta correta é 'Desconto em compute (EC2, Lambda, Fargate) com flexibilidade entre tipos e regiões'.",
+        "rep": false
+      },
+      {
+        "alternative": "Compromisso de uso mínimo mensal sem desconto mas com garantia de capacidade reservada.",
+        "because": "Incorreto: Savings Plans oferecem desconto. A resposta correta é 'Desconto em compute (EC2, Lambda, Fargate) com flexibilidade entre tipos e regiões'.",
         "rep": false
       }
     ]

@@ -57,6 +57,7 @@ export function QuizForm() {
     openModalConfiguration: false,
     selectedAnswers: {},
     amountLimitQuestions: 10,
+    tempAmountLimitQuestions: 10,
     disabledCoolDown: false,
   });
 
@@ -357,9 +358,9 @@ export function QuizForm() {
                 tabIndex={1}
                 min={1}
                 max={20}
-                value={stateReducer.amountLimitQuestions}
+                value={stateReducer.tempAmountLimitQuestions}
                 onChange={(e) =>
-                  dispatch({ type: 'controls_limite_questions', payload: e.target.value })
+                  dispatch({ type: 'controls_limite_questions_temp', payload: e.target.value })
                 }
                 className="w-22"
                 placeholder="Ex: 10"
@@ -371,14 +372,14 @@ export function QuizForm() {
               <Button
                 tabIndex={3}
                 variant="outline"
-                onClick={() => dispatch({ type: 'open_modal_config_quiz', payload: false })}
+                onClick={() => dispatch({ type: 'cancel_config_quiz' })}
               >
                 Cancelar
               </Button>
               <Button
                 tabIndex={2}
                 onClick={() => {
-                  dispatch({ type: 'open_modal_config_quiz', payload: false });
+                  dispatch({ type: 'save_config_quiz' });
                 }}
               >
                 Salvar

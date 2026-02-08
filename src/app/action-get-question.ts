@@ -23,6 +23,20 @@ export async function sendQuestion(
   const currentQuestionId = previousState?.questions[0]?.id;
 
   const userScore = previousState?.userScoreReceivedPoints ?? topicsScore;
+  const initialTopicStats: TopicStatsDetail = {
+    fundamental_cloud_concepts: { correct: 0, errors: 0 },
+    security_compliance: { correct: 0, errors: 0 },
+    cloud_technology: { correct: 0, errors: 0 },
+    billing_pricing_support: { correct: 0, errors: 0 },
+  };
+  const topicStats: TopicStatsDetail = previousState?.topicStats
+    ? {
+        fundamental_cloud_concepts: { ...previousState.topicStats.fundamental_cloud_concepts },
+        security_compliance: { ...previousState.topicStats.security_compliance },
+        cloud_technology: { ...previousState.topicStats.cloud_technology },
+        billing_pricing_support: { ...previousState.topicStats.billing_pricing_support },
+      }
+    : { ...initialTopicStats };
   const consecutiveErrorCount = previousState?.consecutiveErrorCount || 0;
   let currentQuestionCount = previousState?.currentQuestionCount || 0;
 
@@ -38,6 +52,7 @@ export async function sendQuestion(
 
     return createStateResponse({
       ...generatedQuestion,
+      topicStats: { ...initialTopicStats },
       currentQuestionCount,
       validated: false,
       isCorrect: null,
@@ -92,6 +107,7 @@ export async function sendQuestion(
           message: ERROR_MSG_QUESTION_GENERATION_FAILED,
           error: true,
           disabledButton: true,
+          topicStats,
         },
         previousState
       );
@@ -110,6 +126,7 @@ export async function sendQuestion(
           currentQuestionCount,
           consecutiveErrorCount,
           error: true,
+          topicStats,
         },
         previousState
       );
@@ -123,6 +140,11 @@ export async function sendQuestion(
       userScore[renamedTopic] = Math.max(userScore[renamedTopic] - adjustment, 0);
     }
 
+    topicStats[renamedTopic] = {
+      correct: topicStats[renamedTopic].correct + (isAnswerCorrect ? 1 : 0),
+      errors: topicStats[renamedTopic].errors + (isAnswerCorrect ? 0 : 1),
+    };
+
     return createStateResponse(
       {
         validated: true,
@@ -135,6 +157,7 @@ export async function sendQuestion(
         consecutiveErrorCount: updatedErrorCount,
         error: false,
         userScoreReceivedPoints: userScore,
+        topicStats,
         drawnQuestionIds: previousState.drawnQuestionIds,
       },
       previousState
@@ -149,7 +172,7 @@ export async function sendQuestion(
   currentQuestionCount += 1;
 
   // Check if user exceeded question limit
-  if (currentQuestionCount >= requestedQuestionLimit) {
+  if (currentQuestionCount > requestedQuestionLimit) {
     return createStateResponse(
       {
         disabledButton: true,
@@ -158,6 +181,7 @@ export async function sendQuestion(
         consecutiveErrorCount,
         error: false,
         drawnQuestionIds: updatedDrawnIds,
+        topicStats,
       },
       previousState
     );
@@ -173,6 +197,7 @@ export async function sendQuestion(
         error: true,
         disabledButton: true,
         drawnQuestionIds: updatedDrawnIds,
+        topicStats,
       },
       previousState
     );
@@ -195,6 +220,7 @@ export async function sendQuestion(
 
     return createStateResponse({
       ...questionWithNewTopic,
+      topicStats,
       currentQuestionCount,
       consecutiveErrorCount: 0,
       validated: false,
@@ -224,6 +250,7 @@ export async function sendQuestion(
 
   return createStateResponse({
     ...nextQuestion,
+    topicStats,
     currentQuestionCount,
     consecutiveErrorCount,
     validated: false,

@@ -5,3 +5,5 @@ type Topic =
   | 'billing_pricing_support';
 
 type TopicStats = Record<Topic, number>;
+
+type TopicStatsDetail = Record<Topic, { correct: number; errors: number }>;

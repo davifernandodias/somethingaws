@@ -39,7 +39,6 @@ The quiz aims to help learners practice by adapting to their mistakes. The syste
 - `service/` — services related to fetching and generating questions (`question-fetcher.service.ts`, `question-generator.service.ts`).
 - `reducer/` — quiz state reducer and configuration (`config-quiz-reducer.ts`).
 - `utils/` — helper utilities used by the selection and scoring logic (e.g., `question-state.utils.ts`, `draws-question-topic.ts`).
-- `scripts/` — utility scripts used during development (e.g., question generation, refactoring).
 
 ## How the adaptive engine works (simplified)
 
